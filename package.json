@@ -11,11 +11,11 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "npx eslint --fix"
+      "pnpm prettier --write",
+      "pnpm eslint --fix"
     ],
     "**/*.css": [
-      "npx prettier --write"
+      "pnpm prettier --write"
     ],
     "**/package.json": "sort-package-json"
   },

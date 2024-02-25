@@ -1,6 +1,8 @@
 {
-  "name": "todo",
+  "name": "systems-thinker-incubator",
+  "version": "0.0.0",
   "private": true,
+  "description": "Systems thinker's incubator.",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",

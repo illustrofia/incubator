@@ -1,10 +1,10 @@
-- [ ] Write to level README
+- [x] Write top level README
 
 ## Projects
 
 ### Todo List Application
 
-- [ ] Define System design document
+- [x] Define System design document
 - [ ] Design system architecture
 - [ ] Design UI/UX
 - [ ] Implementation

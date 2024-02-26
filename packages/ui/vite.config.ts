@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react"
 import { resolve } from "node:path"
+import { fileURLToPath } from "url"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
 import libCss from "vite-plugin-libcss"
@@ -23,6 +24,11 @@ export default defineConfig({
           "react-dom": "ReactDOM",
         },
       },
+    },
+  },
+  resolve: {
+    alias: {
+      "@": resolve(fileURLToPath(new URL(".", import.meta.url)), "src"),
     },
   },
 })

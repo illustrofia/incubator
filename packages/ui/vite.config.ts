@@ -3,11 +3,10 @@ import { resolve } from "node:path"
 import { fileURLToPath } from "url"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
-import libCss from "vite-plugin-libcss"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), libCss(), dts({ outDir: "dist/types" })],
+  plugins: [react(), dts({ outDir: "dist/types" })],
   build: {
     sourcemap: true,
     lib: {
@@ -19,6 +18,7 @@ export default defineConfig({
     rollupOptions: {
       external: ["react", "react-dom"],
       output: {
+        intro: 'import "./style.css";',
         globals: {
           react: "React",
           "react-dom": "ReactDOM",

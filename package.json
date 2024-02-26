@@ -1,11 +1,11 @@
 {
-  "name": "systems-thinker-incubator",
   "version": "0.0.0",
   "private": true,
-  "description": "Systems thinker's incubator.",
   "scripts": {
     "build": "turbo build",
+    "build.ui": "turbo build --filter=@incubator/ui",
     "dev": "turbo dev",
+    "dev.dome": "turbo dev --filter=@incubator/dome",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "lint": "turbo lint",
     "lint.staged": "lint-staged",
@@ -24,8 +24,8 @@
   "devDependencies": {
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.2",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@incubator/eslint-config": "workspace:*",
+    "@incubator/typescript-config": "workspace:*",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",

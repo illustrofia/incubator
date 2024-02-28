@@ -17,7 +17,6 @@ module.exports = {
   extends: ["eslint:recommended", "prettier", "eslint-config-turbo"],
   plugins: ["only-warn"],
   globals: {
-    React: true,
     JSX: true,
   },
   env: {
@@ -35,6 +34,9 @@ module.exports = {
     ".*.js",
     "node_modules/",
     "dist/",
+    ".eslintrc.cjs",
+    "vite.config.ts",
+    "tailwind.config.cjs",
   ],
   overrides: [
     // Force ESLint to detect .tsx files

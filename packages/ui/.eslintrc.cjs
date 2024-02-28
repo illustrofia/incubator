@@ -6,10 +6,4 @@ module.exports = {
   parserOptions: {
     project: "./tsconfig.json",
   },
-  ignorePatterns: [
-    "dist",
-    ".eslintrc.cjs",
-    "vite.config.ts",
-    "tailwind.config.cjs",
-  ],
 }

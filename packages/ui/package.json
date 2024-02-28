@@ -22,8 +22,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@incubator/eslint-config": "workspace:*",
-    "@incubator/typescript-config": "workspace:*",
+    "@incubator/eslint-config": "workspace:^",
+    "@incubator/typescript-config": "workspace:^",
     "@types/eslint": "^8.56.3",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.58",

@@ -25,6 +25,9 @@ module.exports = {
     ".*.js",
     "node_modules/",
     "dist/",
+    ".eslintrc.cjs",
+    "vite.config.ts",
+    "tailwind.config.cjs",
   ],
   overrides: [
     {

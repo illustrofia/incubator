@@ -37,6 +37,7 @@ module.exports = {
     ".eslintrc.cjs",
     "vite.config.ts",
     "tailwind.config.cjs",
+    "postcss.config.cjs",
   ],
   overrides: [
     // Force ESLint to detect .tsx files

@@ -13,17 +13,23 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       name: "IncubatorDesignSystem",
       fileName: "index",
-      formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
-      output: {
-        intro: 'import "./style.css";',
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
+      external: ["react", "react/jsx-runtime"],
+      output: [
+        {
+          intro: 'import "./style.css";',
+          format: "es",
+          dir: "dist",
+          entryFileNames: "[name].mjs",
         },
-      },
+        {
+          intro: 'import "./style.css";',
+          format: "cjs",
+          dir: "dist",
+          entryFileNames: "[name].cjs",
+        },
+      ],
     },
   },
   resolve: {

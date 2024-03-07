@@ -1,10 +1,10 @@
-# Systems Thinker's Incubator
+# Web Development Engineer Incubator
 
 ## Introduction
 
-The purpose of this project is to help me develop a systems thinking perspective through mastering web development.
+The purpose of this project is to help me master web development.
 
-I shall build several projects, ranging from simple to complex, to help me understand the interconnectedness of the various parts of a system.
+I shall build several projects, ranging from simple to complex, to help me understand the interconnectedness of the various parts of each system.
 
 The outcome of this project is to be able to build complex systems that are easy to maintain and scale. Learning software architecture and design patterns will be a key part of this project.
 

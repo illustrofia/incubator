@@ -1,4 +1,4 @@
-# Web Development Engineer Incubator
+# Incubator
 
 ## Introduction
 

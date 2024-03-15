@@ -1,12 +1,20 @@
-import express from "express"
+import { PrismaClient } from "@prisma/client"
 
-const app = express()
-const PORT = process.env.PORT || 3000
+const prisma = new PrismaClient()
 
-app.use(express.json())
+async function main() {
+  // get all posts and print them
+  const allPosts = await prisma.post.findMany()
 
-// Define routes here
+  console.log(allPosts)
+}
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+main()
+  .then(async () => {
+    await prisma.$disconnect()
+  })
+  .catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })

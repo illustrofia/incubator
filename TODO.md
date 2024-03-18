@@ -5,9 +5,13 @@
 ### Todo List Application
 
 - [x] Define System design document
-- [ ] Design system architecture
+- [x] Design system architecture
+- [x] Setup database
+- [ ] Build backend
+  - [ ] Build authentication
+  - [ ] Build todos CRUD
 - [ ] Design UI/UX
-- [ ] Implementation
+- [ ] Build frontend
 - [ ] Testing
 - [ ] Deployment
 - [ ] Write README

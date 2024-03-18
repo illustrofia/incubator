@@ -19,5 +19,8 @@
   ],
   "[svg]": {
     "editor.defaultFormatter": "jock.svg"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
   }
 }

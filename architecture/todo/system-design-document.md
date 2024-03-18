@@ -38,9 +38,8 @@ Dome is designed to help users efficiently manage their tasks. It provides funct
 - `id`: Unique identifier
 - `title`: String
 - `description`: String (optional)
-- `category`: String
-- `deadline`: Date
 - `completed`: Boolean
+- `createdAt`: Date
 - `userId`: ID of the User who created the task
 
 ## API Endpoints

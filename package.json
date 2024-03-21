@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "build.ui": "turbo build --filter=@incubator/ui",
     "dev": "turbo dev",
     "dev.todo": "turbo dev --filter=@incubator/todo*",
+    "dev.todo.backend": "turbo dev --filter=@incubator/todo-backend",
+    "dev.todo.frontend": "turbo dev --filter=@incubator/todo-frontend",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "lint": "turbo lint",
     "lint.staged": "lint-staged",

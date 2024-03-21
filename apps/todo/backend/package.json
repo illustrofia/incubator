@@ -6,8 +6,10 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.8.2",
-    "@incubator/shared": "workspace:^",
+    "@hono/zod-validator": "^0.2.0",
+    "@incubator/shared": "workspace:*",
     "@prisma/client": "5.11.0",
+    "argon2": "^0.40.1",
     "dotenv": "^16.4.5",
     "hono": "^4.1.1"
   },

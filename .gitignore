@@ -38,3 +38,6 @@ yarn-error.log*
 *.pem
 
 graph.html
+
+# all files that contain .gen. in the name regardless of the location
+**/*.gen.*

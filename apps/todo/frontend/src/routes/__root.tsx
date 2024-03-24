@@ -1,4 +1,5 @@
 import { ModeToggle } from "@/components/mode-toggle"
+import { useAuth } from "@/hooks"
 import { ThemeProvider } from "@/providers/theme-provider"
 import {
   Link,
@@ -14,7 +15,7 @@ interface RouterContext {
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <div className="min-h-screen w-full">
+      <div className="text-foreground min-h-screen w-full">
         <TopBar />
         <Outlet />
       </div>
@@ -23,6 +24,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 })
 
 function TopBar() {
+  const { isAuthenticated } = useAuth()
   return (
     <div className="border-b-border flex w-full items-center justify-between border-b px-6 py-4">
       <div className="container flex items-center gap-8">
@@ -32,12 +34,17 @@ function TopBar() {
         </Link>
 
         <div className="ml-auto flex items-center gap-8">
-          <Link to="/login" className="text-lg [&.active]:font-bold">
-            Log in
-          </Link>
-          <Link to="/signup" className="text-lg [&.active]:font-bold">
-            Sign up
-          </Link>
+          {!isAuthenticated && (
+            <>
+              <Link to="/login" className="text-lg [&.active]:font-bold">
+                Log in
+              </Link>
+              <Link to="/signup" className="text-lg [&.active]:font-bold">
+                Sign up
+              </Link>
+            </>
+          )}
+
           <ModeToggle />
         </div>
       </div>

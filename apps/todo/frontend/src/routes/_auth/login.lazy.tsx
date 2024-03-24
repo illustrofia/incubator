@@ -19,6 +19,7 @@ export const Route = createLazyFileRoute("/_auth/login")({
 })
 
 function LoginForm() {
+  const { handleLogin } = useAuth()
   const form = useForm<LoginUserSchema>({
     resolver: zodResolver(loginUserSchema),
     defaultValues: {
@@ -26,8 +27,6 @@ function LoginForm() {
       password: "",
     },
   })
-
-  const { handleLogin } = useAuth()
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleLogin)} className="space-y-4">

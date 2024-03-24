@@ -6,14 +6,7 @@ import { useEffect } from "react"
 import { useAuthStore } from "./useAuthStore"
 
 export const useAuth = () => {
-  const {
-    user,
-    errors,
-    setUser,
-    setErrors,
-    isAuthenticated,
-    setIsAuthenticated,
-  } = useAuthStore()
+  const { user, setUser, isAuthenticated, setIsAuthenticated } = useAuthStore()
 
   const navigate = useNavigate()
   const { location } = useRouterState()
@@ -45,7 +38,7 @@ export const useAuth = () => {
       setUser(user)
     } catch (error) {
       setUser(null)
-      setErrors([(error as Error).message])
+      return error as Error
     }
   }
 
@@ -58,7 +51,7 @@ export const useAuth = () => {
       setUser(user)
     } catch (error) {
       setUser(null)
-      setErrors([(error as Error).message])
+      return error as Error
     }
   }
 
@@ -71,7 +64,6 @@ export const useAuth = () => {
 
   return {
     user,
-    errors,
     isAuthenticated,
     handleLogin,
     handleRegister,

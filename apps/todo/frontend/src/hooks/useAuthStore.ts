@@ -8,9 +8,6 @@ interface AuthStore {
 
   user: UserSchema | null
   setUser: (user: UserSchema | null) => void
-
-  errors: string[] | null
-  setErrors: (error: string[] | null) => void
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -19,7 +16,4 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
   user: null,
   setUser: (user) => set({ user }),
-
-  errors: null,
-  setErrors: (errors) => set({ errors }),
 }))

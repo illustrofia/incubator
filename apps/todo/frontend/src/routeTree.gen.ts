@@ -13,17 +13,41 @@ import { createFileRoute } from "@tanstack/react-router"
 // Import Routes
 
 import { Route as rootRoute } from "./routes/__root"
+import { Route as AuthImport } from "./routes/_auth"
+import { Route as TasksIndexImport } from "./routes/tasks/index"
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute("/")()
+const AuthSignupLazyImport = createFileRoute("/_auth/signup")()
+const AuthLoginLazyImport = createFileRoute("/_auth/login")()
 
 // Create/Update Routes
+
+const AuthRoute = AuthImport.update({
+  id: "/_auth",
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: "/",
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import("./routes/index.lazy").then((d) => d.Route))
+
+const TasksIndexRoute = TasksIndexImport.update({
+  path: "/tasks/",
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthSignupLazyRoute = AuthSignupLazyImport.update({
+  path: "/signup",
+  getParentRoute: () => AuthRoute,
+} as any).lazy(() => import("./routes/_auth/signup.lazy").then((d) => d.Route))
+
+const AuthLoginLazyRoute = AuthLoginLazyImport.update({
+  path: "/login",
+  getParentRoute: () => AuthRoute,
+} as any).lazy(() => import("./routes/_auth/login.lazy").then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -33,11 +57,31 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    "/_auth": {
+      preLoaderRoute: typeof AuthImport
+      parentRoute: typeof rootRoute
+    }
+    "/_auth/login": {
+      preLoaderRoute: typeof AuthLoginLazyImport
+      parentRoute: typeof AuthImport
+    }
+    "/_auth/signup": {
+      preLoaderRoute: typeof AuthSignupLazyImport
+      parentRoute: typeof AuthImport
+    }
+    "/tasks/": {
+      preLoaderRoute: typeof TasksIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexLazyRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexLazyRoute,
+  AuthRoute.addChildren([AuthLoginLazyRoute, AuthSignupLazyRoute]),
+  TasksIndexRoute,
+])
 
 /* prettier-ignore-end */

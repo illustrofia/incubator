@@ -5,8 +5,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui"
+import { useTheme } from "@/hooks"
 import { Moon, Sun } from "lucide-react"
-import { useTheme } from "./theme-provider"
 
 export function ModeToggle() {
   const { setTheme } = useTheme()

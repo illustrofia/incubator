@@ -1,15 +1,46 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router"
+import { ModeToggle } from "@/components/mode-toggle"
+import { ThemeProvider } from "@/providers/theme-provider"
+import {
+  Link,
+  Outlet,
+  createRootRouteWithContext,
+} from "@tanstack/react-router"
+import { CheckCircle } from "lucide-react"
 
-export const Route = createRootRoute({
+interface RouterContext {
+  isAuthenticated: boolean
+}
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
-    <>
-      <div className="flex gap-2 p-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <div className="min-h-screen w-full">
+        <TopBar />
+        <Outlet />
       </div>
-      <hr />
-      <Outlet />
-    </>
+    </ThemeProvider>
   ),
 })
+
+function TopBar() {
+  return (
+    <div className="border-b-border flex w-full items-center justify-between border-b px-6 py-4">
+      <div className="container flex items-center gap-8">
+        <Link to="/" className="flex items-center gap-4">
+          <CheckCircle size={24} />
+          <span className="text-xl font-light tracking-wider">Dome</span>
+        </Link>
+
+        <div className="ml-auto flex items-center gap-8">
+          <Link to="/login" className="text-lg [&.active]:font-bold">
+            Log in
+          </Link>
+          <Link to="/signup" className="text-lg [&.active]:font-bold">
+            Sign up
+          </Link>
+          <ModeToggle />
+        </div>
+      </div>
+    </div>
+  )
+}

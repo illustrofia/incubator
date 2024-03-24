@@ -8,7 +8,6 @@ import {
 import argon2 from "argon2"
 import { Hono } from "hono"
 import { deleteCookie, setCookie } from "hono/cookie"
-import { HTTPException } from "hono/http-exception"
 import { sign } from "hono/jwt"
 
 export const auth = new Hono()
@@ -30,7 +29,7 @@ auth.post(
     })
 
     if (user) {
-      throw new HTTPException(400, { message: "User already exists" })
+      return c.json({ message: "User already exists" }, 400)
     }
     const passwordHash = await argon2.hash(password)
     const newUser = await prisma.user.create({
@@ -73,12 +72,12 @@ auth.post("/auth/login", zValidator("json", loginUserSchema), async (c) => {
   })
 
   if (!user) {
-    throw new HTTPException(401, { message: "User not found" })
+    return c.json({ message: "User not found" }, 401)
   }
 
   const validPassword = await argon2.verify(user.password, password)
   if (!validPassword) {
-    throw new HTTPException(401, { message: "Invalid password" })
+    return c.json({ message: "Invalid password" }, 401)
   }
 
   const token = await createToken(user)

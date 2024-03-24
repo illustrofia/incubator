@@ -183,7 +183,7 @@ importers:
         version: 5.4.2
       vite:
         specifier: ^5.1.6
-        version: 5.1.6(@types/node@20.11.30)
+        version: 5.1.6
 
   packages/configs/eslint-config:
     devDependencies:
@@ -3691,7 +3691,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.4.2
-      vite: 5.1.6(@types/node@20.11.30)
+      vite: 5.1.6
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -7704,7 +7704,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite@5.1.6(@types/node@20.11.30):
+  /vite@5.1.6:
     resolution: {integrity: sha512-yYIAZs9nVfRJ/AiOLCA91zzhjsHUgMjB+EigzFb6W2XTLO8JixBCKCjvhKZaye+NKYHCrkv3Oh50dH9EdLU2RA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7732,7 +7732,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.30
       esbuild: 0.19.12
       postcss: 8.4.38
       rollup: 4.12.0

@@ -16,7 +16,7 @@ export const auth = new Hono()
 const createToken = async (user: LoginUserSchema) =>
   await sign({ email: user.email }, process.env.JWT_SECRET)
 
-const ONE_DAY = 1000 * 60 * 60 * 24
+const ONE_DAY = 60 * 60 * 24
 
 auth.post(
   "/auth/register",

@@ -1,4 +1,4 @@
-import { login, logout, register } from "@/api"
+import { getMe, login, logout, register } from "@/api"
 import { hasAuthToken } from "@/utils"
 import { LoginUserSchema, RegisterUserSchema } from "@incubator/shared"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
@@ -16,8 +16,8 @@ export const useAuth = () => {
       setIsAuthenticated(false)
       return
     }
-    setIsAuthenticated(true)
-  }, [setIsAuthenticated])
+    handleAuthenticate()
+  }, [])
 
   useEffect(() => {
     if (user && hasAuthToken()) {
@@ -28,6 +28,21 @@ export const useAuth = () => {
       return
     }
   }, [location.pathname, navigate, setIsAuthenticated, user])
+
+  const handleAuthenticate = async () => {
+    try {
+      const user = await getMe()
+      if ("message" in user) {
+        throw new Error(user.message)
+      }
+      setUser(user)
+    } catch (error) {
+      setUser(null)
+      if (location.pathname !== "/login" && location.pathname !== "/register") {
+        navigate({ to: "/login" })
+      }
+    }
+  }
 
   const handleLogin = async (credentials: LoginUserSchema) => {
     try {

@@ -1,8 +1,9 @@
+import { auth, user } from "@/routes"
 import { serve } from "@hono/node-server"
 import dotenv from "dotenv"
 import { Hono } from "hono"
 import { cors } from "hono/cors"
-import { auth } from "./routes"
+import { logger } from "hono/logger"
 
 dotenv.config()
 
@@ -21,8 +22,10 @@ app.use(
     credentials: true,
   }),
 )
+app.use(logger())
 
 app.route("/api/v1", auth)
+app.route("/api/v1", user)
 
 serve({
   fetch: app.fetch,

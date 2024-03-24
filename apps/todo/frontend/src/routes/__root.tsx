@@ -1,3 +1,4 @@
+import { Button } from "@/components"
 import { ModeToggle } from "@/components/mode-toggle"
 import { useAuth } from "@/hooks"
 import { ThemeProvider } from "@/providers/theme-provider"
@@ -25,6 +26,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function TopBar() {
   const { isAuthenticated } = useAuth()
+  const { handleLogout } = useAuth()
   return (
     <div className="border-b-border flex w-full items-center justify-between border-b px-6 py-4">
       <div className="container flex items-center gap-8">
@@ -43,6 +45,15 @@ function TopBar() {
                 Sign up
               </Link>
             </>
+          )}
+          {isAuthenticated && (
+            <Button
+              className="text-lg"
+              variant={"ghost"}
+              onClick={handleLogout}
+            >
+              Log out
+            </Button>
           )}
 
           <ModeToggle />

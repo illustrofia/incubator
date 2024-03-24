@@ -2,7 +2,7 @@ import { z } from "zod"
 
 export const userSchema = z
   .object({
-    id: z.number(),
+    id: z.string(),
     username: z
       .string()
       .min(3, { message: "Username must be at least 3 characters" }),

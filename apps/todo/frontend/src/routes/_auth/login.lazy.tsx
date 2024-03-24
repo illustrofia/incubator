@@ -12,6 +12,7 @@ import { useAuth } from "@/hooks"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginUserSchema, loginUserSchema } from "@incubator/shared"
 import { createLazyFileRoute } from "@tanstack/react-router"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 
 export const Route = createLazyFileRoute("/_auth/login")({
@@ -19,7 +20,7 @@ export const Route = createLazyFileRoute("/_auth/login")({
 })
 
 function LoginForm() {
-  const { handleLogin } = useAuth()
+  const { handleLogin, errors: authErrors } = useAuth()
   const form = useForm<LoginUserSchema>({
     resolver: zodResolver(loginUserSchema),
     defaultValues: {
@@ -27,9 +28,17 @@ function LoginForm() {
       password: "",
     },
   })
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const onSubmit = async (values: LoginUserSchema) => {
+    setIsLoading(true)
+    await handleLogin(values)
+    setIsLoading(false)
+  }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleLogin)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="email"
@@ -56,7 +65,15 @@ function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={isLoading}>
+          Submit
+        </Button>
+        {authErrors &&
+          authErrors.map((error, index) => (
+            <p className="text-red-400" key={index}>
+              {error}
+            </p>
+          ))}
       </form>
     </Form>
   )

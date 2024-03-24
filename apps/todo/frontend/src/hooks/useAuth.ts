@@ -1,23 +1,32 @@
 import { getMe, login, logout, register } from "@/api"
 import { hasAuthToken } from "@/utils"
 import { LoginUserSchema, RegisterUserSchema } from "@incubator/shared"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import { useEffect } from "react"
 import { useAuthStore } from "./useAuthStore"
 
 export const useAuth = () => {
-  const { user, setUser, isAuthenticated, setIsAuthenticated } = useAuthStore()
+  const { isAuthenticated, setIsAuthenticated } = useAuthStore()
 
   const navigate = useNavigate()
   const { location } = useRouterState()
 
+  const queryClient = useQueryClient()
+
+  const { data: user, isError } = useQuery({
+    queryKey: ["me"],
+    queryFn: getMe,
+    retry: false,
+    enabled: hasAuthToken(),
+  })
   useEffect(() => {
-    if (!hasAuthToken()) {
+    if (isError) {
+      queryClient.clear()
       setIsAuthenticated(false)
-      return
+      navigate({ to: "/login" })
     }
-    handleAuthenticate()
-  }, [])
+  }, [isError, navigate, queryClient, setIsAuthenticated])
 
   useEffect(() => {
     if (user && hasAuthToken()) {
@@ -27,22 +36,9 @@ export const useAuth = () => {
       }
       return
     }
-  }, [location.pathname, navigate, setIsAuthenticated, user])
 
-  const handleAuthenticate = async () => {
-    try {
-      const user = await getMe()
-      if ("message" in user) {
-        throw new Error(user.message)
-      }
-      setUser(user)
-    } catch (error) {
-      setUser(null)
-      if (location.pathname !== "/login" && location.pathname !== "/register") {
-        navigate({ to: "/login" })
-      }
-    }
-  }
+    setIsAuthenticated(false)
+  }, [location.pathname, navigate, setIsAuthenticated, user])
 
   const handleLogin = async (credentials: LoginUserSchema) => {
     try {
@@ -50,9 +46,9 @@ export const useAuth = () => {
       if (!user) {
         throw new Error(message)
       }
-      setUser(user)
+      queryClient.setQueryData(["me"], user)
     } catch (error) {
-      setUser(null)
+      queryClient.invalidateQueries({ queryKey: ["me"] })
       return error as Error
     }
   }
@@ -63,18 +59,18 @@ export const useAuth = () => {
       if (!user) {
         throw new Error(message)
       }
-      setUser(user)
+      queryClient.setQueryData(["me"], user)
     } catch (error) {
-      setUser(null)
+      queryClient.invalidateQueries({ queryKey: ["me"] })
       return error as Error
     }
   }
 
   const handleLogout = async () => {
     await logout()
-    setUser(null)
     navigate({ to: "/login" })
     setIsAuthenticated(false)
+    queryClient.clear()
   }
 
   return {

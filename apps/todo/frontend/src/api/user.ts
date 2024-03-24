@@ -17,5 +17,11 @@ export const getMe = async () => {
     credentials: "include",
   })
   const json = await response.json()
-  return returnUserSchema.parse(json)
+  const responseData = returnUserSchema.parse(json)
+
+  if ("message" in responseData) {
+    throw new Error(responseData.message)
+  }
+
+  return responseData
 }

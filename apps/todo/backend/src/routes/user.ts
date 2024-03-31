@@ -9,5 +9,6 @@ type Variables = {
 export const user = new Hono<{ Variables: Variables }>()
 
 user.get("/me", authenticate, (c) => {
-  return c.json(c.get("user"))
+  const user = c.get("user")
+  return c.json(user)
 })

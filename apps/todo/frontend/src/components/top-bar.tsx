@@ -10,14 +10,10 @@ export const TopBar = () => {
   return (
     <div className="border-b-border flex w-full items-center justify-between border-b px-6 py-4">
       <div className="container flex items-center gap-8">
-        <Link
-          to="/"
-          disabled={!isAuthenticated}
-          className="flex items-center gap-4"
-        >
+        <div className="flex items-center gap-4">
           <CheckCircle size={24} />
           <span className="text-xl font-light tracking-wider">Dome</span>
-        </Link>
+        </div>
 
         <div className="ml-auto flex items-center gap-8">
           {isLoadingAuth && <Skeleton className="h-10 w-24 rounded-lg" />}

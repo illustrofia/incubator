@@ -1,4 +1,4 @@
-import { getMe, login, logout, signup } from "@/api"
+import { getMe, login, logout, queryKeys, signup } from "@/api"
 import { hasAuthToken } from "@/utils"
 import { LoginUserSchema, RegisterUserSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
@@ -11,7 +11,7 @@ export const useAuth = () => {
   const navigate = useNavigate()
 
   const user = useQuery({
-    queryKey: ["me"],
+    queryKey: queryKeys.me,
     queryFn: getMe,
     retry: false,
     enabled: hasAuthToken(),
@@ -44,7 +44,7 @@ export const useAuth = () => {
       if (!user) {
         throw new Error(message)
       }
-      queryClient.setQueryData(["me"], user)
+      queryClient.setQueryData(queryKeys.me, user)
     } catch (error) {
       return error as Error
     }
@@ -56,7 +56,7 @@ export const useAuth = () => {
       if (!user) {
         throw new Error(message)
       }
-      queryClient.setQueryData(["me"], user)
+      queryClient.setQueryData(queryKeys.me, user)
     } catch (error) {
       return error as Error
     }

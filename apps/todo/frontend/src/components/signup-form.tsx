@@ -18,6 +18,7 @@ import { useAuth } from "@/hooks"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { RegisterUserSchema, registerUserSchema } from "@incubator/shared"
 import { Link } from "@tanstack/react-router"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 
 export function SignupForm() {
@@ -33,8 +34,11 @@ export function SignupForm() {
     },
   })
 
+  const [isLoading, setIsLoading] = useState(false)
   const onSubmit = async (values: RegisterUserSchema) => {
+    setIsLoading(true)
     const error = await handleSignup(values)
+    setIsLoading(false)
     if (error) {
       form.setError("root", {
         message: error.message,
@@ -106,7 +110,7 @@ export function SignupForm() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={isLoading}>
                 Create an account
               </Button>
               <FormRootError />

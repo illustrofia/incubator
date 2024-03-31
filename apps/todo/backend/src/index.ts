@@ -1,4 +1,4 @@
-import { auth, user } from "@/routes"
+import { auth, todos, user } from "@/routes"
 import { serve } from "@hono/node-server"
 import dotenv from "dotenv"
 import { Hono } from "hono"
@@ -26,6 +26,7 @@ app.use(logger())
 
 app.route("/api/v1", auth)
 app.route("/api/v1", user)
+app.route("/api/v1", todos)
 
 serve({
   fetch: app.fetch,

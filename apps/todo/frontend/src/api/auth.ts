@@ -1,4 +1,8 @@
-import { LoginUserSchema, userSchema } from "@incubator/shared"
+import {
+  LoginUserSchema,
+  RegisterUserSchema,
+  userSchema,
+} from "@incubator/shared"
 import { z } from "zod"
 import { API_BASEPATH } from "."
 
@@ -31,7 +35,7 @@ export const logout = async () => {
   return response
 }
 
-export const signup = async (registerCredentials: LoginUserSchema) => {
+export const signup = async (registerCredentials: RegisterUserSchema) => {
   const response = await fetch(`${API_BASEPATH}/auth/register`, {
     method: "POST",
     headers: {

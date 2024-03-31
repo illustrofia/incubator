@@ -18,6 +18,7 @@ import { useAuth } from "@/hooks"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginUserSchema, loginUserSchema } from "@incubator/shared"
 import { Link } from "@tanstack/react-router"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 
 export function LoginForm() {
@@ -31,13 +32,17 @@ export function LoginForm() {
     },
   })
 
+  const [isLoading, setIsLoading] = useState(false)
   const onSubmit = async (values: LoginUserSchema) => {
+    setIsLoading(true)
     const error = await handleLogin(values)
+
     if (error) {
       form.setError("root", {
         message: error.message,
       })
     }
+    setIsLoading(false)
   }
 
   return (
@@ -81,7 +86,7 @@ export function LoginForm() {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" disabled={isLoading}>
                 Login
               </Button>
 

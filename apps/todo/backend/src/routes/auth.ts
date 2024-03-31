@@ -56,9 +56,11 @@ auth.post(
     })
 
     return c.json({
-      id: newUser.id,
-      username: newUser.username,
-      email: newUser.email,
+      user: {
+        id: newUser.id,
+        username: newUser.username,
+        email: newUser.email,
+      },
     })
   },
 )

@@ -31,7 +31,7 @@ export const logout = async () => {
   return response
 }
 
-export const register = async (registerCredentials: LoginUserSchema) => {
+export const signup = async (registerCredentials: LoginUserSchema) => {
   const response = await fetch(`${API_BASEPATH}/auth/register`, {
     method: "POST",
     headers: {

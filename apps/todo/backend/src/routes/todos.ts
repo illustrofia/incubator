@@ -68,3 +68,17 @@ todos.patch(
     return c.json(updatedTodo)
   },
 )
+
+todos.delete("/todos/:id", authenticate, async (c) => {
+  const user = c.get("user")
+  const id = c.req.param("id")
+
+  const deletedTodo = await prisma.todo.delete({
+    where: {
+      id,
+      userId: user.id,
+    },
+  })
+
+  return c.json(deletedTodo)
+})

@@ -1,6 +1,6 @@
 import {
   LoginUserSchema,
-  RegisterUserSchema,
+  SignupUserSchema,
   userSchema,
 } from "@incubator/shared"
 import { z } from "zod"
@@ -35,14 +35,14 @@ export const logout = async () => {
   return response
 }
 
-export const signup = async (registerCredentials: RegisterUserSchema) => {
-  const response = await fetch(`${API_BASEPATH}/auth/register`, {
+export const signup = async (signupCredentials: SignupUserSchema) => {
+  const response = await fetch(`${API_BASEPATH}/auth/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify(registerCredentials),
+    body: JSON.stringify(signupCredentials),
   })
   const json = await response.json()
   return authReturnSchema.parse(json)

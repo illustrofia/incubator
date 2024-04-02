@@ -3,7 +3,7 @@ import { zValidator } from "@hono/zod-validator"
 import {
   LoginUserSchema,
   loginUserSchema,
-  registerUserSchema,
+  signupUserSchema,
 } from "@incubator/shared"
 import argon2 from "argon2"
 import { Hono } from "hono"
@@ -17,53 +17,49 @@ const createToken = async (user: LoginUserSchema) =>
 
 const ONE_DAY = 60 * 60 * 24
 
-auth.post(
-  "/auth/register",
-  zValidator("json", registerUserSchema),
-  async (c) => {
-    const { username, email, password } = c.req.valid("json")
-    const user = await prisma.user.findUnique({
-      where: {
-        email,
-      },
-    })
+auth.post("/auth/signup", zValidator("json", signupUserSchema), async (c) => {
+  const { username, email, password } = c.req.valid("json")
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  })
 
-    if (user) {
-      return c.json({ message: "User already exists" }, 400)
-    }
-    const passwordHash = await argon2.hash(password)
-    const newUser = await prisma.user.create({
-      data: {
-        username,
-        email,
-        password: passwordHash,
-      },
-    })
+  if (user) {
+    return c.json({ message: "User already exists" }, 400)
+  }
+  const passwordHash = await argon2.hash(password)
+  const newUser = await prisma.user.create({
+    data: {
+      username,
+      email,
+      password: passwordHash,
+    },
+  })
 
-    const token = await createToken(newUser)
-    setCookie(c, "token", token, {
-      httpOnly: true,
-      maxAge: ONE_DAY,
-      sameSite: "None",
-      secure: true,
-      domain: process.env.DOMAIN || "localhost",
-    })
-    setCookie(c, "hasAuthToken", "true", {
-      maxAge: ONE_DAY,
-      sameSite: "None",
-      secure: true,
-      domain: process.env.DOMAIN || "localhost",
-    })
+  const token = await createToken(newUser)
+  setCookie(c, "token", token, {
+    httpOnly: true,
+    maxAge: ONE_DAY,
+    sameSite: "None",
+    secure: true,
+    domain: process.env.DOMAIN || "localhost",
+  })
+  setCookie(c, "hasAuthToken", "true", {
+    maxAge: ONE_DAY,
+    sameSite: "None",
+    secure: true,
+    domain: process.env.DOMAIN || "localhost",
+  })
 
-    return c.json({
-      user: {
-        id: newUser.id,
-        username: newUser.username,
-        email: newUser.email,
-      },
-    })
-  },
-)
+  return c.json({
+    user: {
+      id: newUser.id,
+      username: newUser.username,
+      email: newUser.email,
+    },
+  })
+})
 
 auth.post("/auth/login", zValidator("json", loginUserSchema), async (c) => {
   const { email, password } = c.req.valid("json")

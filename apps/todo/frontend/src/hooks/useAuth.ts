@@ -1,6 +1,6 @@
 import { getMe, login, logout, queryKeys, signup } from "@/api"
 import { hasAuthToken } from "@/utils"
-import { LoginUserSchema, RegisterUserSchema } from "@incubator/shared"
+import { LoginUserSchema, SignupUserSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import { useEffect, useMemo } from "react"
@@ -50,7 +50,7 @@ export const useAuth = () => {
     }
   }
 
-  const handleSignup = async (credentials: RegisterUserSchema) => {
+  const handleSignup = async (credentials: SignupUserSchema) => {
     try {
       const { user, message } = await signup(credentials)
       if (!user) {

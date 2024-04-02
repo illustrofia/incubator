@@ -16,7 +16,7 @@ import {
 } from "@/components/ui"
 import { useAuth } from "@/hooks"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { RegisterUserSchema, registerUserSchema } from "@incubator/shared"
+import { SignupUserSchema, signupUserSchema } from "@incubator/shared"
 import { Link } from "@tanstack/react-router"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -24,8 +24,8 @@ import { useForm } from "react-hook-form"
 export function SignupForm() {
   const { handleSignup } = useAuth()
 
-  const form = useForm<RegisterUserSchema>({
-    resolver: zodResolver(registerUserSchema),
+  const form = useForm<SignupUserSchema>({
+    resolver: zodResolver(signupUserSchema),
     defaultValues: {
       username: "",
       email: "",
@@ -35,7 +35,7 @@ export function SignupForm() {
   })
 
   const [isLoading, setIsLoading] = useState(false)
-  const onSubmit = async (values: RegisterUserSchema) => {
+  const onSubmit = async (values: SignupUserSchema) => {
     setIsLoading(true)
     const error = await handleSignup(values)
     setIsLoading(false)

@@ -14,6 +14,7 @@ import {
   Skeleton,
 } from "@/components"
 import { useTodos } from "@/hooks"
+import { useTodosMutations } from "@/hooks/useTodosMutations"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CreateTodoSchema, createTodoSchema } from "@incubator/shared"
 import { clsx } from "clsx"
@@ -21,7 +22,8 @@ import { X } from "lucide-react"
 import { useForm } from "react-hook-form"
 
 export const TodoList = () => {
-  const { todos, createTodo, updateTodo, deleteTodo } = useTodos()
+  const { todos } = useTodos()
+  const { createTodo, updateTodo, deleteTodo } = useTodosMutations()
 
   const form = useForm<CreateTodoSchema>({
     resolver: zodResolver(createTodoSchema),
@@ -74,7 +76,7 @@ export const TodoList = () => {
 
             {todos.isError && (
               <p className="text-destructive">
-                Whoops, something went wrong: {todos.error.message}
+                Something went wrong: {todos.error.message}
               </p>
             )}
 

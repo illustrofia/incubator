@@ -3,24 +3,24 @@
 ## Project Overview
 
 **Purpose:**
-Dome is designed to help users efficiently manage their tasks. It provides functionalities to add, update, delete, and categorize tasks, with personalized task management through user authentication.
+Dome is designed to help users efficiently manage their todos. It provides functionalities to add, update, delete todos, with personalized todo management through user authentication.
 
 ## System Architecture
 
 ### Frontend:
 
-- **Technologies:** TypeScript with React (alternative frameworks supporting TypeScript are also viable).
-- **Features:** User Authentication, Task CRUD operations, Task categorization, Deadline reminders.
+- **Technologies:** TypeScript with React.
+- **Features:** User Authentication, Todo CRUD operations, filtering.
 
 ### Backend:
 
-- **Technologies:** Node.js with TypeScript, Express for RESTful API.
-- **Database:** Choice between MongoDB or PostgreSQL.
+- **Technologies:** Node.js with TypeScript, Hono for RESTful API and Prisma for database management.
+- **Database:** PostgreSQL for storing user and todo data.
 - **Authentication:** JWT for secure authentication and session management.
 
 ### Infrastructure:
 
-- **Deployment:** Use of Docker containers for both frontend and backend services. Kubernetes for orchestration if necessary.
+- **Deployment:** Use of Docker containers for both frontend and backend services.
 - **CI/CD:** Implementation with GitHub Actions or GitLab CI for continuous integration and deployment.
 
 ## Data Model
@@ -31,30 +31,29 @@ Dome is designed to help users efficiently manage their tasks. It provides funct
 - `username`: String
 - `email`: String
 - `password`: Hashed password
-- `tasks`: Array of Task IDs
+- `todos`: Array of Todo IDs
 
-### Task:
+### Todo:
 
 - `id`: Unique identifier
 - `title`: String
-- `description`: String (optional)
 - `completed`: Boolean
 - `createdAt`: Date
-- `userId`: ID of the User who created the task
+- `userId`: ID of the User who created the todo
 
 ## API Endpoints
 
 ### User Authentication:
 
-- `POST /auth/register`: Register a new user.
-- `POST /auth/login`: Authenticate a user and return a JWT.
+- `POST /auth/signup`: Signup a new user and setup a JWT session.
+- `POST /auth/login`: Authenticate a user and setup a JWT session.
 
-### Task Management:
+### Todo Management:
 
-- `GET /tasks`: Fetch all tasks for the logged-in user.
-- `POST /tasks`: Create a new task.
-- `PUT /tasks/:id`: Update a task by ID.
-- `DELETE /tasks/:id`: Delete a task by ID.
+- `GET /todos`: Fetch all todos for the logged-in user.
+- `POST /todos`: Create a new todo.
+- `PATCH /todos/:id`: Update a todo by ID.
+- `DELETE /todos/:id`: Delete a todo by ID.
 
 ## Security Considerations
 
@@ -62,15 +61,3 @@ Dome is designed to help users efficiently manage their tasks. It provides funct
 - **Passwords:** Store passwords securely by hashing.
 - **Input Validation:** Prevent SQL injection and XSS attacks through rigorous input validation.
 - **HTTPS:** Encrypt data in transit using HTTPS.
-
-## Scalability and Performance
-
-- **Stateless Design:** Facilitates scaling by keeping the backend stateless.
-- **Database Indexing:** Improve search speeds with database indexing on frequently queried fields.
-- **Caching:** Reduce database load through effective caching of frequently accessed data.
-
-## Testing
-
-- **Unit Tests:** For testing individual components and functions.
-- **Integration Tests:** To test interactions between different parts of the application, such as API endpoints and the database.
-- **End-to-End Tests:** Simulate user interactions with the frontend to ensure the system operates as intended from the user's perspective.

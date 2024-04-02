@@ -18,6 +18,9 @@ todos.get("/todos", authenticate, async (c) => {
   const user = c.get("user")
 
   const todos = await prisma.todo.findMany({
+    orderBy: {
+      createdAt: "asc",
+    },
     where: {
       userId: user.id,
     },

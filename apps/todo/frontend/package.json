@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.17",
     "@hookform/resolvers": "^3.3.4",
     "@incubator/shared": "workspace:*",
     "@radix-ui/react-checkbox": "^1.0.4",

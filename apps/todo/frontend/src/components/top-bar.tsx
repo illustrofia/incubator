@@ -12,7 +12,7 @@ export const TopBar = () => {
       <div className="container flex items-center gap-8">
         <div className="flex items-center gap-4">
           <CheckCircle size={24} />
-          <span className="text-xl font-light tracking-wider">Dome</span>
+          <span className="text-xl">Dome</span>
         </div>
 
         <div className="ml-auto flex items-center gap-8">

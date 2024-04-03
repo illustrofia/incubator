@@ -1,9 +1,11 @@
 import { getMe, login, logout, queryKeys, signup } from "@/api"
-import { hasAuthToken } from "@/utils"
 import { LoginUserSchema, SignupUserSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
+import Cookies from "js-cookie"
 import { useEffect, useMemo } from "react"
+
+const hasAuthToken = () => !!Cookies.get("hasAuthToken")
 
 export const useAuth = () => {
   const queryClient = useQueryClient()

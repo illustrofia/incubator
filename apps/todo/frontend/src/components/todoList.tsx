@@ -39,7 +39,7 @@ export const TodoList = () => {
 
   return (
     <div className="container mx-auto pt-10">
-      <Card className="mx-auto max-w-md space-y-4">
+      <Card className="mx-auto max-w-md">
         <CardHeader>
           <CardTitle>Todo List</CardTitle>
         </CardHeader>
@@ -81,7 +81,9 @@ export const TodoList = () => {
             )}
 
             {todos.isSuccess && todos.data?.length === 0 && (
-              <p>Take a deep breath, there's nothing to do.</p>
+              <p className="text-muted-foreground text-sm">
+                Take a deep breath, there's nothing to do.
+              </p>
             )}
 
             {todos.data?.map((todo) => (
@@ -97,11 +99,7 @@ export const TodoList = () => {
                   }}
                 />
 
-                <span
-                  className={clsx({
-                    "line-through": todo.completed,
-                  })}
-                >
+                <span className={clsx(todo.completed && "line-through")}>
                   {todo.title}
                 </span>
 

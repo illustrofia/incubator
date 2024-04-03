@@ -6,11 +6,9 @@
 
 - [x] Define System design document
 - [x] Design system architecture
-- [ ] Implementation
+- [x] Implementation
   - [x] Setup database
   - [x] Build authentication
   - [x] Build todo list
-  - [ ] Support filtering
-- [ ] Testing
 - [ ] Deployment
 - [ ] Write README

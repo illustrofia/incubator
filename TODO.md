@@ -11,4 +11,10 @@
   - [x] Build authentication
   - [x] Build todo list
 - [ ] Deployment
+  - [ ] Dockerize backend
+  - [ ] Dockerize frontend
+  - [ ] Research deployment options
+  - [ ] Deploy to cloud
+- [ ] Cleanup
+  - [ ] Centralize configs
 - [ ] Write README

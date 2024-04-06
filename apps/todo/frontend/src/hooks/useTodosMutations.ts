@@ -23,7 +23,7 @@ export const useTodosMutations = () => {
 
       return { previousTodos }
     },
-    onError: (err, newTodo, context) => {
+    onError: (_err, _newTodo, context) => {
       if (!context) return
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
@@ -49,7 +49,7 @@ export const useTodosMutations = () => {
 
       return { previousTodos }
     },
-    onError: (err, updatedTodo, context) => {
+    onError: (_err, _updatedTodo, context) => {
       if (!context) return
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
@@ -73,7 +73,7 @@ export const useTodosMutations = () => {
 
       return { previousTodos }
     },
-    onError: (err, deletedTodoId, context) => {
+    onError: (_err, _deletedTodoId, context) => {
       if (!context) return
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },

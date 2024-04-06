@@ -1,1 +1,1 @@
-module.exports = require("@incubator/eslint-config/library.js")
+module.exports = require("@incubator/eslint-config/base.cjs")

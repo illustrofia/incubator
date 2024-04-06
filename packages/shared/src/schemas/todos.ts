@@ -6,9 +6,12 @@ export const todoSchema = z
     title: z
       .string()
       .min(1, {
-        message: "Title must be at least 1 character",
+        message: "Must be at least 1 character",
       })
-      .max(100, { message: "Title must be maximum 100 characters" }),
+      .max(100, { message: "Must be maximum 100 characters" })
+      .refine((val) => val.trim().length !== 0, {
+        message: "Must not be empty",
+      }),
     completed: z.boolean(),
     createdAt: z.date().or(z.string()),
   })

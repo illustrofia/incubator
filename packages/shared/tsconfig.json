@@ -1,15 +1,14 @@
 {
   "extends": "@incubator/typescript-config/base.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "strict": true
+    "module": "CommonJS",
+    "outDir": "dist/cjs",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"]

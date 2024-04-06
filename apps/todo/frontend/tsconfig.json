@@ -1,6 +1,14 @@
 {
-  "extends": "@incubator/typescript-config/react-app.json",
+  "extends": "@incubator/typescript-config/base.json",
   "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "strict": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

@@ -1,17 +1,12 @@
 // TODO: read tsconfig docs and configure this file properly
 // https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 {
+  "extends": "@incubator/typescript-config/node.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "declaration": true,
-    "declarationDir": "dist/types",
     "baseUrl": ".",
     "paths": {
       "@*": ["src/*"]
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }

@@ -50,6 +50,9 @@ importers:
       '@incubator/shared':
         specifier: workspace:*
         version: link:../../../packages/shared
+      '@incubator/typescript-config':
+        specifier: workspace:*
+        version: link:../../../packages/configs/typescript-config
       '@prisma/client':
         specifier: 5.11.0
         version: 5.11.0(prisma@5.11.0)

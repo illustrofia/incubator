@@ -10,6 +10,10 @@ export const authenticate: MiddlewareHandler = async (c, next) => {
     return c.json({ message: "Unauthorized" }, 401)
   }
 
+  if (!process.env.JWT_SECRET) {
+    return c.json({ message: "JWT secret not provided" }, 500)
+  }
+
   const tokenDecoded = await verify(token, process.env.JWT_SECRET)
   if (!tokenDecoded) {
     return c.json({ message: "Invalid token" }, 401)

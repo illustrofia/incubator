@@ -12,8 +12,13 @@ import { sign } from "hono/jwt"
 
 export const auth = new Hono()
 
-const createToken = async (user: LoginUserSchema) =>
-  await sign({ email: user.email }, process.env.JWT_SECRET)
+const createToken = async (user: LoginUserSchema) => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT secret not provided")
+  }
+
+  return await sign({ email: user.email }, process.env.JWT_SECRET)
+}
 
 const ONE_DAY = 60 * 60 * 24
 
@@ -37,7 +42,13 @@ auth.post("/auth/signup", zValidator("json", signupUserSchema), async (c) => {
     },
   })
 
-  const token = await createToken(newUser)
+  let token: string
+  try {
+    token = await createToken(newUser)
+  } catch (error) {
+    return c.json({ message: "Error creating token" }, 500)
+  }
+
   setCookie(c, "token", token, {
     httpOnly: true,
     maxAge: ONE_DAY,

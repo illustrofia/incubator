@@ -142,6 +142,9 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
+      '@incubator/eslint-config':
+        specifier: workspace:*
+        version: link:../../../packages/configs/eslint-config
       '@tanstack/eslint-plugin-query':
         specifier: ^5.28.6
         version: 5.28.6(eslint@8.57.0)(typescript@5.4.2)

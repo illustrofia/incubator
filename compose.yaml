@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  todo-backend:
+    container_name: todo-backend
+    build:
+      context: .
+      dockerfile: ./apps/todo/backend/Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - todo_network
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  todo_network:
+    external: true

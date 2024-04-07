@@ -8,9 +8,10 @@
   "scripts": {
     "build": "pnpm clean && pnpm compile",
     "clean": "shx rm -rf dist",
-    "compile": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "compile": "rollup -c",
     "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js"
+    "postinstall": "prisma generate",
+    "start": "node dist/index.mjs"
   },
   "dependencies": {
     "@hono/node-server": "^1.8.2",
@@ -23,10 +24,13 @@
   },
   "devDependencies": {
     "@incubator/typescript-config": "workspace:*",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.28",
     "prisma": "^5.11.0",
+    "rollup": "^4.14.0",
     "shx": "^0.3.4",
     "tsc-alias": "^1.8.8",
+    "tslib": "^2.6.2",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2"
   }

@@ -11,10 +11,11 @@
   - [x] Build authentication
   - [x] Build todo list
 - [ ] Deployment
-  - [ ] Dockerize backend
+  - [x] Dockerize backend
   - [ ] Dockerize frontend
-  - [ ] Research deployment options
-  - [ ] Deploy to cloud
-- [ ] Cleanup
-  - [ ] Centralize configs
+  - [x] Research deployment options
+  - [ ] Research deployment best practices
+  - [ ] Deploy to Cloud Run
+- [x] Cleanup
+  - [x] Centralize configs
 - [ ] Write README

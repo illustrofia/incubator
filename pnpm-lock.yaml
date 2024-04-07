@@ -81,9 +81,6 @@ importers:
       shx:
         specifier: ^0.3.4
         version: 0.3.4
-      tsc-alias:
-        specifier: ^1.8.8
-        version: 1.8.8
       tslib:
         specifier: ^2.6.2
         version: 2.6.2

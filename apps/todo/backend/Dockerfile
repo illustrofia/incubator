@@ -52,10 +52,12 @@ COPY --from=builder --chown=nodejs:nodejs /app .
 WORKDIR /app/apps/${PROJECT_LOCATION}
 
 ARG PORT=3000
+ENV PORT=${PORT}
+EXPOSE ${PORT}
+
+ENV NODE_ENV=production
+
 ARG FRONTEND_PROD_URL=http://localhost:5173
 ENV FRONTEND_PROD_URL=${FRONTEND_PROD_URL}
-ENV PORT=${PORT}
-ENV NODE_ENV=production
-EXPOSE ${PORT}
 
 CMD node dist/index.mjs

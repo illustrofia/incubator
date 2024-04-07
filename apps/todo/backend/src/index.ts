@@ -1,5 +1,6 @@
 import { auth, todos, user } from "@/routes"
 import { serve } from "@hono/node-server"
+import { getOrigin } from "@utils"
 import dotenv from "dotenv"
 import { Hono } from "hono"
 import { cors } from "hono/cors"
@@ -10,14 +11,7 @@ dotenv.config()
 const app = new Hono()
 const port = Number(process.env.PORT ?? 3000)
 
-if (!process.env.FRONTEND_PROD_URL) {
-  throw new Error("FRONTEND_PROD_URL is not set")
-}
-
-const origin =
-  process.env.NODE_ENV === "production"
-    ? process.env.FRONTEND_PROD_URL
-    : "http://localhost:5173"
+const origin = getOrigin()
 
 app.use(
   "*",

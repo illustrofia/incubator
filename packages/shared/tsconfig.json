@@ -1,7 +1,6 @@
 {
   "extends": "@incubator/typescript-config/base.json",
   "compilerOptions": {
-    "module": "ESNext",
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist/types",

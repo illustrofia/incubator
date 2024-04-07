@@ -2,7 +2,6 @@
   "extends": "@incubator/typescript-config/base.json",
   "compilerOptions": {
     "composite": true,
-    "module": "ESNext",
     "declaration": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,

@@ -12,7 +12,7 @@ RUN pnpm config set store-dir ~/.pnpm-store
 
 # Prune projects
 FROM base AS pruner
-ARG PROJECT=@incubator/todo-backend
+ARG PROJECT=@incubator/todo-frontend
 
 WORKDIR /app
 COPY . .
@@ -20,7 +20,7 @@ RUN turbo prune --scope=${PROJECT} --docker
 
 # Build the project
 FROM base AS builder
-ARG PROJECT=@incubator/todo-backend
+ARG PROJECT=@incubator/todo-frontend
 
 WORKDIR /app
 
@@ -29,35 +29,35 @@ COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
-# Copy source code of isolated subworkspace
-COPY --from=pruner /app/out/full/ .
-
 # First install the dependencies (as they change less often)
 RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm install
+
+# Copy source code of isolated subworkspace
+COPY --from=pruner /app/out/full/ .
 
 RUN turbo build --filter=${PROJECT}
 RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
 # Final image
-FROM alpine AS runner
-ARG PROJECT_LOCATION=todo/backend
+FROM nginx:stable-alpine-slim as production
+ARG PROJECT_LOCATION=todo/frontend
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nodejs
-USER nodejs
+# Remove the default nginx static assets
+RUN rm -rf /usr/share/nginx/html/*
 
-WORKDIR /app
-COPY --from=builder --chown=nodejs:nodejs /app .
-WORKDIR /app/apps/${PROJECT_LOCATION}
+# Copy static assets from builder stage
+COPY --from=builder /app/apps/${PROJECT_LOCATION}/dist /usr/share/nginx/html
 
-ARG PORT=443
-ENV PORT=${PORT}
+# Copy the custom Nginx config file into the Docker image
+COPY --from=builder /app/apps/${PROJECT_LOCATION}/config/nginx.conf /etc/nginx/nginx.conf
+
+ARG PORT=8080
 EXPOSE ${PORT}
+
+ARG VITE_API_BASEPATH=http://localhost:443/api/v1
+ENV VITE_API_BASEPATH=${FRONTEND_PROD_URL}
 
 ENV NODE_ENV=production
 
-ARG FRONTEND_PROD_URL=http://localhost:8080
-ENV FRONTEND_PROD_URL=${FRONTEND_PROD_URL}
-
-CMD node dist/index.mjs
+CMD ["nginx", "-g", "daemon off;"]

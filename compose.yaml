@@ -8,7 +8,17 @@ services:
       dockerfile: ./apps/todo/backend/Dockerfile
     restart: always
     ports:
-      - 3000:3000
+      - 443:443
+    networks:
+      - todo_network
+  todo-frontend:
+    container_name: todo-frontend
+    build:
+      context: .
+      dockerfile: ./apps/todo/frontend/Dockerfile
+    restart: always
+    ports:
+      - 8080:8080
     networks:
       - todo_network
 

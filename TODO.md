@@ -12,7 +12,7 @@
   - [x] Build todo list
 - [ ] Deployment
   - [x] Dockerize backend
-  - [ ] Dockerize frontend
+  - [x] Dockerize frontend
   - [x] Research deployment options
   - [ ] Research deployment best practices
   - [ ] Deploy to Cloud Run

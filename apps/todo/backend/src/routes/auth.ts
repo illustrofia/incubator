@@ -53,12 +53,14 @@ auth.post("/auth/signup", zValidator("json", signupUserSchema), async (c) => {
     httpOnly: true,
     maxAge: ONE_DAY,
     sameSite: "None",
+    partitioned: true,
     secure: true,
     domain: process.env.DOMAIN || "localhost",
   })
   setCookie(c, "hasAuthToken", "true", {
     maxAge: ONE_DAY,
     sameSite: "None",
+    partitioned: true,
     secure: true,
     domain: process.env.DOMAIN || "localhost",
   })
@@ -95,12 +97,14 @@ auth.post("/auth/login", zValidator("json", loginUserSchema), async (c) => {
     httpOnly: true,
     maxAge: ONE_DAY,
     sameSite: "None",
+    partitioned: true,
     secure: true,
     domain: process.env.DOMAIN || "localhost",
   })
   setCookie(c, "hasAuthToken", "true", {
     maxAge: ONE_DAY,
     sameSite: "None",
+    partitioned: true,
     secure: true,
     domain: process.env.DOMAIN || "localhost",
   })
@@ -119,11 +123,13 @@ auth.post("/auth/logout", async (c) => {
   deleteCookie(c, "token", {
     httpOnly: true,
     sameSite: "None",
+    partitioned: true,
     secure: true,
     domain: process.env.DOMAIN || "localhost",
   })
   deleteCookie(c, "hasAuthToken", {
     sameSite: "None",
+    partitioned: true,
     secure: true,
     domain: process.env.DOMAIN || "localhost",
   })

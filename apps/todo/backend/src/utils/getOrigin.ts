@@ -5,5 +5,5 @@ export const getOrigin = () => {
 
   return process.env.NODE_ENV === "production"
     ? process.env.FRONTEND_PROD_URL!
-    : "localhost"
+    : "http://localhost:8080"
 }

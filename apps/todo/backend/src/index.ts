@@ -24,9 +24,9 @@ app.use(logger())
 
 app.get("/", (c) => c.json({ message: "Hello World!" }, 200))
 
-app.route("/api/v1", auth)
-app.route("/api/v1", user)
-app.route("/api/v1", todos)
+app.route("/v1", auth)
+app.route("/v1", user)
+app.route("/v1", todos)
 
 serve({
   fetch: app.fetch,

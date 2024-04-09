@@ -22,7 +22,7 @@ app.use(
 )
 app.use(logger())
 
-app.get("/", (c) => c.json({ message: "Hello Bun!" }, 200))
+app.get("/", (c) => c.json({ message: "Hello World!" }, 200))
 
 app.route("/api/v1", auth)
 app.route("/api/v1", user)

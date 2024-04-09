@@ -22,6 +22,8 @@ app.use(
 )
 app.use(logger())
 
+app.get("/", (c) => c.json({ message: "Hello Bun!" }, 200))
+
 app.route("/api/v1", auth)
 app.route("/api/v1", user)
 app.route("/api/v1", todos)
@@ -30,4 +32,5 @@ serve({
   fetch: app.fetch,
   port,
 })
+
 console.log(`Server running at http://localhost:${port}`)

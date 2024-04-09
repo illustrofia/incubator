@@ -57,7 +57,4 @@ EXPOSE ${PORT}
 
 ENV NODE_ENV=production
 
-ARG FRONTEND_PROD_URL=http://localhost:8080
-ENV FRONTEND_PROD_URL=${FRONTEND_PROD_URL}
-
 CMD node dist/index.mjs

@@ -55,9 +55,6 @@ COPY --from=builder /app/apps/${PROJECT_LOCATION}/config/nginx.conf /etc/nginx/n
 ARG PORT=8080
 EXPOSE ${PORT}
 
-ARG VITE_API_BASEPATH=http://localhost:443/api/v1
-ENV VITE_API_BASEPATH=${FRONTEND_PROD_URL}
-
 ENV NODE_ENV=production
 
 CMD ["nginx", "-g", "daemon off;"]

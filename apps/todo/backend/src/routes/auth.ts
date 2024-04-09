@@ -54,13 +54,13 @@ auth.post("/auth/signup", zValidator("json", signupUserSchema), async (c) => {
     maxAge: ONE_DAY,
     sameSite: "None",
     secure: true,
-    domain: process.env.DOMAIN || "localhost",
+    domain: process.env.FRONTEND_PROD_URL || "localhost",
   })
   setCookie(c, "hasAuthToken", "true", {
     maxAge: ONE_DAY,
     sameSite: "None",
     secure: true,
-    domain: process.env.DOMAIN || "localhost",
+    domain: process.env.FRONTEND_PROD_URL || "localhost",
   })
 
   return c.json({
@@ -96,13 +96,13 @@ auth.post("/auth/login", zValidator("json", loginUserSchema), async (c) => {
     maxAge: ONE_DAY,
     sameSite: "None",
     secure: true,
-    domain: process.env.DOMAIN || "localhost",
+    domain: process.env.FRONTEND_PROD_URL || "localhost",
   })
   setCookie(c, "hasAuthToken", "true", {
     maxAge: ONE_DAY,
     sameSite: "None",
     secure: true,
-    domain: process.env.DOMAIN || "localhost",
+    domain: process.env.FRONTEND_PROD_URL || "localhost",
   })
 
   return c.json({
@@ -120,12 +120,12 @@ auth.post("/auth/logout", async (c) => {
     httpOnly: true,
     sameSite: "None",
     secure: true,
-    domain: process.env.DOMAIN || "localhost",
+    domain: process.env.FRONTEND_PROD_URL || "localhost",
   })
   deleteCookie(c, "hasAuthToken", {
     sameSite: "None",
     secure: true,
-    domain: process.env.DOMAIN || "localhost",
+    domain: process.env.FRONTEND_PROD_URL || "localhost",
   })
 
   return c.json({ message: "Logged out" })

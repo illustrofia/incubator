@@ -6,6 +6,10 @@ import { verify } from "hono/jwt"
 
 export const authenticate: MiddlewareHandler = async (c, next) => {
   const token = getCookie(c, "token")
+  const headers: string[] = []
+  c.req.raw.headers.forEach((value) => headers.push(value.toString()))
+  console.log({ headers })
+
   if (!token) {
     return c.json({ message: "Unauthorized" }, 401)
   }

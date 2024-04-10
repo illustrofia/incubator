@@ -46,7 +46,7 @@ export function LoginForm() {
   }
 
   return (
-    <div className="container pt-20">
+    <div className="container py-10">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>

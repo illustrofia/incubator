@@ -38,7 +38,7 @@ export const TodoList = () => {
   }
 
   return (
-    <div className="container mx-auto pt-10">
+    <div className="container mx-auto py-10">
       <Card className="mx-auto max-w-md">
         <CardHeader>
           <CardTitle>Todo List</CardTitle>

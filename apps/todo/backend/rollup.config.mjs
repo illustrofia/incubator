@@ -14,7 +14,7 @@ export default {
     sentryRollupPlugin({
       authToken: process.env.SENTRY_AUTH_TOKEN,
       org: "illustrofia",
-      project: "node",
+      project: "todo_backend",
     }),
   ],
 }

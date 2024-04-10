@@ -13,7 +13,6 @@ dotenv.config()
 if (!process.env.SENTRY_DSN) {
   throw new Error("SENTRY_DSN is required")
 }
-
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
   integrations: [nodeProfilingIntegration()],
@@ -24,14 +23,10 @@ Sentry.init({
 })
 
 const app = new Hono()
-const port = Number(process.env.PORT ?? 3000)
-
-const origin = getOrigin()
-
 app.use(
   "*",
   cors({
-    origin,
+    origin: getOrigin(),
     credentials: true,
   }),
 )
@@ -43,25 +38,12 @@ app.route("/v1", auth)
 app.route("/v1", user)
 app.route("/v1", todos)
 
-const transaction = Sentry.startTransaction({
-  op: "test",
-  name: "My First Test Transaction",
-})
-
-setTimeout(() => {
-  try {
-    throw new Error("This is a test error")
-  } catch (e) {
-    Sentry.captureException(e)
-  } finally {
-    transaction.finish()
-  }
-}, 99)
-
 app.onError((err, c) => {
+  Sentry.captureException(err)
   return c.json({ message: "Internal Server Error", cause: err }, 500)
 })
 
+const port = Number(process.env.PORT ?? 3000)
 serve({
   fetch: app.fetch,
   port,

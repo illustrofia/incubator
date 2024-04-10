@@ -9,6 +9,21 @@ export default {
     entryFileNames: "[name].mjs",
     sourcemap: true, // for sentry
   },
+  external: [
+    "@sentry/profiling-node",
+    "@hono/node-server",
+    "@sentry/node",
+    "dotenv",
+    "hono",
+    "hono/cors",
+    "hono/logger",
+    "@hono/zod-validator",
+    "@incubator/shared",
+    "argon2",
+    "hono/cookie",
+    "hono/jwt",
+    "@prisma/client",
+  ],
   plugins: [
     typescript(),
     sentryRollupPlugin({

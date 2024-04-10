@@ -18,6 +18,8 @@
     "@hono/zod-validator": "^0.2.0",
     "@incubator/shared": "workspace:*",
     "@prisma/client": "5.11.0",
+    "@sentry/node": "^7.109.0",
+    "@sentry/profiling-node": "^7.109.0",
     "argon2": "^0.40.1",
     "dotenv": "^16.4.5",
     "hono": "^4.1.1"

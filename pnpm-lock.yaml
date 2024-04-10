@@ -53,6 +53,12 @@ importers:
       '@prisma/client':
         specifier: 5.11.0
         version: 5.11.0(prisma@5.11.0)
+      '@sentry/node':
+        specifier: ^7.109.0
+        version: 7.109.0
+      '@sentry/profiling-node':
+        specifier: ^7.109.0
+        version: 7.109.0
       argon2:
         specifier: ^0.40.1
         version: 0.40.1
@@ -1719,6 +1725,55 @@ packages:
     dev: true
     optional: true
 
+  /@sentry-internal/tracing@7.109.0:
+    resolution: {integrity: sha512-PzK/joC5tCuh2R/PRh+7dp+uuZl7pTsBIjPhVZHMTtb9+ls65WkdZJ1/uKXPouyz8NOo9Xok7aEvEo9seongyw==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/core': 7.109.0
+      '@sentry/types': 7.109.0
+      '@sentry/utils': 7.109.0
+    dev: false
+
+  /@sentry/core@7.109.0:
+    resolution: {integrity: sha512-xwD4U0IlvvlE/x/g/W1I8b4Cfb16SsCMmiEuBf6XxvAa3OfWBxKoqLifb3GyrbxMC4LbIIZCN/SvLlnGJPgszA==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.109.0
+      '@sentry/utils': 7.109.0
+    dev: false
+
+  /@sentry/node@7.109.0:
+    resolution: {integrity: sha512-tqMNAES4X/iBl1eZRCmc29p//0id01FBLEiesNo5nk6ECl6/SaGMFAEwu1gsn90h/Bjgr04slwFOS4cR45V2PQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry-internal/tracing': 7.109.0
+      '@sentry/core': 7.109.0
+      '@sentry/types': 7.109.0
+      '@sentry/utils': 7.109.0
+    dev: false
+
+  /@sentry/profiling-node@7.109.0:
+    resolution: {integrity: sha512-wdDxJ86/A71QTpbbn4LaiB6vmvGd3QEq7UOdZS/y/3SwV66zpkvNB8yPER41BgqDjqcmIY/va9fNi319iTREFw==}
+    engines: {node: '>=8.0.0'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      detect-libc: 2.0.3
+      node-abi: 3.57.0
+    dev: false
+
+  /@sentry/types@7.109.0:
+    resolution: {integrity: sha512-egCBnDv3YpVFoNzRLdP0soVrxVLCQ+rovREKJ1sw3rA2/MFH9WJ+DZZexsX89yeAFzy1IFsCp7/dEqudusml6g==}
+    engines: {node: '>=8'}
+    dev: false
+
+  /@sentry/utils@7.109.0:
+    resolution: {integrity: sha512-3RjxMOLMBwZ5VSiH84+o/3NY2An4Zldjz0EbfEQNRY9yffRiCPJSQiCJID8EoylCFOh/PAhPimBhqbtWJxX6iw==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.109.0
+    dev: false
+
   /@swc/core-darwin-arm64@1.4.2:
     resolution: {integrity: sha512-1uSdAn1MRK5C1m/TvLZ2RDvr0zLvochgrZ2xL+lRzugLlCTlSA+Q4TWtrZaOz+vnnFVliCpw7c7qu0JouhgQIw==}
     engines: {node: '>=10'}
@@ -2884,6 +2939,11 @@ packages:
     resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /detect-libc@2.0.3:
+    resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
+    engines: {node: '>=8'}
+    dev: false
 
   /detect-newline@4.0.1:
     resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
@@ -4262,7 +4322,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: true
 
   /lucide-react@0.360.0(react@18.2.0):
     resolution: {integrity: sha512-MskvbEsAhD2zxgx/I05vXq1cjFQXrmhL97YFIi4wSaKH793ZMvU/Com4d+DE7OB3QMmZig1fY1q94aTX5skozw==}
@@ -4346,6 +4405,13 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /node-abi@3.57.0:
+    resolution: {integrity: sha512-Dp+A9JWxRaKuHP35H77I4kCKesDy5HUDEmScia2FyncMTOXASMyg251F5PhFoDA5uqBrDDffiLpbqnrZmNXW+g==}
+    engines: {node: '>=10'}
+    dependencies:
+      semver: 7.6.0
+    dev: false
 
   /node-addon-api@7.1.0:
     resolution: {integrity: sha512-mNcltoe1R8o7STTegSOHdnJNN7s5EUvhoS7ShnTHDyOSd+8H+UdWODq6qSv67PjC8Zc5JRT8+oLAMCr0SIXw7g==}
@@ -5037,7 +5103,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
@@ -5776,7 +5841,6 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-    dev: true
 
   /yaml@2.3.4:
     resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}

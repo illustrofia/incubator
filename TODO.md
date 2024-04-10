@@ -1,8 +1,4 @@
-- [x] Write top level README
-
-## Projects
-
-### Todo List Application
+### Todo List App
 
 - [x] Define System design document
 - [x] Design system architecture

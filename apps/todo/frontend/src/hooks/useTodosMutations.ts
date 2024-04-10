@@ -1,9 +1,11 @@
 import { createTodo, deleteTodo, queryKeys, updateTodo } from "@/api"
+import { useToast } from "@/components"
 import { TodoSchema } from "@incubator/shared"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 // More on optimistic updates: https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates
 export const useTodosMutations = () => {
+  const { toast } = useToast()
   const queryClient = useQueryClient()
 
   const createTodoMutation = useMutation({
@@ -25,9 +27,16 @@ export const useTodosMutations = () => {
     },
     onError: (_err, _newTodo, context) => {
       if (!context) return
+      toast({
+        title: "Error creating todo.",
+        description: "Reverting to previous state.",
+        variant: "destructive",
+      })
+      // TODO: log sentry error
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
+      toast({ description: "Todo created." })
       queryClient.invalidateQueries({ queryKey: queryKeys.todos })
     },
   })
@@ -51,9 +60,12 @@ export const useTodosMutations = () => {
     },
     onError: (_err, _updatedTodo, context) => {
       if (!context) return
+      toast({ description: "Error updating todo.", variant: "destructive" })
+      // TODO: log sentry error
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
+      toast({ description: "Todo updated." })
       queryClient.invalidateQueries({ queryKey: queryKeys.todos })
     },
   })
@@ -75,9 +87,12 @@ export const useTodosMutations = () => {
     },
     onError: (_err, _deletedTodoId, context) => {
       if (!context) return
+      toast({ description: "Error deleting todo.", variant: "destructive" })
+      // TODO: log sentry error
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
+      toast({ description: "Todo deleted." })
       queryClient.invalidateQueries({ queryKey: queryKeys.todos })
     },
   })

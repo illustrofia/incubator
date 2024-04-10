@@ -1,4 +1,4 @@
-import { Footer, Header } from "@/components"
+import { Footer, Header, Toaster } from "@/components"
 import { Outlet, createRootRoute } from "@tanstack/react-router"
 
 export const Route = createRootRoute({
@@ -9,6 +9,7 @@ export const Route = createRootRoute({
         <Outlet />
       </main>
       <Footer />
+      <Toaster />
     </div>
   ),
 })

@@ -1,4 +1,5 @@
 import { getMe, login, logout, queryKeys, signup } from "@/api"
+import { useToast } from "@/components"
 import { LoginUserSchema, SignupUserSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
@@ -11,6 +12,7 @@ export const useAuth = () => {
   const queryClient = useQueryClient()
   const { location } = useRouterState()
   const navigate = useNavigate()
+  const { toast } = useToast()
 
   const user = useQuery({
     queryKey: queryKeys.me,
@@ -22,14 +24,13 @@ export const useAuth = () => {
     if (!user.isError) {
       return
     }
-
     if (hasAuthToken()) {
       Cookies.remove("hasAuthToken")
       // only clear the cache once. Otherwise, react-query will keep trying to fetch the user
       queryClient.clear()
     }
-
     navigate({ to: "/login" })
+    toast({ description: "Please login." })
   }, [navigate, queryClient, user.isError])
 
   const isAuthenticated = useMemo(
@@ -43,6 +44,7 @@ export const useAuth = () => {
       (location.href === "/login" || location.href === "/signup")
     ) {
       navigate({ to: "/" })
+      toast({ description: "Logged in." })
     }
   }, [isAuthenticated, location.href, navigate])
 
@@ -74,6 +76,7 @@ export const useAuth = () => {
     await logout()
     queryClient.clear()
     navigate({ to: "/login" })
+    toast({ description: "Logged out." })
   }
 
   return {

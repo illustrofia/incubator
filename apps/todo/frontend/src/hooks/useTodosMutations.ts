@@ -60,7 +60,12 @@ export const useTodosMutations = () => {
     },
     onError: (_err, _updatedTodo, context) => {
       if (!context) return
-      toast({ description: "Error updating todo.", variant: "destructive" })
+
+      toast({
+        title: "Error updating todo.",
+        description: "Reverting to previous state.",
+        variant: "destructive",
+      })
       // TODO: log sentry error
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
@@ -87,7 +92,11 @@ export const useTodosMutations = () => {
     },
     onError: (_err, _deletedTodoId, context) => {
       if (!context) return
-      toast({ description: "Error deleting todo.", variant: "destructive" })
+      toast({
+        title: "Error deleting todo.",
+        description: "Reverting to previous state.",
+        variant: "destructive",
+      })
       // TODO: log sentry error
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },

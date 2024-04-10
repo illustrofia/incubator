@@ -10,12 +10,15 @@
   - [x] Setup database
   - [x] Build authentication
   - [x] Build todo list
-- [ ] Deployment
+- [x] Deployment
   - [x] Dockerize backend
   - [x] Dockerize frontend
   - [x] Research deployment options
-  - [ ] Research deployment best practices
-  - [ ] Deploy to Cloud Run
+  - [x] Research deployment best practices
+  - [x] Deploy backend
+  - [x] Deploy frontend
+  - [x] Deploy database
+  - [x] Setup domain
 - [x] Cleanup
   - [x] Centralize configs
 - [ ] Write README

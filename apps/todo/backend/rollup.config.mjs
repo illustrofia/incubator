@@ -10,9 +10,8 @@ export default {
     sourcemap: true, // for sentry
   },
   external: [
-    "@sentry/profiling-node",
     "@hono/node-server",
-    "@sentry/node",
+    "@hono/sentry",
     "dotenv",
     "hono",
     "hono/cors",

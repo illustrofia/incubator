@@ -15,15 +15,21 @@ export const useAuth = () => {
   const user = useQuery({
     queryKey: queryKeys.me,
     queryFn: getMe,
-    retry: false,
     enabled: hasAuthToken(),
   })
 
   useEffect(() => {
-    if (user.isError) {
-      queryClient.clear()
-      navigate({ to: "/login" })
+    if (!user.isError) {
+      return
     }
+
+    if (hasAuthToken()) {
+      Cookies.remove("hasAuthToken")
+      // only clear the cache once. Otherwise, react-query will keep trying to fetch the user
+      queryClient.clear()
+    }
+
+    navigate({ to: "/login" })
   }, [navigate, queryClient, user.isError])
 
   const isAuthenticated = useMemo(

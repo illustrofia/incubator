@@ -10,6 +10,10 @@ import { logger } from "hono/logger"
 
 dotenv.config()
 
+if (!process.env.SENTRY_DSN) {
+  throw new Error("SENTRY_DSN is required")
+}
+
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
   integrations: [nodeProfilingIntegration()],
@@ -39,10 +43,6 @@ app.route("/v1", auth)
 app.route("/v1", user)
 app.route("/v1", todos)
 
-app.onError((err, c) => {
-  return c.json({ message: "Internal Server Error", cause: err }, 500)
-})
-
 const transaction = Sentry.startTransaction({
   op: "test",
   name: "My First Test Transaction",
@@ -50,13 +50,17 @@ const transaction = Sentry.startTransaction({
 
 setTimeout(() => {
   try {
-    foo()
+    throw new Error("This is a test error")
   } catch (e) {
     Sentry.captureException(e)
   } finally {
     transaction.finish()
   }
 }, 99)
+
+app.onError((err, c) => {
+  return c.json({ message: "Internal Server Error", cause: err }, 500)
+})
 
 serve({
   fetch: app.fetch,

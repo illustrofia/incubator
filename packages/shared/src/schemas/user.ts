@@ -17,7 +17,7 @@ export const userSchema = z
 
 export type UserSchema = z.infer<typeof userSchema>
 
-export const loginUserSchema = userSchema
+export const userLoginSchema = userSchema
   .pick({ email: true })
   .extend({
     password: z
@@ -29,11 +29,11 @@ export const loginUserSchema = userSchema
   })
   .strip()
 
-export type LoginUserSchema = z.infer<typeof loginUserSchema>
+export type UserLoginSchema = z.infer<typeof userLoginSchema>
 
-export const signupUserSchema = userSchema
+export const userSignupSchema = userSchema
   .pick({ username: true })
-  .merge(loginUserSchema)
+  .merge(userLoginSchema)
   .extend({
     confirmPassword: z
       .string()
@@ -48,4 +48,4 @@ export const signupUserSchema = userSchema
     path: ["confirmPassword"],
   })
 
-export type SignupUserSchema = z.infer<typeof signupUserSchema>
+export type UserSignupSchema = z.infer<typeof userSignupSchema>

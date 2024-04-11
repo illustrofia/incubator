@@ -19,7 +19,7 @@ export const todoSchema = z
 
 export type TodoSchema = z.infer<typeof todoSchema>
 
-export const createTodoSchema = todoSchema
+export const todoCreateSchema = todoSchema
   .pick({
     title: true,
   })
@@ -28,16 +28,16 @@ export const createTodoSchema = todoSchema
   })
   .strip()
 
-export type CreateTodoSchema = z.infer<typeof createTodoSchema>
+export type TodoCreateSchema = z.infer<typeof todoCreateSchema>
 
-export const updateTodoSchema = createTodoSchema
+export const todoUpdateSchema = todoCreateSchema
   .partial()
   .extend({
     id: z.string(),
   })
   .strip()
 
-export type UpdateTodoSchema = z.infer<typeof updateTodoSchema>
+export type TodoUpdateSchema = z.infer<typeof todoUpdateSchema>
 
 export const todosFilterSchema = z.object({
   completed: z.boolean().optional(),

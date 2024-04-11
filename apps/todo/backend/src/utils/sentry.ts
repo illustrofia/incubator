@@ -7,7 +7,7 @@ export const initSentry = () => {
   Sentry.init({ dsn: process.env.SENTRY_DSN })
 }
 
-export const captureSentryException = (err: any) => {
+export const captureErrorSentry = (err: any) => {
   if (process.env.NODE_ENV === "production") {
     Sentry.captureException(err)
   }

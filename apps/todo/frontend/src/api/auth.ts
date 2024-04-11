@@ -1,6 +1,6 @@
 import {
-  LoginUserSchema,
-  SignupUserSchema,
+  UserLoginSchema,
+  UserSignupSchema,
   userSchema,
 } from "@incubator/shared"
 import { z } from "zod"
@@ -11,7 +11,7 @@ const authReturnSchema = z.object({
   message: z.string().optional(),
 })
 
-export const login = async (loginCredentials: LoginUserSchema) => {
+export const login = async (loginCredentials: UserLoginSchema) => {
   const response = await fetch(`${API_BASEPATH}/auth/login`, {
     method: "POST",
     headers: {
@@ -35,7 +35,7 @@ export const logout = async () => {
   return response
 }
 
-export const signup = async (signupCredentials: SignupUserSchema) => {
+export const signup = async (signupCredentials: UserSignupSchema) => {
   const response = await fetch(`${API_BASEPATH}/auth/signup`, {
     method: "POST",
     headers: {

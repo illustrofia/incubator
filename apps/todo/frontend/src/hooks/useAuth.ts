@@ -1,6 +1,6 @@
 import { getMe, login, logout, queryKeys, signup } from "@/api"
 import { useToast } from "@/components"
-import { LoginUserSchema, SignupUserSchema } from "@incubator/shared"
+import { UserLoginSchema, UserSignupSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import Cookies from "js-cookie"
@@ -48,7 +48,7 @@ export const useAuth = () => {
     }
   }, [isAuthenticated, location.href, navigate])
 
-  const handleLogin = async (credentials: LoginUserSchema) => {
+  const handleLogin = async (credentials: UserLoginSchema) => {
     try {
       const { user, message } = await login(credentials)
       if (!user) {
@@ -60,7 +60,7 @@ export const useAuth = () => {
     }
   }
 
-  const handleSignup = async (credentials: SignupUserSchema) => {
+  const handleSignup = async (credentials: UserSignupSchema) => {
     try {
       const { user, message } = await signup(credentials)
       if (!user) {

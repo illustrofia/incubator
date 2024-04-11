@@ -16,7 +16,7 @@ import {
 } from "@/components/ui"
 import { useAuth } from "@/hooks"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { LoginUserSchema, loginUserSchema } from "@incubator/shared"
+import { UserLoginSchema, userLoginSchema } from "@incubator/shared"
 import { Link } from "@tanstack/react-router"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -24,8 +24,8 @@ import { useForm } from "react-hook-form"
 export function LoginForm() {
   const { handleLogin } = useAuth()
 
-  const form = useForm<LoginUserSchema>({
-    resolver: zodResolver(loginUserSchema),
+  const form = useForm<UserLoginSchema>({
+    resolver: zodResolver(userLoginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -33,7 +33,7 @@ export function LoginForm() {
   })
 
   const [isLoading, setIsLoading] = useState(false)
-  const onSubmit = async (values: LoginUserSchema) => {
+  const onSubmit = async (values: UserLoginSchema) => {
     setIsLoading(true)
     const error = await handleLogin(values)
 

@@ -1,7 +1,7 @@
 import {
-  CreateTodoSchema,
+  TodoCreateSchema,
+  TodoUpdateSchema,
   TodosFilterSchema,
-  UpdateTodoSchema,
   todoSchema,
 } from "@incubator/shared"
 
@@ -28,7 +28,7 @@ export const getTodos = async (filters?: TodosFilterSchema) => {
   return todosSchema.parse(json)
 }
 
-export const createTodo = async ({ title }: CreateTodoSchema) => {
+export const createTodo = async ({ title }: TodoCreateSchema) => {
   const response = await fetch(`${API_BASEPATH}/todos`, {
     method: "POST",
     headers: {
@@ -41,7 +41,7 @@ export const createTodo = async ({ title }: CreateTodoSchema) => {
   return todoSchema.parse(json)
 }
 
-export const updateTodo = async (todo: UpdateTodoSchema) => {
+export const updateTodo = async (todo: TodoUpdateSchema) => {
   const response = await fetch(`${API_BASEPATH}/todos/${todo.id}`, {
     method: "PATCH",
     headers: {

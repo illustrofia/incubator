@@ -5,7 +5,10 @@ export const userSchema = z
     id: z.string(),
     username: z
       .string()
-      .min(3, { message: "Username must be at least 3 characters" }),
+      .min(3, { message: "Username must be at least 3 characters" })
+      .refine((value) => value.trim().length > 0, {
+        message: "You can't just use spaces for a username 🙃",
+      }),
     email: z.string().min(1, { message: "Email is required" }).email({
       message: "Must be a valid email",
     }),
@@ -19,7 +22,10 @@ export const loginUserSchema = userSchema
   .extend({
     password: z
       .string()
-      .min(6, { message: "Password must be at least 6 characters" }),
+      .min(6, { message: "Password must be at least 6 characters" })
+      .refine((value) => value.trim().length > 0, {
+        message: "You can't just use spaces for a password 🙃",
+      }),
   })
   .strip()
 
@@ -31,7 +37,10 @@ export const signupUserSchema = userSchema
   .extend({
     confirmPassword: z
       .string()
-      .min(6, { message: "Password must be at least 6 characters" }),
+      .min(6, { message: "Password must be at least 6 characters" })
+      .refine((value) => value.trim().length > 0, {
+        message: "You can't just use spaces for a password 🙃",
+      }),
   })
   .strip()
   .refine((data) => data.password === data.confirmPassword, {

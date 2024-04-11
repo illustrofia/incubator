@@ -1,7 +1,6 @@
 import { auth, todos, user } from "@/routes"
 import { serve } from "@hono/node-server"
-import Sentry from "@sentry/node"
-import { getOrigin } from "@utils"
+import { captureSentryException, getOrigin, initSentry } from "@utils"
 import dotenv from "dotenv"
 import { Hono } from "hono"
 import { cors } from "hono/cors"
@@ -10,10 +9,7 @@ import { logger } from "hono/logger"
 
 dotenv.config()
 
-if (!process.env.SENTRY_DSN) {
-  throw new Error("SENTRY_DSN is required")
-}
-Sentry.init({ dsn: process.env.SENTRY_DSN })
+initSentry()
 
 const app = new Hono()
 app
@@ -28,11 +24,11 @@ app.get("/healthy", (c) => c.json({ message: "Alive and kicking!" }, 200))
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
     const { message, cause, status } = err
-    status === 500 && Sentry.captureException(err)
+    status === 500 && captureSentryException(err)
     return c.json({ message, cause }, status)
   }
 
-  Sentry.captureException(err)
+  captureSentryException(err)
   return c.json({ message: "Internal Server Error", cause: err }, 500)
 })
 

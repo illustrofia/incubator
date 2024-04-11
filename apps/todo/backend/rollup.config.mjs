@@ -11,7 +11,6 @@ export default {
   },
   external: [
     "@sentry/node",
-    "@sentry/profiling-node",
     "@hono/node-server",
     "@hono/zod-validator",
     "@incubator/shared",

@@ -10,8 +10,9 @@ export default {
     sourcemap: true, // for sentry
   },
   external: [
+    "@sentry/node",
+    "@sentry/profiling-node",
     "@hono/node-server",
-    "@hono/sentry",
     "@hono/zod-validator",
     "@incubator/shared",
     "@prisma/client",

@@ -15,10 +15,11 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.8.2",
-    "@hono/sentry": "^1.0.1",
     "@hono/zod-validator": "^0.2.0",
     "@incubator/shared": "workspace:*",
     "@prisma/client": "5.11.0",
+    "@sentry/node": "^7.109.0",
+    "@sentry/profiling-node": "^7.109.0",
     "@sentry/rollup-plugin": "^2.16.1",
     "argon2": "^0.40.1",
     "dotenv": "^16.4.5",

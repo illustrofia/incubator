@@ -1,6 +1,7 @@
 import { createTodo, deleteTodo, queryKeys, updateTodo } from "@/api"
 import { useToast } from "@/components"
 import { TodoSchema } from "@incubator/shared"
+import { captureException } from "@sentry/react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 // More on optimistic updates: https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates
@@ -25,14 +26,14 @@ export const useTodosMutations = () => {
 
       return { previousTodos }
     },
-    onError: (_err, _newTodo, context) => {
+    onError: (err, _newTodo, context) => {
       if (!context) return
       toast({
         title: "Error creating todo.",
         description: "Reverting to previous state.",
         variant: "destructive",
       })
-      // TODO: log sentry error
+      captureException(err)
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
@@ -57,7 +58,7 @@ export const useTodosMutations = () => {
 
       return { previousTodos }
     },
-    onError: (_err, _updatedTodo, context) => {
+    onError: (err, _updatedTodo, context) => {
       if (!context) return
 
       toast({
@@ -65,7 +66,7 @@ export const useTodosMutations = () => {
         description: "Reverting to previous state.",
         variant: "destructive",
       })
-      // TODO: log sentry error
+      captureException(err)
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
@@ -88,14 +89,14 @@ export const useTodosMutations = () => {
 
       return { previousTodos }
     },
-    onError: (_err, _deletedTodoId, context) => {
+    onError: (err, _deletedTodoId, context) => {
       if (!context) return
       toast({
         title: "Error deleting todo.",
         description: "Reverting to previous state.",
         variant: "destructive",
       })
-      // TODO: log sentry error
+      captureException(err)
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {

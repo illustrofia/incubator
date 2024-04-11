@@ -33,8 +33,8 @@ export const TodoList = () => {
   })
 
   const onSubmit = async (values: TodoCreateSchema) => {
-    await createTodo.mutateAsync(values)
     form.reset()
+    await createTodo.mutateAsync(values)
   }
 
   return (

@@ -36,7 +36,6 @@ export const useTodosMutations = () => {
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
-      toast({ description: "Todo created." })
       queryClient.invalidateQueries({ queryKey: queryKeys.todos })
     },
   })
@@ -70,7 +69,6 @@ export const useTodosMutations = () => {
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
-      toast({ description: "Todo updated." })
       queryClient.invalidateQueries({ queryKey: queryKeys.todos })
     },
   })
@@ -101,7 +99,6 @@ export const useTodosMutations = () => {
       queryClient.setQueryData(queryKeys.todos, context.previousTodos)
     },
     onSettled: () => {
-      toast({ description: "Todo deleted." })
       queryClient.invalidateQueries({ queryKey: queryKeys.todos })
     },
   })

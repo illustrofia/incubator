@@ -8,13 +8,14 @@ import {
 import argon2 from "argon2"
 import { Hono } from "hono"
 import { deleteCookie, setCookie } from "hono/cookie"
+import { HTTPException } from "hono/http-exception"
 import { sign } from "hono/jwt"
 
 export const auth = new Hono()
 
 const createToken = async (user: LoginUserSchema) => {
   if (!process.env.JWT_SECRET) {
-    throw new Error("JWT secret not provided")
+    throw new HTTPException(500, { message: "JWT secret missing" })
   }
 
   return await sign({ email: user.email }, process.env.JWT_SECRET)
@@ -31,7 +32,7 @@ auth.post("/auth/signup", zValidator("json", signupUserSchema), async (c) => {
   })
 
   if (user) {
-    return c.json({ message: "User already exists" }, 400)
+    throw new HTTPException(400, { message: "User already exists" })
   }
   const passwordHash = await argon2.hash(password)
   const newUser = await prisma.user.create({
@@ -42,12 +43,7 @@ auth.post("/auth/signup", zValidator("json", signupUserSchema), async (c) => {
     },
   })
 
-  let token: string
-  try {
-    token = await createToken(newUser)
-  } catch (error) {
-    return c.json({ message: "Error creating token" }, 500)
-  }
+  const token = await createToken(newUser)
 
   setCookie(c, "token", token, {
     httpOnly: true,
@@ -81,12 +77,12 @@ auth.post("/auth/login", zValidator("json", loginUserSchema), async (c) => {
   })
 
   if (!user) {
-    return c.json({ message: "User not found" }, 401)
+    throw new HTTPException(401, { message: "User not found" })
   }
 
   const validPassword = await argon2.verify(user.password, password)
   if (!validPassword) {
-    return c.json({ message: "Invalid password" }, 401)
+    throw new HTTPException(401, { message: "Invalid password" })
   }
 
   const token = await createToken(user)

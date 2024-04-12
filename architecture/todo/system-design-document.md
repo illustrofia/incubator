@@ -9,8 +9,8 @@ Dome is designed to help users efficiently manage their todos. It provides funct
 
 ### Frontend:
 
-- **Technologies:** TypeScript with React.
-- **Features:** User Authentication, Todo CRUD operations, filtering.
+- **Technologies:** React with TypeScript, Tanstack Router for routing, and React Query for data fetching and caching.
+- **Features:** User Authentication, Todo CRUD operations, and responsive design.
 
 ### Backend:
 
@@ -20,8 +20,10 @@ Dome is designed to help users efficiently manage their todos. It provides funct
 
 ### Infrastructure:
 
-- **Deployment:** Use of Docker containers for both frontend and backend services.
-- **CI/CD:** Implementation with GitHub Actions or GitLab CI for continuous integration and deployment.
+- **Deployment:** Google Cloud Run for backend service and Vercel for frontend deployment.
+- **CI/CD:** Google Cloud Build for backend, and Vercel for frontend.
+- **Monitoring:** Sentry for both frontend and backend error tracking.
+- **Code Quality:** ESLint and Prettier for code formatting and linting, Husky for pre-commit hooks and Sonarcloud for code analysis.
 
 ## Data Model
 

@@ -6,7 +6,7 @@
   - [x] Setup database
   - [x] Build authentication
   - [x] Build todo list
-- [x] Deployment
+- [x] Infrastructure
   - [x] Dockerize backend
   - [x] Dockerize frontend
   - [x] Research deployment options
@@ -15,6 +15,11 @@
   - [x] Deploy frontend
   - [x] Deploy database
   - [x] Setup domain
+  - [x] Setup sentry
+  - [x] Setup sonarcloud
 - [x] Cleanup
   - [x] Centralize configs
-- [ ] Write README
+
+### Blog Platform
+
+Coming soon...

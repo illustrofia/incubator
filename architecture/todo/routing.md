@@ -27,7 +27,7 @@
 
 ### Navigation Bar
 
-- Available on all pages for authenticated users, with quick access to authentication pages or to log out.
+- Available on all pages for authenticated users, with quick access to to log out.
 
 ### Logout
 

@@ -12,7 +12,7 @@ The outcome of this project is to be able to build complex systems that are easy
 
 ### Beginner
 
-- [ ] Todo List Application
+- [x] Todo List Application
 - [ ] Blog Platform
 - [ ] Personal Budget Tracker
 

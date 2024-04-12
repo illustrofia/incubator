@@ -16,13 +16,13 @@ export const useTodosMutations = () => {
       await queryClient.cancelQueries({ queryKey: queryKeys.todos })
       const previousTodos = queryClient.getQueryData(queryKeys.todos)
       queryClient.setQueryData(queryKeys.todos, (old: TodoSchema[]) => [
-        ...old,
         {
           ...newTodo,
           id: Math.random().toString(),
           completed: false,
           createdAt: new Date().toISOString(),
         },
+        ...old,
       ])
 
       return { previousTodos }

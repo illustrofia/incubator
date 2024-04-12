@@ -11,7 +11,8 @@
     "PROD",
     "VITE_SENTRY_DSN",
     "VITE_API_BASEPATH",
-    "NODE_ENV"
+    "NODE_ENV",
+    "SENTRY_AUTH_TOKEN"
   ],
   "pipeline": {
     "build": {

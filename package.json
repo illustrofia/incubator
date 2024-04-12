@@ -4,9 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "dev.todo": "turbo dev --filter=@incubator/todo*",
-    "dev.todo.backend": "turbo dev --filter=@incubator/todo-backend",
-    "dev.todo.frontend": "turbo dev --filter=@incubator/todo-frontend",
+    "dev.todo": "turbo dev --filter=todo-* --filter=shared",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "lint": "turbo lint",
     "lint.staged": "lint-staged",

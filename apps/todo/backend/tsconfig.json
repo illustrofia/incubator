@@ -9,8 +9,5 @@
       "@*": ["src/*"]
     }
   },
-  "tsc-alias": {
-    "resolveFullPaths": true
-  },
   "include": ["src"]
 }

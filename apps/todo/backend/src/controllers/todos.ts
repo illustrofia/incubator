@@ -21,7 +21,7 @@ export const getTodosHandlers = factory.createHandlers(
 
     const todos = await prisma.todo.findMany({
       orderBy: {
-        createdAt: "asc",
+        createdAt: "desc",
       },
       where: {
         userId: user.id,

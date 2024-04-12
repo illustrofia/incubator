@@ -49,6 +49,19 @@ export const ThemeProvider = ({
     root.classList.add(theme)
   }, [theme])
 
+  useEffect(() => {
+    const updateTheme = (event: MediaQueryListEvent) => {
+      setTheme(event.matches ? "dark" : "light")
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
+    mediaQuery.addEventListener("change", updateTheme)
+    return () => {
+      mediaQuery.removeEventListener("change", updateTheme)
+    }
+  }, [])
+
   const value = {
     theme,
     setTheme: (theme: Theme) => {

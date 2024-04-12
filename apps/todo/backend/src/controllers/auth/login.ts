@@ -1,9 +1,10 @@
 import { prisma } from "@db/client"
 import { zValidator } from "@hono/zod-validator"
 import { UserLoginSchema, userLoginSchema } from "@incubator/shared"
-import argon2 from "argon2"
+import { verify } from "argon2"
 import { createFactory } from "hono/factory"
 import { HTTPException } from "hono/http-exception"
+
 import { createToken, setAuthCookies } from "./utils"
 
 const factory = createFactory()
@@ -42,7 +43,7 @@ const validateUserCredentials = async ({
     throw new HTTPException(401, { message: "User not found" })
   }
 
-  const validPassword = await argon2.verify(user.password, password)
+  const validPassword = await verify(user.password, password)
   if (!validPassword) {
     throw new HTTPException(401, { message: "Invalid password" })
   }

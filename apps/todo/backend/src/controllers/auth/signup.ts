@@ -1,9 +1,10 @@
 import { prisma } from "@db/client"
 import { zValidator } from "@hono/zod-validator"
 import { UserSignupSchema, userSignupSchema } from "@incubator/shared"
-import argon2 from "argon2"
+import { hash } from "argon2"
 import { createFactory } from "hono/factory"
 import { HTTPException } from "hono/http-exception"
+
 import { createToken, setAuthCookies } from "./utils"
 
 const factory = createFactory()
@@ -37,7 +38,7 @@ const createUser = async ({ email, password, username }: UserSignupSchema) => {
     throw new HTTPException(400, { message: "User already exists" })
   }
 
-  const passwordHash = await argon2.hash(password)
+  const passwordHash = await hash(password)
   const newUser = await prisma.user.create({
     data: {
       username,

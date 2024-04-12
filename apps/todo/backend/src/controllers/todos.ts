@@ -1,9 +1,9 @@
 import { prisma } from "@db/client"
 import { zValidator } from "@hono/zod-validator"
 import {
-  UserSchema,
   todoCreateSchema,
   todoUpdateSchema,
+  UserSchema,
 } from "@incubator/shared"
 import { authenticate } from "@middleware"
 import { createFactory } from "hono/factory"

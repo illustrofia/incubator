@@ -1,3 +1,6 @@
+import { captureException } from "@sentry/react"
+import { Moon, Sun } from "lucide-react"
+
 import {
   Button,
   DropdownMenu,
@@ -6,8 +9,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui"
 import { useTheme } from "@/hooks"
-import { captureException } from "@sentry/react"
-import { Moon, Sun } from "lucide-react"
 
 export function ModeToggle() {
   const { setTheme } = useTheme()

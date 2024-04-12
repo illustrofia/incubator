@@ -1,10 +1,11 @@
-import { getMe, login, logout, queryKeys, signup } from "@/api"
-import { useToast } from "@/components"
 import { UserLoginSchema, UserSignupSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import Cookies from "js-cookie"
 import { useEffect, useMemo } from "react"
+
+import { getMe, login, logout, queryKeys, signup } from "@/api"
+import { useToast } from "@/components"
 
 const hasAuthToken = () => !!Cookies.get("hasAuthToken")
 
@@ -31,7 +32,7 @@ export const useAuth = () => {
     }
     navigate({ to: "/login" })
     toast({ description: "Please login." })
-  }, [navigate, queryClient, user.isError])
+  }, [navigate, queryClient, toast, user.isError])
 
   const isAuthenticated = useMemo(
     () => !!user.data && hasAuthToken(),
@@ -46,7 +47,7 @@ export const useAuth = () => {
       navigate({ to: "/" })
       toast({ description: "Logged in." })
     }
-  }, [isAuthenticated, location.href, navigate])
+  }, [isAuthenticated, location.href, navigate, toast])
 
   const handleLogin = async (credentials: UserLoginSchema) => {
     try {

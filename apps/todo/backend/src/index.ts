@@ -1,13 +1,14 @@
-import { auth, todos, user } from "@/routes"
 import { serve } from "@hono/node-server"
 import { captureErrorSentry, getOrigin, initSentry } from "@utils"
-import dotenv from "dotenv"
+import { configDotenv } from "dotenv"
 import { Hono } from "hono"
 import { cors } from "hono/cors"
 import { HTTPException } from "hono/http-exception"
 import { logger } from "hono/logger"
 
-dotenv.config()
+import { auth, todos, user } from "@/routes"
+
+configDotenv()
 
 initSentry()
 

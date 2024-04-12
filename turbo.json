@@ -1,6 +1,18 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "DATABASE_URL",
+    "FRONTEND_PROD_URL",
+    "SENTRY_DSN",
+    "JWT_SECRET",
+    "DOMAIN",
+    "PORT",
+    "PROD",
+    "VITE_SENTRY_DSN",
+    "VITE_API_BASEPATH",
+    "NODE_ENV"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],

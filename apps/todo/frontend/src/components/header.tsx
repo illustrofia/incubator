@@ -1,7 +1,8 @@
+import { CheckCircle } from "lucide-react"
+
 import { Button, Skeleton } from "@/components"
 import { ModeToggle } from "@/components/mode-toggle"
 import { useAuth } from "@/hooks"
-import { CheckCircle } from "lucide-react"
 
 export const Header = () => {
   const { isAuthenticated, isLoadingAuth } = useAuth()

@@ -1,8 +1,10 @@
+import "./index.css"
+
 import * as Sentry from "@sentry/react"
 import React from "react"
 import ReactDOM from "react-dom/client"
+
 import App from "./app"
-import "./index.css"
 
 if (import.meta.env.PROD) {
   Sentry.init({

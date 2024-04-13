@@ -20,6 +20,7 @@ module.exports = {
   env: {
     node: true,
   },
+  parser: "@typescript-eslint/parser",
   settings: {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"],

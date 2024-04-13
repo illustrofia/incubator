@@ -26,6 +26,5 @@ module.exports = {
       version: "detect",
     },
   },
-  parser: "@typescript-eslint/parser",
   plugins: [...config.plugins, "react", "react-refresh"],
 }

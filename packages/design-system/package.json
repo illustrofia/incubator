@@ -36,11 +36,11 @@
     "lucide-react": "^0.360.0",
     "react-hook-form": "^7.51.1",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@incubator/eslint-config": "workspace:*",
+    "@incubator/tailwind-config": "workspace:*",
     "@incubator/typescript-config": "workspace:*",
     "@types/node": "^20.11.28",
     "@types/react": "^18.2.64",

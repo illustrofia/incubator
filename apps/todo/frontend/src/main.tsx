@@ -1,4 +1,4 @@
-import "./index.css"
+import "@incubator/tailwind-config/global.css"
 
 import * as Sentry from "@sentry/react"
 import React from "react"

@@ -99,9 +99,6 @@ importers:
 
   apps/todo/frontend:
     dependencies:
-      '@fontsource/inter':
-        specifier: ^5.0.17
-        version: 5.0.17
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.1)
@@ -235,6 +232,9 @@ importers:
 
   packages/configs/tailwind-config:
     dependencies:
+      '@fontsource/inter':
+        specifier: ^5.0.17
+        version: 5.0.17
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.1)

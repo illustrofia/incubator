@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./tailwind.config.ts"
+    ".": [
+      "./tailwind.config.ts"
+    ],
+    "./global.css": "./global.css"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.17",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

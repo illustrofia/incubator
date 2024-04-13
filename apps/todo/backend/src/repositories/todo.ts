@@ -1,11 +1,22 @@
 import { prisma } from "@db/client"
-import { TodoCreateSchema, TodoUpdateSchema } from "@incubator/shared"
+import {
+  TodoCreateSchema,
+  TodoSchema,
+  TodoUpdateSchema,
+} from "@incubator/shared"
 import { PrismaClient } from "@prisma/client"
 
-class PrismaTodoRepository {
+export interface TodoRepository {
+  getAll: (userId: string) => Promise<TodoSchema[]>
+  create: (userId: string, payload: TodoCreateSchema) => Promise<TodoSchema>
+  update: (userId: string, payload: TodoUpdateSchema) => Promise<TodoSchema>
+  delete: (userId: string, todoId: string) => Promise<TodoSchema>
+}
+
+class PrismaTodoRepository implements TodoRepository {
   constructor(private prisma: PrismaClient) {}
 
-  async getAll(userId: string) {
+  getAll = async (userId: string) => {
     return await this.prisma.todo.findMany({
       orderBy: {
         createdAt: "desc",
@@ -48,4 +59,4 @@ class PrismaTodoRepository {
   }
 }
 
-export const todoRepository = new PrismaTodoRepository(prisma)
+export const todoRepository: TodoRepository = new PrismaTodoRepository(prisma)

@@ -1,10 +1,21 @@
 import { prisma } from "@db/client"
-import { UserLoginSchema, UserSignupSchema } from "@incubator/shared"
+import {
+  UserLoginSchema,
+  UserSchema,
+  UserSignupSchema,
+} from "@incubator/shared"
 import { PrismaClient } from "@prisma/client"
 import { hash, verify } from "argon2"
 import { HTTPException } from "hono/http-exception"
 
-class PrismaAuthRepository {
+export interface AuthRepository {
+  validateUserCredentials: (
+    userLoginPayload: UserLoginSchema,
+  ) => Promise<UserSchema>
+  createUser: (userSignupPayload: UserSignupSchema) => Promise<UserSchema>
+}
+
+class PrismaAuthRepository implements AuthRepository {
   constructor(private prisma: PrismaClient) {}
 
   validateUserCredentials = async ({ email, password }: UserLoginSchema) => {
@@ -52,4 +63,4 @@ class PrismaAuthRepository {
   }
 }
 
-export const authRepository = new PrismaAuthRepository(prisma)
+export const authRepository: AuthRepository = new PrismaAuthRepository(prisma)

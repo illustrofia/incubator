@@ -6,6 +6,7 @@ import {
   UserSchema,
 } from "@incubator/shared"
 import { authenticate } from "@middleware"
+import { todoRepository } from "@repositories"
 import { createFactory } from "hono/factory"
 
 type Variables = {
@@ -18,16 +19,7 @@ export const getTodosHandlers = factory.createHandlers(
   authenticate,
   async (c) => {
     const user = c.get("user")
-
-    const todos = await prisma.todo.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-      where: {
-        userId: user.id,
-      },
-    })
-
+    const todos = await todoRepository.getAll(user.id)
     return c.json(todos)
   },
 )
@@ -37,15 +29,8 @@ export const postTodosHandlers = factory.createHandlers(
   zValidator("json", todoCreateSchema),
   async (c) => {
     const user = c.get("user")
-    const { title } = c.req.valid("json")
-
-    const todo = await prisma.todo.create({
-      data: {
-        title,
-        userId: user.id,
-      },
-    })
-
+    const todoCreatePayload = c.req.valid("json")
+    const todo = await todoRepository.create(user.id, todoCreatePayload)
     return c.json(todo)
   },
 )
@@ -55,20 +40,8 @@ export const patchTodosHandlers = factory.createHandlers(
   zValidator("json", todoUpdateSchema),
   async (c) => {
     const user = c.get("user")
-    const { title, completed } = c.req.valid("json")
-    const id = c.req.param("id")
-
-    const updatedTodo = await prisma.todo.update({
-      where: {
-        id,
-        userId: user.id,
-      },
-      data: {
-        title,
-        completed,
-      },
-    })
-
+    const todoCreatePayload = c.req.valid("json")
+    const updatedTodo = await todoRepository.update(user.id, todoCreatePayload)
     return c.json(updatedTodo)
   },
 )
@@ -77,15 +50,8 @@ export const deleteTodosHandlers = factory.createHandlers(
   authenticate,
   async (c) => {
     const user = c.get("user")
-    const id = c.req.param("id")
-
-    const deletedTodo = await prisma.todo.delete({
-      where: {
-        id,
-        userId: user.id,
-      },
-    })
-
+    const todoId = c.req.param("id")
+    const deletedTodo = await todoRepository.delete(user.id, todoId)
     return c.json(deletedTodo)
   },
 )

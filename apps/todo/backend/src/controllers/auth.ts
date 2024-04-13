@@ -24,7 +24,7 @@ export const loginHandlers = factory.createHandlers(
   zValidator("json", userLoginSchema),
   async (c) => {
     const userLoginPayload = c.req.valid("json")
-    const user = await authRepository.validateUserCredentials(userLoginPayload)
+    const user = await authRepository.verifyUser(userLoginPayload)
 
     const token = await createToken(user)
     setAuthCookies(c, token)

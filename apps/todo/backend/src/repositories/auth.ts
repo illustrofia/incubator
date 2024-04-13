@@ -9,16 +9,14 @@ import { hash, verify } from "argon2"
 import { HTTPException } from "hono/http-exception"
 
 export interface AuthRepository {
-  validateUserCredentials: (
-    userLoginPayload: UserLoginSchema,
-  ) => Promise<UserSchema>
+  verifyUser: (userLoginPayload: UserLoginSchema) => Promise<UserSchema>
   createUser: (userSignupPayload: UserSignupSchema) => Promise<UserSchema>
 }
 
 class PrismaAuthRepository implements AuthRepository {
   constructor(private prisma: PrismaClient) {}
 
-  validateUserCredentials = async ({ email, password }: UserLoginSchema) => {
+  verifyUser = async ({ email, password }: UserLoginSchema) => {
     const user = await this.prisma.user.findUnique({
       where: {
         email,

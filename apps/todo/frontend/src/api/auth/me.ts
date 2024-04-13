@@ -1,6 +1,7 @@
 import { userSchema } from "@incubator/shared"
 import { z } from "zod"
-import { API_BASEPATH } from "."
+
+import { API_BASEPATH } from ".."
 
 const returnUserSchema = userSchema.or(
   z.object({

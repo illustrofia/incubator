@@ -1,5 +1,4 @@
 export * from "./auth"
 export * from "./config"
-export * from "./queryKeys"
+export * from "./query-keys"
 export * from "./todos"
-export * from "./user"

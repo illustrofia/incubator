@@ -1,8 +1,8 @@
 import { Button, Skeleton } from "@incubator/design-system"
 import { CheckCircle } from "lucide-react"
 
+import { useAuth } from "@/api"
 import { ModeToggle } from "@/components/mode-toggle"
-import { useAuth } from "@/hooks"
 
 export const Header = () => {
   const { isAuthenticated, isLoadingAuth } = useAuth()

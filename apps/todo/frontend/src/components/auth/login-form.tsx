@@ -15,63 +15,50 @@ import {
   FormRootError,
   Input,
 } from "@incubator/design-system"
-import { UserSignupSchema, userSignupSchema } from "@incubator/shared"
+import { UserLoginSchema, userLoginSchema } from "@incubator/shared"
 import { Link } from "@tanstack/react-router"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 
-import { useAuth } from "@/hooks"
+import { useAuth } from "@/api"
 
-export function SignupForm() {
-  const { handleSignup } = useAuth()
+export function LoginForm() {
+  const { handleLogin } = useAuth()
 
-  const form = useForm<UserSignupSchema>({
-    resolver: zodResolver(userSignupSchema),
+  const form = useForm<UserLoginSchema>({
+    resolver: zodResolver(userLoginSchema),
     defaultValues: {
-      username: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   })
 
   const [isLoading, setIsLoading] = useState(false)
-  const onSubmit = async (values: UserSignupSchema) => {
+  const onSubmit = async (values: UserLoginSchema) => {
     setIsLoading(true)
-    const error = await handleSignup(values)
-    setIsLoading(false)
+    const error = await handleLogin(values)
+
     if (error) {
       form.setError("root", {
         message: error.message,
       })
     }
+    setIsLoading(false)
   }
 
   return (
     <div className="container py-10">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Sign Up</CardTitle>
+          <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+            Enter your information to login to your account
           </CardDescription>
         </CardHeader>
+
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input placeholder="johndoe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
               <FormField
                 control={form.control}
                 name="email"
@@ -85,6 +72,7 @@ export function SignupForm() {
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="password"
@@ -98,29 +86,18 @@ export function SignupForm() {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
-                    <FormControl>
-                      <Input {...field} type="password" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+
               <Button type="submit" className="w-full" disabled={isLoading}>
-                Create an account
+                Login
               </Button>
+
               <FormRootError />
             </form>
           </Form>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
-            <Link to={"/login"} className="underline">
-              Sign in
+            Don&apos;t have an account?{" "}
+            <Link to={"/signup"} className="underline">
+              Sign up
             </Link>
           </div>
         </CardContent>

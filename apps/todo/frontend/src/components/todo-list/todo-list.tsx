@@ -1,42 +1,22 @@
-import { zodResolver } from "@hookform/resolvers/zod"
 import {
-  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   Checkbox,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Input,
   Skeleton,
 } from "@incubator/design-system"
-import { TodoCreateSchema, todoCreateSchema } from "@incubator/shared"
 import { clsx } from "clsx"
 import { X } from "lucide-react"
-import { useForm } from "react-hook-form"
 
-import { useTodos } from "@/hooks"
-import { useTodosMutations } from "@/hooks/useTodosMutations"
+import { useTodos } from "@/api"
+import { useTodosMutations } from "@/api/todos/use-todos-mutations"
+
+import { TodoForm } from "./todo-form"
 
 export const TodoList = () => {
   const { todos } = useTodos()
-  const { createTodo, updateTodo, deleteTodo } = useTodosMutations()
-
-  const form = useForm<TodoCreateSchema>({
-    resolver: zodResolver(todoCreateSchema),
-    defaultValues: {
-      title: "",
-    },
-  })
-
-  const onSubmit = async (values: TodoCreateSchema) => {
-    form.reset()
-    await createTodo.mutateAsync(values)
-  }
+  const { updateTodo, deleteTodo } = useTodosMutations()
 
   return (
     <div className="container mx-auto py-10">
@@ -46,25 +26,7 @@ export const TodoList = () => {
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <Form {...form}>
-            <form className="flex gap-2" onSubmit={form.handleSubmit(onSubmit)}>
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormControl>
-                      <Input placeholder="What is your next task?" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" disabled={form.formState.isSubmitting}>
-                Add
-              </Button>
-            </form>
-          </Form>
+          <TodoForm />
 
           <div className="flex flex-col">
             {todos.isLoading && (
@@ -83,7 +45,7 @@ export const TodoList = () => {
 
             {todos.isSuccess && todos.data?.length === 0 && (
               <p className="text-muted-foreground text-sm">
-                Take a deep breath, there's nothing to do.
+                Take a deep breath, there&apos;s nothing to do.
               </p>
             )}
 

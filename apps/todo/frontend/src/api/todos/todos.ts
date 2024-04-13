@@ -1,12 +1,12 @@
 import {
   TodoCreateSchema,
-  TodoUpdateSchema,
-  TodosFilterSchema,
   todoSchema,
+  TodosFilterSchema,
+  TodoUpdateSchema,
 } from "@incubator/shared"
-
 import { z } from "zod"
-import { API_BASEPATH } from "."
+
+import { API_BASEPATH } from ".."
 
 const todosSchema = z.array(todoSchema)
 

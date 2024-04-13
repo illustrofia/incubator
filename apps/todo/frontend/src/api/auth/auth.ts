@@ -1,10 +1,11 @@
 import {
   UserLoginSchema,
-  UserSignupSchema,
   userSchema,
+  UserSignupSchema,
 } from "@incubator/shared"
 import { z } from "zod"
-import { API_BASEPATH } from "."
+
+import { API_BASEPATH } from ".."
 
 const authReturnSchema = z.object({
   user: userSchema.optional(),

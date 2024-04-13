@@ -9,7 +9,7 @@
     "build": "pnpm clean && pnpm compile",
     "clean": "shx rm -rf dist",
     "compile": "rollup -c",
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch --clear-screen=false src/index.ts",
     "postinstall": "prisma generate",
     "start": "node dist/index.mjs"
   },

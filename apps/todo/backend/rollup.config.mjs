@@ -23,7 +23,13 @@ export default {
     "hono/http-exception",
     "hono/jwt",
     "hono/logger",
+    "hono/factory",
   ],
+
+  watch: {
+    clearScreen: false,
+  },
+
   plugins: [
     typescript(),
     sentryRollupPlugin({

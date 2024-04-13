@@ -1,3 +1,4 @@
+import { useToast } from "@incubator/design-system"
 import { UserLoginSchema, UserSignupSchema } from "@incubator/shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
@@ -5,7 +6,6 @@ import Cookies from "js-cookie"
 import { useEffect, useMemo } from "react"
 
 import { getMe, login, logout, queryKeys, signup } from "@/api"
-import { useToast } from "@/components"
 
 const hasAuthToken = () => !!Cookies.get("hasAuthToken")
 

@@ -1,0 +1,18 @@
+{
+  "extends": "@incubator/typescript-config/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src",
+    "src/providers/theme-provider.tsx",
+    "src/hooks/theme.ts",
+    "src/providers/index.ts"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

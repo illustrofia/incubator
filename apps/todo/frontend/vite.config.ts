@@ -16,7 +16,6 @@ export default defineConfig({
       project: "todo_frontend",
     }),
   ],
-
   // alias the @ to be the root of the project
   resolve: {
     alias: {

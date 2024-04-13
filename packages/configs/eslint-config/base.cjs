@@ -49,22 +49,6 @@ module.exports = {
     },
   ],
   rules: {
-    indent: [
-      "error",
-      2,
-      {
-        SwitchCase: 1,
-        offsetTernaryExpressions: true,
-        flatTernaryExpressions: false,
-        ignoredNodes: ["TemplateLiteral *", "PropertyDefinition"],
-      },
-    ],
-    quotes: [
-      "error",
-      "double",
-      { avoidEscape: true, allowTemplateLiterals: true },
-    ],
-    "comma-dangle": ["error", "only-multiline"],
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-unused-vars": [
       "off",

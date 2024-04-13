@@ -1,4 +1,3 @@
-import { prisma } from "@db/client"
 import { zValidator } from "@hono/zod-validator"
 import {
   todoCreateSchema,

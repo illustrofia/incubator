@@ -20,10 +20,3 @@ export const setAuthCookies = async (c: Context, token: string) => {
     domain: process.env.DOMAIN || "localhost",
   })
 }
-
-export const createToken = async (user: UserLoginSchema) => {
-  if (!process.env.JWT_SECRET) {
-    throw new HTTPException(500, { message: "JWT secret missing" })
-  }
-  return await sign({ email: user.email }, process.env.JWT_SECRET)
-}

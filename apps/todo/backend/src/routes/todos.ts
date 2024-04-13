@@ -4,14 +4,9 @@ import {
   patchTodosHandlers,
   postTodosHandlers,
 } from "@controllers"
-import { UserSchema } from "@incubator/shared"
 import { Hono } from "hono"
 
-type Variables = {
-  user: UserSchema
-}
-
-export const todos = new Hono<{ Variables: Variables }>()
+export const todos = new Hono()
 
 todos.get("/todos", ...getTodosHandlers)
 todos.post("/todos", ...postTodosHandlers)

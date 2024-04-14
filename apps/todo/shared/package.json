@@ -32,7 +32,6 @@
     "@incubator/typescript-config": "workspace:*",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.28",
-    "eslint": "^8.57.0",
     "rollup": "^4.14.0",
     "shx": "^0.3.4",
     "tslib": "^2.6.2",

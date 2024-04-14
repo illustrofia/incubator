@@ -37,7 +37,6 @@ module.exports = {
     ecmaVersion: "latest",
   },
   ignorePatterns: [
-    // Ignore dotfiles
     ".*.js",
     ".*.cjs",
     "node_modules/",

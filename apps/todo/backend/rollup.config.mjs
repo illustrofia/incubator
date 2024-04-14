@@ -1,7 +1,17 @@
 import typescript from "@rollup/plugin-typescript"
 import { sentryRollupPlugin } from "@sentry/rollup-plugin"
 
-import packageJson from "./package.json" assert { type: "json" }
+import packageJson from "./package.json" with { type: "json" }
+
+const external = [
+  ...Object.keys(packageJson.dependencies),
+  "hono/cookie",
+  "hono/cors",
+  "hono/http-exception",
+  "hono/jwt",
+  "hono/logger",
+  "hono/factory",
+]
 
 export default {
   input: "src/index.ts",
@@ -21,15 +31,7 @@ export default {
     }),
   ],
 
-  external: [
-    ...Object.keys(packageJson.dependencies),
-    "hono/cookie",
-    "hono/cors",
-    "hono/http-exception",
-    "hono/jwt",
-    "hono/logger",
-    "hono/factory",
-  ],
+  external,
   watch: {
     clearScreen: false,
   },

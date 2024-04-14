@@ -5,21 +5,28 @@
 - [x] Implementation
   - [x] Setup database
   - [x] Build authentication
-  - [x] Build todo list
+  - [x] Build CRUD operations
+  - [x] Build frontend
 - [x] Infrastructure
   - [x] Dockerize backend
   - [x] Dockerize frontend
   - [x] Research deployment options
   - [x] Research deployment best practices
-  - [x] Deploy backend
-  - [x] Deploy frontend
+  - [x] Deploy backend to Cloud Run
+  - [x] Deploy frontend to Vercel
   - [x] Deploy database
   - [x] Setup domain
   - [x] Setup sentry
   - [x] Setup sonarcloud
-- [x] Cleanup
+- [x] Refactor
   - [x] Centralize configs
+  - [x] Extract design system package
+  - [x] Extract tailwindcss config + global.css in package
+  - [x] Move shared package to apps/todo as it was specific to todo app
+  - [x] Refactor backend
+  - [x] Refactor frontend
 
 ### Blog Platform
 
-Coming soon...
+- [x] Design system architecture
+- [ ] Implementation

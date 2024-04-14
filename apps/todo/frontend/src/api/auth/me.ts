@@ -1,4 +1,4 @@
-import { userSchema } from "@incubator/shared"
+import { userSchema } from "@incubator/todo-schemas"
 import { z } from "zod"
 
 import { API_BASEPATH } from ".."

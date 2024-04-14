@@ -1,5 +1,5 @@
 import { useToast } from "@incubator/design-system"
-import { TodoSchema } from "@incubator/shared"
+import { TodoSchema } from "@incubator/todo-schemas"
 import { captureException } from "@sentry/react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 

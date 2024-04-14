@@ -1,4 +1,4 @@
-import { UserSchema } from "@incubator/shared"
+import { UserSchema } from "@incubator/todo-schemas"
 import { authenticate } from "@middleware"
 import { Hono } from "hono"
 

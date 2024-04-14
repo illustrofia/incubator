@@ -15,7 +15,7 @@ import {
   FormRootError,
   Input,
 } from "@incubator/design-system"
-import { UserSignupSchema, userSignupSchema } from "@incubator/shared"
+import { UserSignupSchema, userSignupSchema } from "@incubator/todo-schemas"
 import { Link } from "@tanstack/react-router"
 import { useState } from "react"
 import { useForm } from "react-hook-form"

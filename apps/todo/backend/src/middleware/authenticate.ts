@@ -1,5 +1,5 @@
 import { prisma } from "@db/client"
-import { UserSchema } from "@incubator/shared"
+import { UserSchema } from "@incubator/todo-schemas"
 import { MiddlewareHandler } from "hono"
 import { getCookie } from "hono/cookie"
 import { HTTPException } from "hono/http-exception"

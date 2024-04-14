@@ -1,5 +1,5 @@
 import { useToast } from "@incubator/design-system"
-import { UserLoginSchema, UserSignupSchema } from "@incubator/shared"
+import { UserLoginSchema, UserSignupSchema } from "@incubator/todo-schemas"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import Cookies from "js-cookie"

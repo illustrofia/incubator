@@ -47,9 +47,9 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.2.0
         version: 0.2.0(hono@4.1.1)(zod@3.22.4)
-      '@incubator/shared':
+      '@incubator/todo-schemas':
         specifier: workspace:*
-        version: link:../../../packages/shared
+        version: link:../shared
       '@prisma/client':
         specifier: 5.11.0
         version: 5.11.0(prisma@5.11.0)
@@ -105,9 +105,9 @@ importers:
       '@incubator/design-system':
         specifier: workspace:*
         version: link:../../../packages/design-system
-      '@incubator/shared':
+      '@incubator/todo-schemas':
         specifier: workspace:*
-        version: link:../../../packages/shared
+        version: link:../shared
       '@sentry/react':
         specifier: ^7.110.0
         version: 7.110.0(react@18.2.0)
@@ -184,6 +184,40 @@ importers:
       vite:
         specifier: ^5.2.8
         version: 5.2.8(@types/node@20.12.7)
+
+  apps/todo/shared:
+    dependencies:
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
+    devDependencies:
+      '@incubator/eslint-config':
+        specifier: workspace:*
+        version: link:../../../packages/configs/eslint-config
+      '@incubator/typescript-config':
+        specifier: workspace:*
+        version: link:../../../packages/configs/typescript-config
+      '@rollup/plugin-typescript':
+        specifier: ^11.1.6
+        version: 11.1.6(rollup@4.14.2)(tslib@2.6.2)(typescript@5.4.5)
+      '@types/node':
+        specifier: ^20.11.28
+        version: 20.12.7
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      rollup:
+        specifier: ^4.14.0
+        version: 4.14.2
+      shx:
+        specifier: ^0.3.4
+        version: 0.3.4
+      tslib:
+        specifier: ^2.6.2
+        version: 2.6.2
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
   packages/configs/eslint-config:
     devDependencies:
@@ -341,40 +375,6 @@ importers:
       vite-plugin-dts:
         specifier: ^3.8.2
         version: 3.8.2(@types/node@20.12.3)(typescript@5.4.5)(vite@5.2.8)
-
-  packages/shared:
-    dependencies:
-      zod:
-        specifier: ^3.22.4
-        version: 3.22.4
-    devDependencies:
-      '@incubator/eslint-config':
-        specifier: workspace:*
-        version: link:../configs/eslint-config
-      '@incubator/typescript-config':
-        specifier: workspace:*
-        version: link:../configs/typescript-config
-      '@rollup/plugin-typescript':
-        specifier: ^11.1.6
-        version: 11.1.6(rollup@4.14.0)(tslib@2.6.2)(typescript@5.4.5)
-      '@types/node':
-        specifier: ^20.11.28
-        version: 20.11.28
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      rollup:
-        specifier: ^4.14.0
-        version: 4.14.0
-      shx:
-        specifier: ^0.3.4
-        version: 0.3.4
-      tslib:
-        specifier: ^2.6.2
-        version: 2.6.2
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
 
 packages:
 
@@ -2076,6 +2076,26 @@ packages:
       typescript: 5.4.5
     dev: true
 
+  /@rollup/plugin-typescript@11.1.6(rollup@4.14.2)(tslib@2.6.2)(typescript@5.4.5):
+    resolution: {integrity: sha512-R92yOmIACgYdJ7dJ97p4K69I8gg6IEHt8M7dUBxN3W6nrO8uUxX5ixl0yU/N3aZTi8WhPuICvOHXQvF6FaykAA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.14.0||^3.0.0||^4.0.0
+      tslib: '*'
+      typescript: '>=3.7.0'
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+      tslib:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.14.2)
+      resolve: 1.22.8
+      rollup: 4.14.2
+      tslib: 2.6.2
+      typescript: 5.4.5
+    dev: true
+
   /@rollup/pluginutils@5.1.0(rollup@4.14.0):
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
@@ -2089,6 +2109,21 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 4.14.0
+    dev: true
+
+  /@rollup/pluginutils@5.1.0(rollup@4.14.2):
+    resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@types/estree': 1.0.5
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
+      rollup: 4.14.2
     dev: true
 
   /@rollup/rollup-android-arm-eabi@4.14.0:
@@ -2827,7 +2862,7 @@ packages:
   /@types/conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
     dependencies:
-      '@types/node': 20.12.3
+      '@types/node': 20.12.7
     dev: true
 
   /@types/estree@1.0.5:
@@ -6714,7 +6749,7 @@ packages:
         optional: true
     dependencies:
       '@microsoft/api-extractor': 7.43.0(@types/node@20.12.3)
-      '@rollup/pluginutils': 5.1.0(rollup@4.14.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.14.2)
       '@vue/language-core': 1.8.27(typescript@5.4.5)
       debug: 4.3.4
       kolorist: 1.8.0

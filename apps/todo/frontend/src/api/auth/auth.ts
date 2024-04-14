@@ -2,7 +2,7 @@ import {
   UserLoginSchema,
   userSchema,
   UserSignupSchema,
-} from "@incubator/shared"
+} from "@incubator/todo-schemas"
 import { z } from "zod"
 
 import { API_BASEPATH } from ".."

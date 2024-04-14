@@ -8,7 +8,7 @@ import {
   FormMessage,
   Input,
 } from "@incubator/design-system"
-import { TodoCreateSchema, todoCreateSchema } from "@incubator/shared"
+import { TodoCreateSchema, todoCreateSchema } from "@incubator/todo-schemas"
 import { useForm } from "react-hook-form"
 
 import { useTodosMutations } from "@/api/todos/use-todos-mutations"

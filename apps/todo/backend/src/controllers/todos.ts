@@ -3,7 +3,7 @@ import {
   todoCreateSchema,
   todoUpdateSchema,
   UserSchema,
-} from "@incubator/shared"
+} from "@incubator/todo-schemas"
 import { authenticate } from "@middleware"
 import { todoRepository } from "@repositories"
 import { createFactory } from "hono/factory"

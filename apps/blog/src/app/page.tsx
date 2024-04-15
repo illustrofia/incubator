@@ -1,11 +1,17 @@
-export default function Home() {
-  return (
-    <main className="flex flex-col">
-      <div className="container mx-auto mt-8 flex-1 md:mt-16">
-        <p className="text-foreground text-xl font-semibold">
-          Express yourself. Share your thoughts. Write a post. 📝
-        </p>
+import { auth } from "@/auth"
 
+import { SignIn } from "./components/sign-in"
+
+export default async function Home() {
+  const session = await auth()
+
+  return (
+    <main className="container mx-auto mt-8 flex flex-1 flex-col md:mt-16">
+      <p className="text-foreground text-2xl font-semibold">
+        Express yourself. Share your thoughts. Write an article! 🧠✨📝
+      </p>
+
+      <div className="flex-1 space-y-8">
         <div className="mt-6 space-y-2">
           {[
             "Or don't. It's up to you... 🤷🏻",
@@ -13,17 +19,23 @@ export default function Home() {
             "But you should! 🤓",
             "It's fun, I promise. 😎",
           ].map((text, i) => (
-            <p key={i} className="text-muted-foreground text-md">
+            <p key={i} className="text-muted-foreground text-lg">
               {text}
             </p>
           ))}
         </div>
 
-        <p className="text-muted-foreground my-8 text-sm italic">
-          💡 Fun fact: some people call this kind of thing a blog. It's actually
-          an abbreviation of "weblog" 🕸️🪵.
-        </p>
+        <div className="space-x-4">
+          <SignIn />
+        </div>
       </div>
+
+      <div>{session?.user?.name}</div>
+
+      <p className="text-muted-foreground my-8 text-sm italic">
+        💡 Fun fact: some people call this kind of thing a <b>blog</b>. It's
+        actually an abbreviation of "weblog" 🕸️🪵.
+      </p>
     </main>
   )
 }

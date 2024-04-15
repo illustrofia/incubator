@@ -35,3 +35,10 @@
 
 - [x] Design system architecture
 - [ ] Implementation
+  - [x] Setup Next.js
+  - [x] Setup Auth.js
+  - [x] Setup Prisma
+  - [x] Setup Supabase Postgres
+  - [x] Define schema
+  - [x] Write repositories
+  - [ ]

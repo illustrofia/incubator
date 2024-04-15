@@ -1,3 +1,8 @@
+import { clsx } from "clsx"
+import { X } from "lucide-react"
+
+import { useTodos } from "@/api"
+import { useTodosMutations } from "@/api/todos/use-todos-mutations"
 import {
   Card,
   CardContent,
@@ -5,12 +10,7 @@ import {
   CardTitle,
   Checkbox,
   Skeleton,
-} from "@incubator/design-system"
-import { clsx } from "clsx"
-import { X } from "lucide-react"
-
-import { useTodos } from "@/api"
-import { useTodosMutations } from "@/api/todos/use-todos-mutations"
+} from "@/components"
 
 import { TodoForm } from "./todo-form"
 

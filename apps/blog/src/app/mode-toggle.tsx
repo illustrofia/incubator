@@ -1,15 +1,16 @@
 "use client"
 
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
+import * as React from "react"
+
 import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@incubator/design-system"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-import * as React from "react"
+} from "@/components"
 
 export function ModeToggle() {
   const { setTheme } = useTheme()

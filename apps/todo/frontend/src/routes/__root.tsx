@@ -1,7 +1,6 @@
-import { Toaster } from "@incubator/design-system"
 import { createRootRoute, Outlet } from "@tanstack/react-router"
 
-import { Footer, Header } from "@/components"
+import { Footer, Header,Toaster  } from "@/components"
 
 export const Route = createRootRoute({
   component: () => (

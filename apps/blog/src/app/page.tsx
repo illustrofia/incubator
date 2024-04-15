@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@incubator/design-system"
+} from "@/components"
 
 import { ModeToggle } from "./mode-toggle"
 

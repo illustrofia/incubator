@@ -1,4 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { UserSignupSchema, userSignupSchema } from "@incubator/todo-schemas"
+import { Link } from "@tanstack/react-router"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+
+import { useAuth } from "@/api"
 import {
   Button,
   Card,
@@ -14,13 +20,7 @@ import {
   FormMessage,
   FormRootError,
   Input,
-} from "@incubator/design-system"
-import { UserSignupSchema, userSignupSchema } from "@incubator/todo-schemas"
-import { Link } from "@tanstack/react-router"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-
-import { useAuth } from "@/api"
+} from "@/components"
 
 export function SignupForm() {
   const { handleSignup } = useAuth()

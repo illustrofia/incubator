@@ -8,6 +8,7 @@ const config: Pick<Config, "content" | "presets" | "plugins"> = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   presets: [sharedConfig],
+  plugins: [require("tailwindcss-animate")],
 }
 
 export default config

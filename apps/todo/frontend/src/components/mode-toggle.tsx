@@ -1,12 +1,12 @@
+import { Moon, Sun } from "lucide-react"
+
 import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@incubator/design-system"
-import { Moon, Sun } from "lucide-react"
-
+} from "@/components"
 import { useTheme } from "@/hooks"
 
 export function ModeToggle() {

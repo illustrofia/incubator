@@ -1,7 +1,7 @@
-import { Button, Skeleton } from "@incubator/design-system"
 import { CheckCircle } from "lucide-react"
 
 import { useAuth } from "@/api"
+import { Button, Skeleton } from "@/components"
 import { ModeToggle } from "@/components/mode-toggle"
 
 export const Header = () => {

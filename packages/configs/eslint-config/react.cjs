@@ -16,15 +16,11 @@ module.exports = {
     "react/no-unknown-property": ["error", { ignore: ["css"] }],
     "react/prop-types": "off",
     "react/jsx-indent": "off",
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
   },
   settings: {
     react: {
       version: "detect",
     },
   },
-  plugins: [...config.plugins, "react", "react-refresh"],
+  plugins: [...config.plugins, "react"],
 }

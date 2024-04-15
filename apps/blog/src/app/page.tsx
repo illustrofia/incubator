@@ -1,7 +1,6 @@
 import { signIn } from "@/auth"
 import { Button } from "@/components"
-
-import { GoogleLogo } from "./components"
+import { GoogleLogo } from "@/components/icons"
 
 const signInAction = async () => {
   "use server"

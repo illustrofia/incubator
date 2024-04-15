@@ -1,9 +1,7 @@
 import { Brain } from "lucide-react"
 
 import { auth, signOut } from "@/auth"
-import { Button } from "@/components"
-
-import { ModeToggle } from "."
+import { Button, ModeToggle } from "@/components"
 
 const signOutAction = async () => {
   "use server"

@@ -1,3 +1,7 @@
+### General
+
+- [ ] Write readmes for all apps and packages
+
 ### Todo List App
 
 - [x] Define System design document

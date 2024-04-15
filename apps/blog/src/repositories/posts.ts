@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client"
+import { Comment, Post } from "@prisma/client"
 
 interface PostsRepository {
   create(data: {
@@ -11,42 +11,49 @@ interface PostsRepository {
     data: { title?: string; content?: string },
   ): Promise<Post>
   delete(postId: string): Promise<Post>
-  getPostLikesCount(postId: string): Promise<number>
+  getPosts(page: number, pageSize: number): Promise<Post[]>
+  getLikesCount(postId: string): Promise<number>
+  getComments(
+    postId: string,
+    page: number,
+    pageSize: number,
+  ): Promise<Comment[]>
 }
 
 class PrismaPostsRepository implements PostsRepository {
-  async create(data: {
-    title: string
-    content: string
-    authorId: string
-  }): Promise<Post> {
-    return prisma.post.create({
+  create = async (data: { title: string; content: string; authorId: string }) =>
+    await prisma.post.create({
       data,
     })
-  }
 
-  async update(
-    postId: string,
-    data: { title?: string; content?: string },
-  ): Promise<Post> {
-    return prisma.post.update({
+  update = async (postId: string, data: { title?: string; content?: string }) =>
+    await prisma.post.update({
       where: { id: postId },
       data,
     })
-  }
 
-  async delete(postId: string): Promise<Post> {
-    return prisma.post.delete({
+  delete = async (postId: string) =>
+    await prisma.post.delete({
       where: { id: postId },
     })
-  }
 
-  async getPostLikesCount(postId: string): Promise<number> {
-    const count = await prisma.like.count({
+  getPosts = async (page: number, pageSize: number) =>
+    await prisma.post.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    })
+
+  getLikesCount = async (postId: string) =>
+    await prisma.like.count({
       where: { postId },
     })
-    return count
-  }
+
+  getComments = async (postId: string, page: number, pageSize: number) =>
+    await prisma.comment.findMany({
+      where: { postId },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    })
 }
 
 export const postsRepository: PostsRepository = new PrismaPostsRepository()

@@ -3,9 +3,10 @@ import "@incubator/tailwind-config/global.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
-import { Footer, Header } from "@/components"
 import { ThemeProvider } from "@/providers"
 import { cn } from "@/utils"
+
+import { Footer, Header } from "./components"
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 

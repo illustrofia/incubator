@@ -1,15 +1,13 @@
 import { Brain } from "lucide-react"
 
 import { auth, signOut } from "@/auth"
-import { Button, ModeToggle } from "@/components"
 
-const signOutAction = async () => {
-  "use server"
-  await signOut()
-}
+import { Button } from "../../components/ui"
+import { ModeToggle } from "./mode-toggle"
 
 export const Header = async () => {
   const session = await auth()
+
   return (
     <div className="border-border/70 flex h-16 w-full items-center border-b">
       <div className="container flex items-center justify-between gap-8">
@@ -32,4 +30,9 @@ export const Header = async () => {
       </div>
     </div>
   )
+}
+
+async function signOutAction() {
+  "use server"
+  await signOut()
 }

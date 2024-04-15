@@ -1,11 +1,6 @@
 import { signIn } from "@/auth"
 import { Button } from "@/components"
-import { GoogleLogo } from "@/components/icons"
-
-const signInAction = async () => {
-  "use server"
-  await signIn("google")
-}
+import { GoogleLogo } from "@/icons"
 
 export default async function Home() {
   return (
@@ -51,4 +46,9 @@ export default async function Home() {
       </p>
     </main>
   )
+}
+
+const signInAction = async () => {
+  "use server"
+  await signIn("google")
 }

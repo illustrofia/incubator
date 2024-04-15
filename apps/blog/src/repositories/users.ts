@@ -1,59 +1,31 @@
-import { Comment, Like, Post, User } from "@prisma/client"
+import { Like, Post, User } from "@prisma/client"
 
 interface UsersRepository {
-  getAllUsers(page: number, pageSize: number): Promise<User[]>
-  getUserPosts(userId: string, page: number, pageSize: number): Promise<Post[]>
-  getUserComments(
-    userId: string,
-    page: number,
-    pageSize: number,
-  ): Promise<Comment[]>
+  getUsers(page: number, pageSize: number): Promise<User[]>
   getUserLikes(userId: string, page: number, pageSize: number): Promise<Like[]>
+  getPosts(userId: string, page: number, pageSize: number): Promise<Post[]>
 }
 
 class PrismaUsersRepository implements UsersRepository {
-  async getAllUsers(page: number, pageSize: number): Promise<User[]> {
-    return prisma.user.findMany({
+  getUsers = async (page: number, pageSize: number) =>
+    await prisma.user.findMany({
       skip: (page - 1) * pageSize,
       take: pageSize,
     })
-  }
 
-  async getUserPosts(
-    userId: string,
-    page: number,
-    pageSize: number,
-  ): Promise<Post[]> {
-    return prisma.post.findMany({
+  getUserLikes = async (userId: string, page: number, pageSize: number) =>
+    await prisma.like.findMany({
+      where: { userId },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    })
+
+  getPosts = async (userId: string, page: number, pageSize: number) =>
+    await prisma.post.findMany({
       where: { authorId: userId },
       skip: (page - 1) * pageSize,
       take: pageSize,
     })
-  }
-
-  async getUserComments(
-    userId: string,
-    page: number,
-    pageSize: number,
-  ): Promise<Comment[]> {
-    return prisma.comment.findMany({
-      where: { userId },
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-    })
-  }
-
-  async getUserLikes(
-    userId: string,
-    page: number,
-    pageSize: number,
-  ): Promise<Like[]> {
-    return prisma.like.findMany({
-      where: { userId },
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-    })
-  }
 }
 
 export const usersRepository: UsersRepository = new PrismaUsersRepository()

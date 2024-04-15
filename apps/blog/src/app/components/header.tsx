@@ -8,7 +8,7 @@ export const Header = () => {
       <div className="container flex items-center justify-between gap-8">
         <div className="flex items-center gap-4">
           <Brain size={24} />
-          {/* <span className="text-xl">Thoughtful</span> */}
+          <span className="text-xl">Thoughtful</span>
         </div>
 
         <ModeToggle />

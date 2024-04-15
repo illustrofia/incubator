@@ -4,7 +4,7 @@ import { Footer, Header, Toaster } from "@/components"
 
 export const Route = createRootRoute({
   component: () => (
-    <div className="text-foreground flex min-h-screen w-full flex-col">
+    <div className="text-foreground flex min-h-screen w-full flex-col font-sans antialiased">
       <Header />
       <main className="flex-1">
         <Outlet />

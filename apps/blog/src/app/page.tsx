@@ -1,10 +1,6 @@
-import { auth } from "@/auth"
-
-import { SignIn } from "./components/sign-in"
+import { SignInButton } from "./components/signin-button"
 
 export default async function Home() {
-  const session = await auth()
-
   return (
     <main className="container mx-auto mt-8 flex flex-1 flex-col md:mt-16">
       <p className="text-foreground text-2xl font-semibold">
@@ -26,11 +22,9 @@ export default async function Home() {
         </div>
 
         <div className="space-x-4">
-          <SignIn />
+          <SignInButton />
         </div>
       </div>
-
-      <div>{session?.user?.name}</div>
 
       <p className="text-muted-foreground my-8 text-sm italic">
         💡 Fun fact: some people call this kind of thing a <b>blog</b>. It's

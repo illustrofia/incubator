@@ -14,8 +14,6 @@ import {
 import { Label } from "@/components/ui/label"
 import { cn } from "@/utils"
 
-const Form = FormProvider
-
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
@@ -31,8 +29,8 @@ const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
-    ...props
-  }: ControllerProps<TFieldValues, TName>) => {
+  ...props
+}: ControllerProps<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
@@ -187,7 +185,7 @@ const FormRootError = React.forwardRef<
 FormRootError.displayName = "FormRootError"
 
 export {
-  Form,
+  FormProvider as Form,
   FormControl,
   FormDescription,
   FormField,

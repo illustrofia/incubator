@@ -2,7 +2,6 @@
   "name": "@incubator/design-system",
   "version": "0.0.1",
   "private": true,
-  "description": "Shared interfaces and functions",
   "sideEffects": false,
   "type": "module",
   "exports": {
@@ -41,7 +40,6 @@
     "@incubator/eslint-config": "workspace:*",
     "@incubator/tailwind-config": "workspace:*",
     "@incubator/typescript-config": "workspace:*",
-    "@types/node": "^20.11.28",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react-swc": "^3.6.0",

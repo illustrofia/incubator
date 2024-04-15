@@ -7,12 +7,7 @@
       "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src",
-    "src/providers/theme-provider.tsx",
-    "src/hooks/theme.ts",
-    "src/providers/index.ts"
-  ],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

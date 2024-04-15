@@ -6,6 +6,8 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { cn } from "@/utils"
 
+import { Footer, Header } from "./components"
+
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
@@ -22,7 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background min-h-screen font-sans antialiased",
+          "bg-background text-foreground min-h-screen font-sans antialiased",
           fontSans.variable,
         )}
       >
@@ -32,7 +34,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

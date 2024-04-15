@@ -23,21 +23,19 @@ export default async function Home() {
           ))}
         </div>
 
-        <div>
-          <form action={signInAction}>
-            <Button
-              type="submit"
-              variant={"outline"}
-              className="gap-2"
-              size={"lg"}
-            >
-              <span className="h-5 w-5">
-                <GoogleLogo />
-              </span>
-              Sign in with Google
-            </Button>
-          </form>
-        </div>
+        <form action={signInAction}>
+          <Button
+            type="submit"
+            variant={"outline"}
+            className="gap-2"
+            size={"lg"}
+          >
+            <span className="h-5 w-5">
+              <GoogleLogo />
+            </span>
+            Sign in with Google
+          </Button>
+        </form>
       </div>
 
       <p className="text-muted-foreground my-8 text-sm italic">

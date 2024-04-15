@@ -1,25 +1,4 @@
-import { signIn } from "@/auth"
-import { Button } from "@/components"
-
-const signInAction = async () => {
-  "use server"
-  await signIn("google")
-}
-
-export const SignInButton = () => {
-  return (
-    <form action={signInAction}>
-      <Button type="submit" variant={"outline"} className="gap-2" size={"lg"}>
-        <span className="h-5 w-5">
-          <GoogleLogo />
-        </span>
-        Sign in with Google
-      </Button>
-    </form>
-  )
-}
-
-const GoogleLogo = () => (
+export const GoogleLogo = () => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,12 @@
-import { SignInButton } from "./components/signin-button"
+import { signIn } from "@/auth"
+import { Button } from "@/components"
+
+import { GoogleLogo } from "./components"
+
+const signInAction = async () => {
+  "use server"
+  await signIn("google")
+}
 
 export default async function Home() {
   return (
@@ -21,8 +29,20 @@ export default async function Home() {
           ))}
         </div>
 
-        <div className="space-x-4">
-          <SignInButton />
+        <div>
+          <form action={signInAction}>
+            <Button
+              type="submit"
+              variant={"outline"}
+              className="gap-2"
+              size={"lg"}
+            >
+              <span className="h-5 w-5">
+                <GoogleLogo />
+              </span>
+              Sign in with Google
+            </Button>
+          </form>
         </div>
       </div>
 

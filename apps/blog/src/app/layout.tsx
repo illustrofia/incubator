@@ -6,9 +6,6 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { cn } from "@/utils"
 
-// TODO: eslint is not working. Fix it.
-import { Header } from "./components/header"
-
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {

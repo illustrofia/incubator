@@ -38,7 +38,6 @@
     "@incubator/eslint-config": "workspace:*",
     "@incubator/tailwind-config": "workspace:^",
     "@incubator/typescript-config": "workspace:*",
-    "@next/eslint-plugin-next": "^14.2.1",
     "@tanstack/router-vite-plugin": "^1.20.5",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.64",

@@ -42,18 +42,30 @@ module.exports = {
       files: ["*.js?(x)", "*.ts?(x)"],
     },
   ],
+
   rules: {
-    "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "off",
-      { varsIgnorePattern: "^(?:h|_)$" },
+    indent: [
+      "error",
+      2,
+      {
+        SwitchCase: 1,
+        offsetTernaryExpressions: true,
+        flatTernaryExpressions: false,
+        ignoredNodes: ["TemplateLiteral *", "PropertyDefinition"],
+      },
     ],
+    quotes: [
+      "error",
+      "double",
+      { avoidEscape: true, allowTemplateLiterals: true },
+    ],
+    "comma-dangle": ["error", "only-multiline"],
+    "@typescript-eslint/ban-ts-comment": "off",
     "sort-imports": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "import/no-unresolved": "off",
   },
 }

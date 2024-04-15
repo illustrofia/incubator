@@ -6,6 +6,8 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { cn } from "@/utils"
 
+import { Header } from "./components/header"
+
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {

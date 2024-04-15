@@ -5,8 +5,8 @@ module.exports = {
   ...config,
   root: false,
   extends: [
-    // https://github.com/vercel/style-guide?tab=readme-ov-file#eslint
     ...config.extends,
+    // https://github.com/vercel/style-guide?tab=readme-ov-file#eslint
     require.resolve("@vercel/style-guide/eslint/next"),
   ],
   env: {

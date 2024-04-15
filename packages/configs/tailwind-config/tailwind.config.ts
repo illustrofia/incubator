@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss"
 import { fontFamily } from "tailwindcss/defaultTheme"
+import tailwindCssAnimate from "tailwindcss-animate"
 
-// We want each package to be responsible for its own content.
 const config: Omit<Config, "content"> = {
   darkMode: "class",
   theme: {
@@ -71,7 +71,7 @@ const config: Omit<Config, "content"> = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    plugins: [tailwindCssAnimate],
   },
 }
-
 export default config

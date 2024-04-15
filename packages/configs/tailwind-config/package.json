@@ -8,7 +8,9 @@
     ],
     "./global.css": "./global.css"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
+  },
   "devDependencies": {
     "@incubator/typescript-config": "workspace:*",
     "@types/node": "^20.12.7",

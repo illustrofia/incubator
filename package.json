@@ -15,7 +15,7 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "pnpm prettier --write",
-      "pnpm eslint --fix --max-warnings=0"
+      "pnpm eslint --fix --max-warnings=0 --no-ignore"
     ],
     "**/*.css": [
       "pnpm prettier --write"

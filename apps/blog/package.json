@@ -1,0 +1,31 @@
+{
+  "name": "@incubator/blog",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@incubator/design-system": "workspace:*",
+    "lucide-react": "^0.360.0",
+    "next": "14.2.1",
+    "next-themes": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@incubator/eslint-config": "workspace:*",
+    "@incubator/tailwind-config": "workspace:*",
+    "@incubator/typescript-config": "workspace:*",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
+  }
+}

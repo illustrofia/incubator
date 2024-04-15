@@ -5,10 +5,10 @@ module.exports = {
   ...config,
   root: false,
   extends: [
+    ...config.extends,
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@tanstack/eslint-plugin-query/recommended",
-    ...config.extends,
   ],
   rules: {
     ...config.rules,

@@ -36,12 +36,7 @@ module.exports = {
     sourceType: "module",
     ecmaVersion: "latest",
   },
-  ignorePatterns: [
-    ".*.js",
-    ".*.cjs",
-    "node_modules/",
-    "dist/",
-  ],
+  ignorePatterns: [".*.js", ".*.cjs", "node_modules/", "dist/"],
   overrides: [
     {
       files: ["*.js?(x)", "*.ts?(x)"],

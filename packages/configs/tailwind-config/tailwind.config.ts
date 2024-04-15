@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-import defaultTheme from "tailwindcss/defaultTheme"
+import { fontFamily } from "tailwindcss/defaultTheme"
 
 // We want each package to be responsible for its own content.
 const config: Omit<Config, "content"> = {
@@ -14,7 +14,7 @@ const config: Omit<Config, "content"> = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -72,7 +72,6 @@ const config: Omit<Config, "content"> = {
       },
     },
   },
-  plugins: ["tailwindcss-animate"],
 }
 
 export default config

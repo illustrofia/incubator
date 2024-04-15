@@ -26,10 +26,11 @@ export default function Home() {
 
       <div className="container mx-auto py-8">
         <p className="text-muted-foreground text-sm italic">
-          Fun fact #1: some people call this kind of thing a blog. It's an
+          💡 Fun fact: some people call this kind of thing a blog. It's an
           abbreviation of "weblog" 🕸️🪵.
         </p>
       </div>
+
       <Footer />
     </main>
   )

@@ -1,6 +1,7 @@
 ### General
 
 - [ ] Write readmes for all apps and packages
+- [ ] Animations don't work when shadcn/ui components are bundled
 
 ### Todo List App
 

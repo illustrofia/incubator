@@ -4,13 +4,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  useTheme,
 } from "@incubator/design-system"
 import { Moon, Sun } from "lucide-react"
 
+import { useTheme } from "@/hooks"
+
 export function ModeToggle() {
   const { setTheme } = useTheme()
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

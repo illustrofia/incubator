@@ -2,7 +2,6 @@
   "extends": "@incubator/typescript-config/base.json",
   "compilerOptions": {
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "strict": true,
     "isolatedModules": true,
@@ -13,10 +12,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src",
-    "../../../packages/design-system/src/providers",
-    "../../../packages/design-system/src/hooks/theme.ts"
-  ],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

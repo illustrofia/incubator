@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.17",
     "@hookform/resolvers": "^3.3.4",
     "@incubator/design-system": "workspace:*",
     "@incubator/todo-schemas": "workspace:*",

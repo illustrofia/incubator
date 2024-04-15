@@ -245,6 +245,9 @@ importers:
       '@incubator/typescript-config':
         specifier: workspace:*
         version: link:../../../packages/configs/typescript-config
+      '@next/eslint-plugin-next':
+        specifier: ^14.2.1
+        version: 14.2.1
       '@tanstack/router-vite-plugin':
         specifier: ^1.20.5
         version: 1.20.5
@@ -309,9 +312,6 @@ importers:
 
   packages/configs/eslint-config:
     devDependencies:
-      '@next/eslint-plugin-next':
-        specifier: ^14.2.1
-        version: 14.2.1
       '@tanstack/eslint-plugin-query':
         specifier: ^5.28.6
         version: 5.28.6(eslint@8.57.0)(typescript@5.4.5)
@@ -323,7 +323,7 @@ importers:
         version: 7.5.0(eslint@8.57.0)(typescript@5.4.5)
       '@vercel/style-guide':
         specifier: ^6.0.0
-        version: 6.0.0(@next/eslint-plugin-next@14.2.1)(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
+        version: 6.0.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@8.57.0)
@@ -3587,7 +3587,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vercel/style-guide@6.0.0(@next/eslint-plugin-next@14.2.1)(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5):
+  /@vercel/style-guide@6.0.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5):
     resolution: {integrity: sha512-tu0wFINGz91EPwaT5VjSqUwbvCY9pvLach7SPG4XyfJKPU9Vku2TFa6+AyzJ4oroGbo9fK+TQhIFHrnFl0nCdg==}
     engines: {node: '>=18.18'}
     peerDependencies:
@@ -3607,7 +3607,6 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/eslint-parser': 7.24.1(@babel/core@7.24.4)(eslint@8.57.0)
-      '@next/eslint-plugin-next': 14.2.1
       '@rushstack/eslint-patch': 1.10.2
       '@typescript-eslint/eslint-plugin': 7.5.0(@typescript-eslint/parser@7.5.0)(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/parser': 7.5.0(eslint@8.57.0)(typescript@5.4.5)
@@ -3622,7 +3621,7 @@ packages:
       eslint-plugin-playwright: 1.6.0(eslint-plugin-jest@27.9.0)(eslint@8.57.0)
       eslint-plugin-react: 7.34.1(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
-      eslint-plugin-testing-library: 6.2.1(eslint@8.57.0)(typescript@5.4.5)
+      eslint-plugin-testing-library: 6.2.2(eslint@8.57.0)(typescript@5.4.5)
       eslint-plugin-tsdoc: 0.2.17
       eslint-plugin-unicorn: 51.0.1(eslint@8.57.0)
       eslint-plugin-vitest: 0.3.26(@typescript-eslint/eslint-plugin@7.5.0)(eslint@8.57.0)(typescript@5.4.5)
@@ -4822,8 +4821,8 @@ packages:
       eslint: 8.57.0
     dev: true
 
-  /eslint-plugin-testing-library@6.2.1(eslint@8.57.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-CP2YV/AxtgyrXgizM4648UkuVrFGDcCA8uDmrLytGqtsa7wgC6MTuIQqEAT1Qm4/zCxnC8xRtiGgfEwEt6hmdw==}
+  /eslint-plugin-testing-library@6.2.2(eslint@8.57.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-1E94YOTUDnOjSLyvOwmbVDzQi/WkKm3WVrMXu6SmBr6DN95xTGZmI6HJ/eOkSXh/DlheRsxaPsJvZByDBhWLVQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
     peerDependencies:
       eslint: ^7.5.0 || ^8.0.0

@@ -6,6 +6,7 @@
     "build.design-system": "turbo build --filter=design-system",
     "dev": "turbo dev",
     "dev.blog": "turbo dev --filter=blog",
+    "dev.illustrofia": "turbo dev --filter=illustrofia",
     "dev.todo": "turbo dev --filter=@incubator/todo-*",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "lint": "turbo lint",

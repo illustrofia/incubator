@@ -1,17 +1,24 @@
-import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
   return (
     <main className="container flex-1 py-8 focus:outline-none md:py-16 xl:py-20">
-      <article className="prose dark:prose-invert prose-violet prose-sm md:prose-base lg:prose-lg prose-img:rounded-lg xl:prose-xl 2xl:prose-2xl">
-        <Image
-          src={"/hello-there.gif"}
-          layout={"responsive"}
+      <article className="prose dark:prose-invert prose-violet prose-sm md:prose-base lg:prose-lg prose-video:rounded-xl xl:prose-xl 2xl:prose-2xl">
+        <video
           height={259}
           width={480}
-          alt={`Movie gif. Alec Guinness as Obi Wan Kenobi in Star Wars: A New Hope pulls back the hood of his cloak and gives a nod of recognition. Text, "hello there"`}
-        />
+          title={`Movie clip. Alec Guinness as Obi Wan Kenobi in Star Wars: A New Hope pulls back the hood of his cloak and gives a nod of recognition. Text, "hello there"`}
+          preload="none"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/hello-there.webm" type="video/webm" />
+          <source src="/hello-there.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
         <p>
           I'm Luca, a <b>passionate</b> web developer. ❤️‍🔥🧑🏻‍💻
           <br />

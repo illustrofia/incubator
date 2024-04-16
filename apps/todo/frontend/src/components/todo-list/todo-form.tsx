@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TodoCreateSchema, todoCreateSchema } from "@incubator/todo-schemas"
+import { TodoCreateSchema, todoCreateSchema } from "@incubator/todo-shared"
 import { useForm } from "react-hook-form"
 
 import { useTodosMutations } from "@/api/todos/use-todos-mutations"

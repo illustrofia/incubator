@@ -3,7 +3,7 @@ import {
   UserLoginSchema,
   UserSchema,
   UserSignupSchema,
-} from "@incubator/todo-schemas"
+} from "@incubator/todo-shared"
 import { hash, verify } from "argon2"
 import { HTTPException } from "hono/http-exception"
 

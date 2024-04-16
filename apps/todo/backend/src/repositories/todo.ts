@@ -3,7 +3,7 @@ import {
   TodoCreateSchema,
   TodoSchema,
   TodoUpdateSchema,
-} from "@incubator/todo-schemas"
+} from "@incubator/todo-shared"
 
 export interface TodoRepository {
   getAll: (userId: string) => Promise<TodoSchema[]>

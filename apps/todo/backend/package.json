@@ -16,7 +16,7 @@
   "dependencies": {
     "@hono/node-server": "^1.8.2",
     "@hono/zod-validator": "^0.2.0",
-    "@incubator/todo-schemas": "workspace:*",
+    "@incubator/todo-shared": "workspace:*",
     "@prisma/client": "5.11.0",
     "@sentry/node": "^7.109.0",
     "@sentry/rollup-plugin": "^2.16.1",

@@ -1,5 +1,5 @@
 import { zValidator } from "@hono/zod-validator"
-import { userLoginSchema, userSignupSchema } from "@incubator/todo-schemas"
+import { userLoginSchema, userSignupSchema } from "@incubator/todo-shared"
 import { authRepository } from "@repositories"
 import { createToken, setAuthCookies } from "@utils"
 import { deleteCookie } from "hono/cookie"

@@ -3,7 +3,7 @@ import {
   todoSchema,
   TodosFilterSchema,
   TodoUpdateSchema,
-} from "@incubator/todo-schemas"
+} from "@incubator/todo-shared"
 import { z } from "zod"
 
 import { API_BASEPATH } from ".."

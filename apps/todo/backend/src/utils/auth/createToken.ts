@@ -1,4 +1,4 @@
-import { UserSchema } from "@incubator/todo-schemas"
+import { UserSchema } from "@incubator/todo-shared"
 import { HTTPException } from "hono/http-exception"
 import { sign } from "hono/jwt"
 

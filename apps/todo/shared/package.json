@@ -1,5 +1,5 @@
 {
-  "name": "@incubator/todo-schemas",
+  "name": "@incubator/todo-shared",
   "version": "0.0.1",
   "private": true,
   "description": "Shared interfaces and functions",

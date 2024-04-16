@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { UserLoginSchema, userLoginSchema } from "@incubator/todo-schemas"
+import { UserLoginSchema, userLoginSchema } from "@incubator/todo-shared"
 import { Link } from "@tanstack/react-router"
 import { useState } from "react"
 import { useForm } from "react-hook-form"

@@ -1,4 +1,4 @@
-import { TodoSchema } from "@incubator/todo-schemas"
+import { TodoSchema } from "@incubator/todo-shared"
 import { captureException } from "@sentry/react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 

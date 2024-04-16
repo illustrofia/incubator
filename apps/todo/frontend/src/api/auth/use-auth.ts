@@ -1,4 +1,4 @@
-import { UserLoginSchema, UserSignupSchema } from "@incubator/todo-schemas"
+import { UserLoginSchema, UserSignupSchema } from "@incubator/todo-shared"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import Cookies from "js-cookie"

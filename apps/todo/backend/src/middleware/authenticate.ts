@@ -1,4 +1,4 @@
-import { UserSchema } from "@incubator/todo-schemas"
+import { UserSchema } from "@incubator/todo-shared"
 import { MiddlewareHandler } from "hono"
 import { getCookie } from "hono/cookie"
 import { HTTPException } from "hono/http-exception"

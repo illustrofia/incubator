@@ -214,7 +214,7 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.2.0
         version: 0.2.0(hono@4.1.1)(zod@3.22.4)
-      '@incubator/todo-schemas':
+      '@incubator/todo-shared':
         specifier: workspace:*
         version: link:../shared
       '@prisma/client':
@@ -272,7 +272,7 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.1(react@18.2.0))
-      '@incubator/todo-schemas':
+      '@incubator/todo-shared':
         specifier: workspace:*
         version: link:../shared
       '@radix-ui/react-checkbox':

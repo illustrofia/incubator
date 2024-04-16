@@ -15,7 +15,7 @@ export default function Home() {
         <p>
           I'm Luca, a <b>passionate</b> web developer. ❤️‍🔥🧑🏻‍💻
           <br />
-          Here what I've been working on lately:
+          Here's what I've been working on lately:
         </p>
         <ul>
           <li>

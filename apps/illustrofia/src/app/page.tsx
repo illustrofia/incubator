@@ -27,6 +27,28 @@ export default function Home() {
             >
               incubator
             </Link>
+            :
+            <ul>
+              <li>
+                <Link
+                  target="_blank"
+                  href="https://todo.illustrofia.org"
+                  className="underline-offset-4"
+                >
+                  todo app
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  href="https://blog.illustrofia.org"
+                  className="underline-offset-4"
+                >
+                  blog
+                </Link>{" "}
+                (work in progress)
+              </li>
+            </ul>
           </li>
           <li>
             building a <b>holistic</b> design system at{" "}

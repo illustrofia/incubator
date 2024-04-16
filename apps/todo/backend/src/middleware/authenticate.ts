@@ -1,4 +1,3 @@
-import { prisma } from "@db/client"
 import { UserSchema } from "@incubator/todo-schemas"
 import { MiddlewareHandler } from "hono"
 import { getCookie } from "hono/cookie"
@@ -20,20 +19,10 @@ export const authenticate: MiddlewareHandler = async (c, next) => {
   if (!tokenDecoded) {
     throw new HTTPException(401, { message: "Invalid token" })
   }
-
-  const user = await prisma.user.findUnique({
-    where: {
-      email: (tokenDecoded as UserSchema).email,
-    },
-  })
-  if (!user) {
-    throw new HTTPException(404, { message: "User not found" })
-  }
+  const userId = (tokenDecoded as Pick<UserSchema, "id">).id
 
   c.set("user", {
-    id: user.id,
-    email: user.email,
-    username: user.username,
+    id: userId,
   })
 
   await next()

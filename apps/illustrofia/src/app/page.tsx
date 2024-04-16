@@ -71,27 +71,25 @@ export default function Home() {
             </Link>
           </li>
         </ul>
-        <h3>Get in touch with me!</h3>
-        <ul>
-          <li>
-            <Link
-              target="_blank"
-              href="https://www.linkedin.com/in/illustrofia"
-              className="underline-offset-4"
-            >
-              LinkedIn
-            </Link>
-          </li>
-          <li>
-            <Link
-              target="_blank"
-              href="https://github.com/illustrofia"
-              className="underline-offset-4"
-            >
-              GitHub
-            </Link>
-          </li>
-        </ul>
+        <p>
+          Get in touch with me at{" "}
+          <Link
+            target="_blank"
+            href="https://www.linkedin.com/in/illustrofia"
+            className="underline-offset-4"
+          >
+            LinkedIn
+          </Link>{" "}
+          and{" "}
+          <Link
+            target="_blank"
+            href="https://github.com/illustrofia"
+            className="underline-offset-4"
+          >
+            GitHub
+          </Link>
+          .
+        </p>
       </article>
     </main>
   )

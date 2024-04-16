@@ -2,11 +2,25 @@
 
 ## Introduction
 
-The purpose of this project is to help me master web development.
+This is a monorepo for all the projects I'm working on to improve my web development skills.
 
-I shall build several projects, ranging from simple to complex, to help me understand the interconnectedness of the various parts of each system.
+## Structure
 
-The outcome of this project is to be able to build complex systems that are easy to maintain and scale. Learning software architecture and design patterns will be a key part of this project.
+The repository is structured as follows:
+
+- `apps/`: applications built for the projects
+- `architecture/`: system design documents for the projects
+- `packages/`: shared packages used across the projects
+- `TODO.md`: Modern project management tool 😆
+
+## Tech Stack
+
+- **Frontend**: React, TypeScript, Tailwind CSS, shadcn/ui, Next.js, Auth.js, and more
+- **Backend**: Node.js, Hono.js, TypeScript, Prisma
+- **Database**: PostgreSQL
+- **Deployment**: Docker with Cloud Run for things that can't be on Vercel 😄
+- **Observability**: Sentry.io
+- **Code Quality**: ESLint, Prettier, Husky, lint-staged, SonarCloud
 
 ## Projects
 

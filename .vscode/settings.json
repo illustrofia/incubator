@@ -11,7 +11,6 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "tailwindCSS.experimental.classRegex": ["class:\\s*?[\"'`]([^\"'`]*).*?,"],
   "eslint.workingDirectories": [
     {
       "mode": "auto"

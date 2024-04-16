@@ -23,9 +23,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user
       const isHome = nextUrl.pathname === "/"
-      if (isLoggedIn && isHome) {
-        return NextResponse.redirect(new URL("/dashboard", nextUrl))
-      }
 
       if (!isLoggedIn && !isHome) {
         return NextResponse.redirect(new URL("/", nextUrl))

@@ -9,7 +9,7 @@ import { todoRepository } from "@repositories"
 import { createFactory } from "hono/factory"
 
 type Variables = {
-  user: Pick<UserSchema, "id">
+  user: UserSchema
 }
 
 const factory = createFactory<{ Variables: Variables }>()

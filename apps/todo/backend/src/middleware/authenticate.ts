@@ -1,4 +1,5 @@
-import { UserSchema } from "@incubator/todo-shared"
+import { authRepository } from "@repositories"
+import { Token } from "@types"
 import { MiddlewareHandler } from "hono"
 import { getCookie } from "hono/cookie"
 import { HTTPException } from "hono/http-exception"
@@ -19,11 +20,11 @@ export const authenticate: MiddlewareHandler = async (c, next) => {
   if (!tokenDecoded) {
     throw new HTTPException(401, { message: "Invalid token" })
   }
-  const userId = (tokenDecoded as Pick<UserSchema, "id">).id
 
-  c.set("user", {
-    id: userId,
-  })
+  const { email } = tokenDecoded as Token
+  const user = await authRepository.getUser({ email })
+
+  c.set("user", user)
 
   await next()
 }

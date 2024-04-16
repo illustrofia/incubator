@@ -10,6 +10,7 @@ import { HTTPException } from "hono/http-exception"
 export interface AuthRepository {
   verifyUser: (userLoginPayload: UserLoginSchema) => Promise<UserSchema>
   createUser: (userSignupPayload: UserSignupSchema) => Promise<UserSchema>
+  getUser: (userPayload: Pick<UserSchema, "email">) => Promise<UserSchema>
 }
 
 class PrismaAuthRepository implements AuthRepository {
@@ -54,6 +55,21 @@ class PrismaAuthRepository implements AuthRepository {
     })
 
     const { password: _, ...userWithoutPassword } = newUser
+    return userWithoutPassword
+  }
+
+  getUser = async ({ email }: UserSchema) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    })
+
+    if (!user) {
+      throw new HTTPException(404, { message: "User not found" })
+    }
+
+    const { password: _, ...userWithoutPassword } = user
     return userWithoutPassword
   }
 }

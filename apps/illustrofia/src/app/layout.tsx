@@ -12,7 +12,7 @@ const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
   title: "Illustrofia",
-  description: "Says who I am and what I do.",
+  description: "Luca Airinei's personal website.",
 }
 
 export default function RootLayout({

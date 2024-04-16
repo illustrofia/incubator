@@ -1,5 +1,7 @@
 import { Like, Post, User } from "@prisma/client"
 
+import { prisma } from "@/db"
+
 interface UsersRepository {
   getUsers(page: number, pageSize: number): Promise<User[]>
   getUserLikes(userId: string, page: number, pageSize: number): Promise<Like[]>

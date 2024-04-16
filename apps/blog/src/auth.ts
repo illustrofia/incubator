@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 
-import { db } from "@/db"
+import { prisma } from "@/db"
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [Google],
@@ -12,7 +12,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     maxAge: 60 * 60 * 24,
     updateAge: 60 * 60,
   },
-  adapter: PrismaAdapter(db),
+  adapter: PrismaAdapter(prisma),
   callbacks: {
     session: async ({ token, session }) => {
       if (token.sub && session.user) {

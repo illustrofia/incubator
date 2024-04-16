@@ -1,5 +1,7 @@
 import { Comment, Post } from "@prisma/client"
 
+import { prisma } from "@/db"
+
 interface PostsRepository {
   create(data: {
     title: string

@@ -7,7 +7,6 @@ export default function Home() {
         <video
           height={259}
           width={480}
-          title={`Movie clip. Alec Guinness as Obi Wan Kenobi in Star Wars: A New Hope pulls back the hood of his cloak and gives a nod of recognition. Text, "hello there"`}
           preload="none"
           autoPlay
           loop
@@ -16,7 +15,8 @@ export default function Home() {
         >
           <source src="/hello-there.webm" type="video/webm" />
           <source src="/hello-there.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support the video tag. You just missed out on a
+          star wars reference.
         </video>
 
         <p>

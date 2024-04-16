@@ -8,9 +8,9 @@ This is a monorepo for all the projects I'm working on to improve my web develop
 
 The repository is structured as follows:
 
-- `apps/`: applications built for the projects
-- `architecture/`: system design documents for the projects
-- `packages/`: shared packages used across the projects
+- `apps/`: self explanatory
+- `architecture/`: system design documents
+- `packages/`: shared packages used across apps
 - `TODO.md`: Modern project management tool 😆
 
 ## Tech Stack

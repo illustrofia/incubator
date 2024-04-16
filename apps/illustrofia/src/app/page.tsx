@@ -1,15 +1,19 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
   return (
     <main className="container flex-1 py-8 focus:outline-none md:py-16 xl:py-20">
-      <div className="prose dark:prose-invert prose-sm md:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl">
-        <iframe
-          src="https://giphy.com/embed/3ornk57KwDXf81rjWM"
-          className="aspect-[480/259] w-full md:w-1/2"
+      <article className="prose dark:prose-invert prose-violet prose-sm md:prose-base lg:prose-lg prose-img:rounded-lg xl:prose-xl 2xl:prose-2xl">
+        <Image
+          src={"/hello-there.gif"}
+          layout={"responsive"}
+          height={259}
+          width={480}
+          alt={`Movie gif. Alec Guinness as Obi Wan Kenobi in Star Wars: A New Hope pulls back the hood of his cloak and gives a nod of recognition. Text, "hello there"`}
         />
         <p>
-          I'm Luca, a passionate web developer. ❤️‍🔥🧑🏻‍💻
+          I'm Luca, a <b>passionate</b> web developer. ❤️‍🔥🧑🏻‍💻
           <br />
           Here what I've been working on lately:
         </p>
@@ -66,7 +70,7 @@ export default function Home() {
             </Link>
           </li>
         </ul>
-      </div>
+      </article>
     </main>
   )
 }

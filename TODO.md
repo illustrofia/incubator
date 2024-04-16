@@ -41,4 +41,17 @@
   - [x] Setup Supabase Postgres
   - [x] Define schema
   - [x] Write repositories
-  - [ ]
+  - [ ] post editor (tiptap)
+  - [ ] save draft post
+  - [ ] publish post
+  - [ ] edit post
+  - [ ] delete post
+  - [ ] posts page
+  - [ ] users page
+  - [ ] search
+    - [ ] post
+    - [ ] user
+  - [ ] public profile page
+  - [ ] edit profile page
+  - [ ] comments
+  - [ ] likes

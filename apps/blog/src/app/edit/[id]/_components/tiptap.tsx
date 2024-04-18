@@ -42,7 +42,7 @@ const Tiptap = forwardRef<HTMLDivElement, TiptapProps>(
             return "Write something..."
           },
           emptyNodeClass:
-            "before:text-muted-foreground before:h-0 before:float-left before:content-[attr(data-placeholder)] before:pointer-events-none",
+            "first-of-type:before:text-muted-foreground first-of-type:before:h-0 first-of-type:before:float-left first-of-type:before:content-[attr(data-placeholder)] first-of-type:before:pointer-events-none",
         }),
       ],
       editorProps: {

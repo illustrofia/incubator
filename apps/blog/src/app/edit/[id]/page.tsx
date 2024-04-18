@@ -1,15 +1,22 @@
-import { Editor } from "@/app/_components"
+import { postsRepository } from "@/repositories"
 
-interface EditPageProps {
+import { PostEditor } from "./_components/post-editor"
+
+interface PostEditProps {
   params: {
     id: string
   }
 }
 
-export default function EditPage({ params }: EditPageProps) {
+export default async function PostEdit({ params }: PostEditProps) {
+  const post = await postsRepository.getPost(params.id)
+  if (!post) {
+    throw new Error("Post not found")
+  }
+
   return (
     <main className="container mx-auto flex flex-1 flex-col gap-8 pt-8">
-      <Editor id={params.id} />
+      <PostEditor id={params.id} content={post.content} />
     </main>
   )
 }

@@ -28,6 +28,7 @@ export const postUpdateSchema = postSchema
     title: true,
     content: true,
   })
+  .partial()
   .strip()
 
 export type PostUpdateSchema = z.infer<typeof postUpdateSchema>

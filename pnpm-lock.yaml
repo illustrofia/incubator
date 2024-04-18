@@ -56,6 +56,15 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.78)(react@18.2.0)
+      '@tiptap/extension-document':
+        specifier: ^2.3.0
+        version: 2.3.0(@tiptap/core@2.3.0(@tiptap/pm@2.3.0))
+      '@tiptap/extension-heading':
+        specifier: ^2.3.0
+        version: 2.3.0(@tiptap/core@2.3.0(@tiptap/pm@2.3.0))
+      '@tiptap/extension-placeholder':
+        specifier: ^2.3.0
+        version: 2.3.0(@tiptap/core@2.3.0(@tiptap/pm@2.3.0))(@tiptap/pm@2.3.0)
       '@tiptap/pm':
         specifier: ^2.3.0
         version: 2.3.0
@@ -2004,6 +2013,12 @@ packages:
     resolution: {integrity: sha512-peCpA7DFqkd0cHb+cHv4YHNoMsXG8tKFNJlCHpLmsZWl2hWmpKgKmUrXAUfzjcFSvkZxn0xYc5oWbqUgg+2LzA==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
+
+  '@tiptap/extension-placeholder@2.3.0':
+    resolution: {integrity: sha512-1BOyxVLzyUYf6yOOeJ8CfpP6DSCS4L6HjBZqj6WP1z1NyBV8RAfhf3UuLNcimfSWAETXFR3g0ZbaxxWffI1cEg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
 
   '@tiptap/extension-strike@2.3.0':
     resolution: {integrity: sha512-gOW4ALeH8gkJiUGGXVy/AOd5lAPTX0bzoOW1+sCLcTA7t8dluBW7M2ngNYxTEtlKqyv7aLfrgsYSiqucmmfSLw==}
@@ -6709,6 +6724,11 @@ snapshots:
   '@tiptap/extension-paragraph@2.3.0(@tiptap/core@2.3.0(@tiptap/pm@2.3.0))':
     dependencies:
       '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+
+  '@tiptap/extension-placeholder@2.3.0(@tiptap/core@2.3.0(@tiptap/pm@2.3.0))(@tiptap/pm@2.3.0)':
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+      '@tiptap/pm': 2.3.0
 
   '@tiptap/extension-strike@2.3.0(@tiptap/core@2.3.0(@tiptap/pm@2.3.0))':
     dependencies:

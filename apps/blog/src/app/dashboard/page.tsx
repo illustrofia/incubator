@@ -32,7 +32,7 @@ export default async function Dashboard() {
 
       <div>
         <Button asChild>
-          <Link href="/dashboard/new-post">New Post</Link>
+          <Link href="/editor">New Post</Link>
         </Button>
       </div>
     </main>

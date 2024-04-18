@@ -11,10 +11,10 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "tailwindCSS.experimental.classRegex": [
-    "class:\\s*?[\"'`]([^\"'`]*).*?,",
-    "Class:\\s*?[\"'`]([^\"'`]*).*?,"
-  ],
+  // "tailwindCSS.experimental.classRegex": [
+  //   "class:\\s*?[\"'`]([^\"'`]*).*?,",
+  //   "Class:\\s*?[\"'`]([^\"'`]*).*?,"
+  // ],
   "eslint.workingDirectories": [
     {
       "mode": "auto"

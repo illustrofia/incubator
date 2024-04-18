@@ -14,7 +14,11 @@ interface PostsRepository {
   update(payload: PostUpdateSchema): Promise<PostSchema>
   delete(payload: PostDeleteSchema): Promise<PostSchema>
   getPost(payload: PostGetSchema): Promise<PostSchema | null>
-  getPosts(payload: PostsGetSchema): Promise<PostSchema[]>
+  getPosts(payload: PostsGetSchema): Promise<{
+    posts: PostSchema[]
+    postCount: number
+    pageCount: number
+  }>
   publishPost(payload: PostPublishSchema): Promise<PostSchema>
   unpublishPost(payload: PostPublishSchema): Promise<PostSchema>
 }
@@ -41,12 +45,25 @@ class PrismaPostsRepository implements PostsRepository {
       where: { id, authorId },
     })
 
-  getPosts = async ({ authorId, pageSize, page, published }: PostsGetSchema) =>
-    await prisma.post.findMany({
+  getPosts = async ({ authorId, page, published }: PostsGetSchema) => {
+    const postCount = await prisma.post.count({
+      where: { authorId, published },
+    })
+
+    const pageSize = 10
+    const pageCount = Math.ceil(postCount / pageSize)
+    const posts = await prisma.post.findMany({
       where: { authorId, published },
       skip: (page - 1) * pageSize,
       take: pageSize,
     })
+
+    return {
+      posts,
+      postCount,
+      pageCount,
+    }
+  }
 
   publishPost = async ({ authorId, id }: PostPublishSchema) =>
     await prisma.post.update({

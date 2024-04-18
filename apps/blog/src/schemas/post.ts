@@ -58,7 +58,6 @@ export const postsGetSchema = postSchema
     authorId: true,
   })
   .extend({
-    pageSize: z.number(),
     page: z.number(),
     published: z.boolean().optional(),
   })

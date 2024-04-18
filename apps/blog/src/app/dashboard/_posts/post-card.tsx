@@ -65,7 +65,7 @@ export const PostCard = ({ title, updatedAt, id, published }: PostSchema) => {
       </CardHeader>
 
       <CardFooter>
-        <Badge variant={published ? "default" : "secondary"}>
+        <Badge variant={published ? "default" : "outline"}>
           {published ? "Published" : "Draft"}
         </Badge>
       </CardFooter>

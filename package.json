@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "build.design-system": "turbo build --filter=design-system",
+    "clean": "turbo clean",
     "dev": "turbo dev",
     "dev.blog": "turbo dev --filter=blog",
     "dev.illustrofia": "turbo dev --filter=illustrofia",

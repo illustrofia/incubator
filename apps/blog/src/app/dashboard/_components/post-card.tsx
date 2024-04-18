@@ -47,7 +47,7 @@ export const PostCard = ({ title, updatedAt, id, published }: PostSchema) => {
                 </form>
               </DropdownMenuItem>
             )}
-            <DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <form action={deletePost.bind(null, id)}>
                 <button type="submit">Delete</button>
               </form>

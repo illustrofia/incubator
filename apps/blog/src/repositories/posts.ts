@@ -1,37 +1,34 @@
-import { Comment, Post } from "@prisma/client"
-
 import { prisma } from "@/db"
+import {
+  CommentSchema,
+  PostCreateSchema,
+  PostSchema,
+  PostUpdateSchema,
+} from "@/schemas"
 
 interface PostsRepository {
-  create(data: {
-    title: string
-    content: string
-    authorId: string
-  }): Promise<Post>
-  update(
-    postId: string,
-    data: { title?: string; content?: string },
-  ): Promise<Post>
-  delete(postId: string): Promise<Post>
-  getPosts(page: number, pageSize: number): Promise<Post[]>
+  create(payload: PostCreateSchema): Promise<PostSchema>
+  update(postId: string, payload: PostUpdateSchema): Promise<PostSchema>
+  delete(postId: string): Promise<PostSchema>
+  getPosts(page: number, pageSize: number): Promise<PostSchema[]>
   getLikesCount(postId: string): Promise<number>
   getComments(
     postId: string,
     page: number,
     pageSize: number,
-  ): Promise<Comment[]>
+  ): Promise<CommentSchema[]>
 }
 
 class PrismaPostsRepository implements PostsRepository {
-  create = async (data: { title: string; content: string; authorId: string }) =>
+  create = async (payload: PostCreateSchema) =>
     await prisma.post.create({
-      data,
+      data: payload,
     })
 
-  update = async (postId: string, data: { title?: string; content?: string }) =>
+  update = async (postId: string, payload: PostUpdateSchema) =>
     await prisma.post.update({
       where: { id: postId },
-      data,
+      data: payload,
     })
 
   delete = async (postId: string) =>

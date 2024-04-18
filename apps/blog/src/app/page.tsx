@@ -32,6 +32,7 @@ export default async function Home() {
             </Button>
           </form>
         )}
+
         {session?.user && (
           <Button size={"lg"} asChild>
             <Link href="/dashboard">Go to dashboard</Link>

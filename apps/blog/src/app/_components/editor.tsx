@@ -1,14 +1,22 @@
 "use client"
 
+import { JSONContent } from "@tiptap/react"
+
 import { Tiptap } from "./tiptap"
 
-export const Editor = () => {
+interface EditorProps {
+  id: string
+}
+
+export const Editor = ({ id }: EditorProps) => {
+  const handleUpdate = (content: JSONContent) => {
+    console.log({ id, content })
+  }
+
   return (
     <Tiptap
       editorOptions={{
-        onUpdate: ({ editor }) => {
-          console.log(editor.getJSON())
-        },
+        onUpdate: ({ editor }) => handleUpdate(editor.getJSON()),
       }}
     />
   )

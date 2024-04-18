@@ -1,8 +1,8 @@
-import Link from "next/link"
-
 import { auth } from "@/auth"
 import { Button } from "@/components"
 import { usersRepository } from "@/repositories"
+
+import { createPost } from "./actions"
 
 export default async function Dashboard() {
   const session = await auth()
@@ -11,7 +11,8 @@ export default async function Dashboard() {
     return null
   }
 
-  const posts = await usersRepository.getPosts(session.user.id, 1, 10)
+  const userId = session.user.id
+  const posts = await usersRepository.getPosts(userId, 1, 10)
 
   return (
     <main className="container mx-auto flex flex-1 flex-col gap-8 pt-8">
@@ -30,11 +31,9 @@ export default async function Dashboard() {
         </div>
       </div>
 
-      <div>
-        <Button asChild>
-          <Link href="/editor">New Post</Link>
-        </Button>
-      </div>
+      <form action={createPost}>
+        <Button type="submit">Create Post</Button>
+      </form>
     </main>
   )
 }

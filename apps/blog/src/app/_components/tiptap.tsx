@@ -25,7 +25,11 @@ const Tiptap = forwardRef<HTMLDivElement, TiptapProps>(
 
     const editor = useEditor({
       extensions: [
-        StarterKit,
+        StarterKit.configure({
+          // disable heading and document extensions as we are using custom ones
+          heading: false,
+          document: false,
+        }),
         DocumentWithTitle,
         Title,
         Heading,

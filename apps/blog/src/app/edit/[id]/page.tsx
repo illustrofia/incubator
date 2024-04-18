@@ -1,3 +1,4 @@
+import { auth } from "@/auth"
 import { postsRepository } from "@/repositories"
 
 import { PostEditor } from "./_components/post-editor"
@@ -9,14 +10,28 @@ interface PostEditProps {
 }
 
 export default async function PostEdit({ params }: PostEditProps) {
-  const post = await postsRepository.getPost(params.id)
+  const session = await auth()
+
+  if (!session?.user?.id) {
+    throw new Error("Not logged in")
+  }
+
+  const post = await postsRepository.getPost({
+    id: params.id,
+    authorId: session.user.id,
+  })
+
   if (!post) {
     throw new Error("Post not found")
   }
 
   return (
-    <main className="container mx-auto flex flex-1 flex-col gap-8 pt-8">
-      <PostEditor id={params.id} content={post.content} />
+    <main className="container mx-auto flex flex-1 pt-8">
+      <PostEditor
+        id={params.id}
+        authorId={session.user.id}
+        content={post.content}
+      />
     </main>
   )
 }

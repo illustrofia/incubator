@@ -1,17 +1,9 @@
-import Link from "next/link"
-
 import { auth } from "@/auth"
-import {
-  Button,
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components"
-import { usersRepository } from "@/repositories"
+import { Button } from "@/components"
+import { postsRepository } from "@/repositories"
 
-import { createPost, deletePost } from "./_actions"
+import { createPost } from "./_actions"
+import { PostCard } from "./_components"
 
 export default async function Dashboard() {
   const session = await auth()
@@ -20,44 +12,60 @@ export default async function Dashboard() {
     return null
   }
 
-  const userId = session.user.id
-  const posts = await usersRepository.getPosts(userId, 1, 10)
+  const postDrafts = await postsRepository.getPosts({
+    authorId: session.user.id,
+    pageSize: 10,
+    page: 1,
+    published: false,
+  })
+
+  const postsPublished = await postsRepository.getPosts({
+    authorId: session.user.id,
+    pageSize: 10,
+    page: 1,
+    published: true,
+  })
 
   return (
     <main className="container mx-auto flex flex-1 flex-col gap-8 pt-8">
-      <div className="space-y-8">
-        <span className="text-foreground text-xl font-medium">
-          Welcome, {session.user.name ?? "User"}!
-        </span>
-        <h2 className="mt-8 text-2xl font-bold">Your Posts</h2>
-        <div className="flex flex-wrap gap-4">
-          {posts.map(({ id, title, updatedAt }) => (
-            <div key={id} className="max-w-80 flex-1">
-              <Card className="group">
-                <CardHeader>
-                  <CardTitle>{title}</CardTitle>
-                  <CardDescription>
-                    Last update: {updatedAt.toLocaleString()}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="flex justify-end gap-4 transition-opacity lg:opacity-0 lg:group-hover:opacity-100">
-                  <Button variant={"secondary"} asChild>
-                    <Link href={`edit/${id}`}>Edit</Link>
-                  </Button>
-                  <form action={deletePost.bind(null, id)}>
-                    <Button variant={"destructive"} type="submit">
-                      Delete
-                    </Button>
-                  </form>
-                </CardFooter>
-              </Card>
+      <div className="flex flex-col gap-4">
+        {postDrafts.length === 0 && postsPublished.length === 0 && (
+          <span className="text-muted-foreground text-lg">
+            You don't have any posts yet.
+          </span>
+        )}
+
+        {postDrafts.length > 0 && (
+          <>
+            <h2 className="text-2xl font-bold">Your Drafts</h2>
+            <div className="flex flex-wrap gap-4">
+              {postDrafts.map((post) => (
+                <div key={post.id} className="max-w-80 flex-1">
+                  <PostCard {...post} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
+
+        {postsPublished.length > 0 && (
+          <>
+            <h2 className="text-2xl font-bold">Your Posts</h2>
+            <div className="flex flex-wrap gap-4">
+              {postsPublished.map((post) => (
+                <div key={post.id} className="max-w-80 flex-1">
+                  <PostCard {...post} />
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <form action={createPost}>
-        <Button type="submit">Create Post</Button>
+        <Button type="submit" variant={"outline"}>
+          Create Post
+        </Button>
       </form>
     </main>
   )

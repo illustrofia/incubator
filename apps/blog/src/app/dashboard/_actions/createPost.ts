@@ -6,8 +6,6 @@ import { auth } from "@/auth"
 import { postsRepository } from "@/repositories"
 
 export const createPost = async () => {
-  "use server"
-
   const session = await auth()
 
   if (!session?.user?.id) {

@@ -1,23 +1,22 @@
 import { prisma } from "@/db"
 import {
-  CommentSchema,
   PostCreateSchema,
+  PostDeleteSchema,
+  PostGetSchema,
+  PostPublishSchema,
   PostSchema,
+  PostsGetSchema,
   PostUpdateSchema,
 } from "@/schemas"
 
 interface PostsRepository {
   create(payload: PostCreateSchema): Promise<PostSchema>
-  update(postId: string, payload: PostUpdateSchema): Promise<PostSchema>
-  delete(postId: string): Promise<PostSchema>
-  getPosts(page: number, pageSize: number): Promise<PostSchema[]>
-  getPost(postId: string): Promise<PostSchema | null>
-  getLikesCount(postId: string): Promise<number>
-  getComments(
-    postId: string,
-    page: number,
-    pageSize: number,
-  ): Promise<CommentSchema[]>
+  update(payload: PostUpdateSchema): Promise<PostSchema>
+  delete(payload: PostDeleteSchema): Promise<PostSchema>
+  getPost(payload: PostGetSchema): Promise<PostSchema | null>
+  getPosts(payload: PostsGetSchema): Promise<PostSchema[]>
+  publishPost(payload: PostPublishSchema): Promise<PostSchema>
+  unpublishPost(payload: PostPublishSchema): Promise<PostSchema>
 }
 
 class PrismaPostsRepository implements PostsRepository {
@@ -26,41 +25,46 @@ class PrismaPostsRepository implements PostsRepository {
       data: payload,
     })
 
-  update = async (postId: string, payload: PostUpdateSchema) =>
+  update = async (payload: PostUpdateSchema) =>
     await prisma.post.update({
-      where: { id: postId },
+      where: { id: payload.id },
       data: payload,
     })
 
-  delete = async (postId: string) =>
+  delete = async ({ id, authorId }: PostDeleteSchema) =>
     await prisma.post.delete({
-      where: { id: postId },
+      where: { id: id, authorId: authorId },
     })
 
-  getPost = async (postId: string) => {
+  getPost = async ({ id, authorId }: PostGetSchema) => {
     const post = await prisma.post.findUnique({
-      where: { id: postId },
+      where: { id, authorId },
     })
     return post
   }
 
-  getPosts = async (page: number, pageSize: number) =>
+  getPosts = async ({ authorId, pageSize, page, published }: PostsGetSchema) =>
     await prisma.post.findMany({
+      where: { authorId, published },
       skip: (page - 1) * pageSize,
       take: pageSize,
     })
 
-  getLikesCount = async (postId: string) =>
-    await prisma.like.count({
-      where: { postId },
+  publishPost = async ({ authorId, id }: PostPublishSchema) => {
+    const post = await prisma.post.update({
+      where: { id, authorId },
+      data: { published: true },
     })
+    return post
+  }
 
-  getComments = async (postId: string, page: number, pageSize: number) =>
-    await prisma.comment.findMany({
-      where: { postId },
-      skip: (page - 1) * pageSize,
-      take: pageSize,
+  unpublishPost = async ({ authorId, id }: PostPublishSchema) => {
+    const post = await prisma.post.update({
+      where: { id, authorId },
+      data: { published: false },
     })
+    return post
+  }
 }
 
 export const postsRepository: PostsRepository = new PrismaPostsRepository()

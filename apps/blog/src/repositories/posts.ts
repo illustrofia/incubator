@@ -36,12 +36,10 @@ class PrismaPostsRepository implements PostsRepository {
       where: { id: id, authorId: authorId },
     })
 
-  getPost = async ({ id, authorId }: PostGetSchema) => {
-    const post = await prisma.post.findUnique({
+  getPost = async ({ id, authorId }: PostGetSchema) =>
+    await prisma.post.findUnique({
       where: { id, authorId },
     })
-    return post
-  }
 
   getPosts = async ({ authorId, pageSize, page, published }: PostsGetSchema) =>
     await prisma.post.findMany({
@@ -50,21 +48,17 @@ class PrismaPostsRepository implements PostsRepository {
       take: pageSize,
     })
 
-  publishPost = async ({ authorId, id }: PostPublishSchema) => {
-    const post = await prisma.post.update({
+  publishPost = async ({ authorId, id }: PostPublishSchema) =>
+    await prisma.post.update({
       where: { id, authorId },
       data: { published: true },
     })
-    return post
-  }
 
-  unpublishPost = async ({ authorId, id }: PostPublishSchema) => {
-    const post = await prisma.post.update({
+  unpublishPost = async ({ authorId, id }: PostPublishSchema) =>
+    await prisma.post.update({
       where: { id, authorId },
       data: { published: false },
     })
-    return post
-  }
 }
 
 export const postsRepository: PostsRepository = new PrismaPostsRepository()

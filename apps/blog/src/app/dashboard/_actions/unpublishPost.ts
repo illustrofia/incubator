@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache"
 import { auth } from "@/auth"
 import { postsRepository } from "@/repositories"
 
-export const publishPost = async (id: string) => {
+export const unpublishPost = async (id: string) => {
   const session = await auth()
 
   if (!session?.user?.id) {

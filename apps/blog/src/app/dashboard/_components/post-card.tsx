@@ -14,7 +14,7 @@ import {
 } from "@/components"
 import { PostSchema } from "@/schemas"
 
-import { deletePost, publishPost } from "../_actions"
+import { deletePost, publishPost, unpublishPost } from "../_actions"
 
 export const PostCard = ({ title, updatedAt, id, published }: PostSchema) => {
   return (
@@ -33,11 +33,20 @@ export const PostCard = ({ title, updatedAt, id, published }: PostSchema) => {
             <DropdownMenuItem>
               <Link href={`edit/${id}`}>Edit</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem disabled={published} asChild>
-              <form action={publishPost.bind(null, id)}>
-                <button type="submit">Publish</button>
-              </form>
-            </DropdownMenuItem>
+            {!published && (
+              <DropdownMenuItem asChild>
+                <form action={publishPost.bind(null, id)}>
+                  <button type="submit">Publish</button>
+                </form>
+              </DropdownMenuItem>
+            )}
+            {published && (
+              <DropdownMenuItem asChild>
+                <form action={unpublishPost.bind(null, id)}>
+                  <button type="submit">Unpublish</button>
+                </form>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuItem>
               <form action={deletePost.bind(null, id)}>
                 <button type="submit">Delete</button>

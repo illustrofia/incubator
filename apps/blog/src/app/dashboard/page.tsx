@@ -27,39 +27,44 @@ export default async function Dashboard() {
   })
 
   return (
-    <main className="container mx-auto flex flex-1 flex-col gap-8 pt-8">
-      <div className="flex flex-col gap-4">
-        {postDrafts.length === 0 && postsPublished.length === 0 && (
-          <span className="text-muted-foreground text-lg">
-            You don't have any posts yet.
-          </span>
-        )}
+    <main className="container mx-auto flex flex-1 flex-col gap-16 pt-8">
+      <div className="space-y-16">
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold">Your Drafts</h2>
 
-        {postDrafts.length > 0 && (
-          <>
-            <h2 className="text-2xl font-bold">Your Drafts</h2>
-            <div className="flex flex-wrap gap-4">
-              {postDrafts.map((post) => (
-                <div key={post.id} className="max-w-80 flex-1">
-                  <PostCard {...post} />
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+          {postDrafts.length === 0 && (
+            <span className="text-muted-foreground text-lg">
+              You don't have any drafts yet.
+            </span>
+          )}
 
-        {postsPublished.length > 0 && (
-          <>
+          <div className="flex flex-wrap gap-4">
+            {postDrafts.map((post) => (
+              <div key={post.id} className="max-w-80 flex-1">
+                <PostCard {...post} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex gap-8">
+          <div className="space-y-4">
             <h2 className="text-2xl font-bold">Your Posts</h2>
             <div className="flex flex-wrap gap-4">
+              {postsPublished.length === 0 && (
+                <span className="text-muted-foreground text-lg">
+                  You don't have any posts yet.
+                </span>
+              )}
+
               {postsPublished.map((post) => (
                 <div key={post.id} className="max-w-80 flex-1">
                   <PostCard {...post} />
                 </div>
               ))}
             </div>
-          </>
-        )}
+          </div>
+        </div>
       </div>
 
       <form action={createPost}>

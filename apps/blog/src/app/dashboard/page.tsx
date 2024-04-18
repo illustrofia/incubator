@@ -1,9 +1,18 @@
+import Link from "next/link"
+
 import { auth } from "@/auth"
-import { Button } from "@/components"
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components"
 import { usersRepository } from "@/repositories"
 
-import { PostCard } from "./_components"
-import { createPost } from "./actions"
+import { createPost, deletePost } from "./_actions"
 
 export default async function Dashboard() {
   const session = await auth()
@@ -21,12 +30,31 @@ export default async function Dashboard() {
         <span className="text-foreground text-xl font-medium">
           Welcome, {session.user.name ?? "User"}!
         </span>
-
         <h2 className="mt-8 text-2xl font-bold">Your Posts</h2>
-        <div className="grid grid-cols-1 gap-4">
-          {posts.map((post) => (
-            <div key={post.id} className="max-w-sm">
-              <PostCard {...post} />
+        <div className="flex flex-wrap gap-4">
+          {posts.map(({ id, title, updatedAt }) => (
+            <div key={id} className="max-w-80 flex-1">
+              <Card className="group">
+                <CardHeader>
+                  <CardTitle>{title}</CardTitle>
+                  <CardDescription>
+                    {updatedAt.toLocaleString()}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  This is where a preview of the post content would go.
+                </CardContent>
+                <CardFooter className="flex justify-end gap-4 transition-opacity lg:opacity-0 lg:group-hover:opacity-100">
+                  <Button variant={"secondary"} asChild>
+                    <Link href={`edit/${id}`}>Edit</Link>
+                  </Button>
+                  <form action={deletePost.bind(null, id)}>
+                    <Button variant={"destructive"} type="submit">
+                      Delete
+                    </Button>
+                  </form>
+                </CardFooter>
+              </Card>
             </div>
           ))}
         </div>

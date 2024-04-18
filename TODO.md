@@ -46,7 +46,8 @@
   - [x] save post on edit
   - [x] edit post
   - [x] delete post
-  - [ ] publish post
+  - [x] publish post
+  - [x] unpublish post
   - [ ] posts page
   - [ ] users page
   - [ ] search
@@ -56,3 +57,4 @@
   - [ ] edit profile page
   - [ ] comments
   - [ ] likes
+  - [ ] error handling

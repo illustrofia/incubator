@@ -16,7 +16,8 @@ export const PostEditor = ({ id, content }: EditorProps) => {
   return (
     <Tiptap
       editorOptions={{
-        content: JSON.parse(content),
+        // content is empty when creating a new post
+        content: content.length > 0 && JSON.parse(content),
         onUpdate: ({ editor }) =>
           updatePostDebounced(id, {
             content: JSON.stringify(editor.getJSON()),

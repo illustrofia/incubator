@@ -43,10 +43,10 @@
   - [x] Write repositories
   - [x] post editor (tiptap)
   - [x] create post
-  - [ ] save post on edit
-  - [ ] publish post
+  - [x] save post on edit
   - [ ] edit post
   - [ ] delete post
+  - [ ] publish post
   - [ ] posts page
   - [ ] users page
   - [ ] search

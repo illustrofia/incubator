@@ -27,6 +27,7 @@ export const PostEditor = ({ id, content }: EditorProps) => {
         content: parsedContent(content),
         onUpdate: ({ editor }) =>
           updatePostDebounced(id, {
+            title: editor?.view.state.doc.firstChild?.textContent.trim() ?? "",
             content: JSON.stringify(editor.getJSON()),
           }),
       }}

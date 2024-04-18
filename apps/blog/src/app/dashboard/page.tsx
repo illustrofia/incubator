@@ -4,7 +4,6 @@ import { auth } from "@/auth"
 import {
   Button,
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -41,9 +40,6 @@ export default async function Dashboard() {
                     {updatedAt.toLocaleString()}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  This is where a preview of the post content would go.
-                </CardContent>
                 <CardFooter className="flex justify-end gap-4 transition-opacity lg:opacity-0 lg:group-hover:opacity-100">
                   <Button variant={"secondary"} asChild>
                     <Link href={`edit/${id}`}>Edit</Link>

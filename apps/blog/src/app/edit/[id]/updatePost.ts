@@ -1,5 +1,7 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
+
 import { auth } from "@/auth"
 import { postsRepository } from "@/repositories"
 import { PostUpdateSchema } from "@/schemas"
@@ -14,4 +16,6 @@ export const updatePost = async (postId: string, payload: PostUpdateSchema) => {
   }
 
   await postsRepository.update(postId, payload)
+
+  revalidatePath("/dashboard")
 }

@@ -44,8 +44,8 @@
   - [x] post editor (tiptap)
   - [x] create post
   - [x] save post on edit
-  - [ ] edit post
-  - [ ] delete post
+  - [x] edit post
+  - [x] delete post
   - [ ] publish post
   - [ ] posts page
   - [ ] users page

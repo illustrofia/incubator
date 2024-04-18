@@ -37,7 +37,7 @@ export default async function Dashboard() {
                 <CardHeader>
                   <CardTitle>{title}</CardTitle>
                   <CardDescription>
-                    {updatedAt.toLocaleString()}
+                    Last update: {updatedAt.toLocaleString()}
                   </CardDescription>
                 </CardHeader>
                 <CardFooter className="flex justify-end gap-4 transition-opacity lg:opacity-0 lg:group-hover:opacity-100">

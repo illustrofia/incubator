@@ -13,7 +13,7 @@ interface PostsRepository {
   create(payload: PostCreateSchema): Promise<PostSchema>
   update(payload: PostUpdateSchema): Promise<PostSchema>
   delete(payload: PostDeleteSchema): Promise<PostSchema>
-  getPost(payload: PostGetSchema): Promise<PostSchema | null>
+  getPost(filters: PostGetSchema): Promise<PostSchema | null>
   getPosts(payload: PostsGetSchema): Promise<{
     posts: PostSchema[]
     postCount: number
@@ -40,9 +40,9 @@ class PrismaPostsRepository implements PostsRepository {
       where: { id: id, authorId: authorId },
     })
 
-  getPost = async ({ id, authorId }: PostGetSchema) =>
+  getPost = async (filters: PostGetSchema) =>
     await prisma.post.findUnique({
-      where: { id, authorId },
+      where: filters,
     })
 
   getPosts = async ({ authorId, page, published }: PostsGetSchema) => {

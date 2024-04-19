@@ -10,7 +10,11 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
   const { userId, postId } = params
-  const post = await postsRepository.getPost({ id: postId, authorId: userId })
+  const post = await postsRepository.getPost({
+    id: postId,
+    authorId: userId,
+    published: true,
+  })
 
   if (!post) {
     throw new Error("Post not found")

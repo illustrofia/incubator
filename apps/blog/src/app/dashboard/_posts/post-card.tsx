@@ -49,7 +49,7 @@ export const PostCard = ({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
-                <Link href={`/${authorId}/post/${id}`}>View</Link>
+                <Link href={`/${authorId}/post/${id}`}>Preview</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>

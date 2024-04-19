@@ -45,7 +45,9 @@ export const postCommonSchema = postSchema
   .pick({
     id: true,
     authorId: true,
+    published: true,
   })
+  .partial({ published: true })
   .strip()
 
 export type PostCommonSchema = z.infer<typeof postCommonSchema>

@@ -14,7 +14,7 @@ interface EditorProps {
 export const PostEditor = ({ id, authorId, content }: EditorProps) => {
   const updatePostDebounced = useDebouncedCallback(updatePost, 500)
 
-  const parsedContent = (content: string) => {
+  const getParsedContent = (content: string) => {
     try {
       return JSON.parse(content)
     } catch {
@@ -25,7 +25,7 @@ export const PostEditor = ({ id, authorId, content }: EditorProps) => {
   return (
     <Tiptap
       editorOptions={{
-        content: parsedContent(content),
+        content: getParsedContent(content),
         onUpdate: ({ editor }) =>
           updatePostDebounced({
             id,

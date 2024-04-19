@@ -105,11 +105,12 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-muted-foreground text-sm">
+          <div className="text-muted-foreground flex items-center justify-center gap-2 text-sm">
+            <span>
               Page {page} of {pageCount}
             </span>
-            <span className="text-muted-foreground text-sm">
+            |
+            <span>
               Showing {posts.length} of {postCount} posts
             </span>
           </div>

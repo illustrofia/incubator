@@ -14,13 +14,20 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components"
 import { PostSchema } from "@/schemas"
 
 import { deletePost, publishPost, unpublishPost } from "./post-actions"
 
-export const PostCard = ({ title, updatedAt, id, published }: PostSchema) => {
+export const PostCard = ({
+  title,
+  updatedAt,
+  id,
+  published,
+  authorId,
+}: PostSchema) => {
   const [lastUpdated, setLastUpdated] = useState("")
 
   useEffect(() => {
@@ -41,7 +48,11 @@ export const PostCard = ({ title, updatedAt, id, published }: PostSchema) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href={`/${authorId}/post/${id}`}>View</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
                 <Link href={`edit/${id}`}>Edit</Link>
               </DropdownMenuItem>
               {!published && (

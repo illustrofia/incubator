@@ -48,8 +48,9 @@
   - [x] delete post
   - [x] publish post
   - [x] unpublish post
-  - [ ] posts page
-  - [ ] users page
+  - [x] post dashboard
+  - [x] post page
+  - [ ] user page
   - [ ] search
     - [ ] post
     - [ ] user

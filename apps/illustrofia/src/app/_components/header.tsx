@@ -11,7 +11,10 @@ export const Header = async () => {
           <span className="text-foreground">
             <Logo />
           </span>
-          <span className="text-xl">Illustrofia</span>
+          <span className="text-xl">
+            Illustrofia
+            <i className="text-base">.org(anism)</i>
+          </span>
         </Link>
 
         <ModeToggle />

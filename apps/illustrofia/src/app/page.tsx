@@ -26,7 +26,7 @@ export default function Home() {
         </p>
         <ul>
           <li>
-            perfecting my skills at my project{" "}
+            perfecting my skills in my project{" "}
             <Link
               target="_blank"
               className="underline-offset-4"
@@ -69,13 +69,20 @@ export default function Home() {
           </li>
         </ul>
         <p>
-          Get in touch with me at{" "}
+          Get in touch with me through{" "}
           <Link
             target="_blank"
             href="https://github.com/illustrofia"
             className="underline-offset-4"
           >
             GitHub
+          </Link>
+          , or by email at
+          <Link
+            href="mailto:illustrofia@gmail.com"
+            className="underline-offset-4"
+          >
+            illustrofia@gmail.com
           </Link>
           .
         </p>

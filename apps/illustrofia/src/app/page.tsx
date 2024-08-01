@@ -67,27 +67,9 @@ export default function Home() {
               atua.io
             </Link>
           </li>
-          <li>
-            building stuff at{" "}
-            <Link
-              target="_blank"
-              href="https://www.circularise.com"
-              className="underline-offset-4"
-            >
-              Circularise
-            </Link>
-          </li>
         </ul>
         <p>
           Get in touch with me at{" "}
-          <Link
-            target="_blank"
-            href="https://www.linkedin.com/in/illustrofia"
-            className="underline-offset-4"
-          >
-            LinkedIn
-          </Link>{" "}
-          and{" "}
           <Link
             target="_blank"
             href="https://github.com/illustrofia"

@@ -77,7 +77,7 @@ export default function Home() {
           >
             GitHub
           </Link>
-          , or by email at
+          , or by email at{" "}
           <Link
             href="mailto:illustrofia@gmail.com"
             className="underline-offset-4"

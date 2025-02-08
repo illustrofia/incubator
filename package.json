@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "build.illustrofia": "turbo build --filter=@incubator/illustrofia",
     "build.todo.backend": "turbo build --filter=@incubator/todo-backend",
     "build.todo.frontend": "turbo build --filter=@incubator/todo-frontend",
     "clean": "turbo clean",
@@ -15,6 +16,7 @@
     "lint": "turbo lint",
     "lint.staged": "lint-staged",
     "prepare": "husky",
+    "start.illustrofia": "turbo start --filter=@incubator/illustrofia",
     "start.todo.frontend": "turbo start --filter=@incubator/todo-frontend"
   },
   "lint-staged": {

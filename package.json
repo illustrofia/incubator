@@ -14,7 +14,8 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "lint": "turbo lint",
     "lint.staged": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start.todo.frontend": "turbo start --filter=@incubator/todo-frontend"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

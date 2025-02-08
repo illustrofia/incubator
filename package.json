@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "build.design-system": "turbo build --filter=design-system",
+    "build.todo.backend": "turbo build --filter=@incubator/todo-backend",
+    "build.todo.frontend": "turbo build --filter=@incubator/todo-frontend",
     "clean": "turbo clean",
     "dev": "turbo dev",
     "dev.blog": "turbo dev --filter=blog",

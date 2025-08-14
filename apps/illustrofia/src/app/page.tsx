@@ -22,9 +22,8 @@ export default function Home() {
         <p>
           I'm Luca, a <b>passionate</b> web developer. ❤️‍🔥🧑🏻‍💻
           <br />
-          Here's what I've been working on lately:
         </p>
-        <ul>
+        {/* <ul>
           <li>
             perfecting my skills in my project{" "}
             <Link
@@ -67,22 +66,15 @@ export default function Home() {
               atua.io
             </Link>
           </li>
-        </ul>
+        </ul> */}
         <p>
           Get in touch with me through{" "}
           <Link
             target="_blank"
-            href="https://github.com/illustrofia"
+            href="https://www.linkedin.com/in/illustrofia/"
             className="underline-offset-4"
           >
-            GitHub
-          </Link>
-          , or by email at{" "}
-          <Link
-            href="mailto:illustrofia@gmail.com"
-            className="underline-offset-4"
-          >
-            illustrofia@gmail.com
+            LinkedIn
           </Link>
           .
         </p>
